@@ -151,9 +151,16 @@ class RestOptimization(BaseModel):
             "creator": obj.get("creator"),
             "ident": obj.get("ident"),
             "nodes": [Node.from_dict(_item) for _item in obj["nodes"]] if obj.get("nodes") is not None else None,
-            "resources": [Resource.from_dict(_item) for _item in obj["resources"]] if obj.get("resources") is not None else None,
+            
+            # By DNA fixing KeyError
+            #"resources": [Resource.from_dict(_item) for _item in obj["resources"]] if obj.get("resources") is not None else None,
+            #"elementConnections": [ElementConnection.from_dict(_item) for _item in obj["elementConnections"]] if obj.get("elementConnections") is not None else None,
+            
+            "resources": obj.get("resources"),
+            "elementConnections": obj.get("elementConnections"),
+             # DNA DONE
+            
             "nodeRelations": [NodeRelation.from_dict(_item) for _item in obj["nodeRelations"]] if obj.get("nodeRelations") is not None else None,
-            "elementConnections": [ElementConnection.from_dict(_item) for _item in obj["elementConnections"]] if obj.get("elementConnections") is not None else None,
             "optimizationOptions": OptimizationOptions.from_dict(obj["optimizationOptions"]) if obj.get("optimizationOptions") is not None else None,
             "coreBuildOptions": CoreBuildOptions.from_dict(obj["coreBuildOptions"]) if obj.get("coreBuildOptions") is not None else None,
             "solution": Solution.from_dict(obj["solution"]) if obj.get("solution") is not None else None,

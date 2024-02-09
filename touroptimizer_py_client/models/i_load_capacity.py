@@ -105,8 +105,11 @@ class ILoadCapacity(BaseModel):
                              json.dumps(obj) + ". Discriminator property name: " + cls.__discriminator_property_name +
                              ", mapping: " + json.dumps(cls.__discriminator_value_class_map))
 
-from touroptimizer_py_client.models.degrading_load_capacity import DegradingLoadCapacity
-from touroptimizer_py_client.models.simple_load_capacity import SimpleLoadCapacity
+# Model fix to avoid circular import by DNA
+#from touroptimizer_py_client.models.degrading_load_capacity import DegradingLoadCapacity
+#from touroptimizer_py_client.models.simple_load_capacity import SimpleLoadCapacity
+# DONE DNA
+
 # TODO: Rewrite to not use raise_errors
 ILoadCapacity.model_rebuild(raise_errors=False)
 

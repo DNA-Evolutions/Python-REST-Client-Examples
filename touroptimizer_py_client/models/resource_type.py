@@ -23,6 +23,9 @@ from typing import Any, ClassVar, Dict, List, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
+from pprint import pprint
+
+
 class ResourceType(BaseModel):
     """
     The type of the Resource.
@@ -93,7 +96,15 @@ class ResourceType(BaseModel):
         """Create an instance of ResourceType from a dict"""
         # look up the object type based on discriminator mapping
         object_type = cls.get_discriminator_value(obj)
+        
+        #pprint('TEST')
+       # pprint(object_type)
+        
         if object_type:
+            
+            #print('TEST')
+            #pprint(globals()[object_type])
+            
             klass = globals()[object_type]
             return klass.from_dict(obj)
         else:
@@ -101,7 +112,10 @@ class ResourceType(BaseModel):
                              json.dumps(obj) + ". Discriminator property name: " + cls.__discriminator_property_name +
                              ", mapping: " + json.dumps(cls.__discriminator_value_class_map))
 
-from touroptimizer_py_client.models.capacity_resource import CapacityResource
+# Model fix to avoid circular import by DNA
+#from touroptimizer_py_client.models.capacity_resource import CapacityResource
+# DONE DNA
+
 # TODO: Rewrite to not use raise_errors
 ResourceType.model_rebuild(raise_errors=False)
 

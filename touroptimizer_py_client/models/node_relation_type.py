@@ -101,10 +101,13 @@ class NodeRelationType(BaseModel):
                              json.dumps(obj) + ". Discriminator property name: " + cls.__discriminator_property_name +
                              ", mapping: " + json.dumps(cls.__discriminator_value_class_map))
 
-from touroptimizer_py_client.models.different_visitor_node_relation import DifferentVisitorNodeRelation
-from touroptimizer_py_client.models.multi_time_window_node_relation import MultiTimeWindowNodeRelation
-from touroptimizer_py_client.models.same_visitor_node_relation import SameVisitorNodeRelation
-from touroptimizer_py_client.models.time_window_node_relation import TimeWindowNodeRelation
+# Model fix to avoid circular import by DNA
+#from touroptimizer_py_client.models.different_visitor_node_relation import DifferentVisitorNodeRelation
+#from touroptimizer_py_client.models.multi_time_window_node_relation import MultiTimeWindowNodeRelation
+#from touroptimizer_py_client.models.same_visitor_node_relation import SameVisitorNodeRelation
+#from touroptimizer_py_client.models.time_window_node_relation import TimeWindowNodeRelation
+# DONE DNA
+
 # TODO: Rewrite to not use raise_errors
 NodeRelationType.model_rebuild(raise_errors=False)
 

@@ -101,7 +101,10 @@ class ElementConnectionType(BaseModel):
                              json.dumps(obj) + ". Discriminator property name: " + cls.__discriminator_property_name +
                              ", mapping: " + json.dumps(cls.__discriminator_value_class_map))
 
-from touroptimizer_py_client.models.edge_element_connection import EdgeElementConnection
+# Model fix to avoid circular import by DNA
+#from touroptimizer_py_client.models.edge_element_connection import EdgeElementConnection
+# DONE DNA
+
 # TODO: Rewrite to not use raise_errors
 ElementConnectionType.model_rebuild(raise_errors=False)
 

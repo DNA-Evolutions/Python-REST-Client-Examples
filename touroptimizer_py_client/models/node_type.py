@@ -101,9 +101,12 @@ class NodeType(BaseModel):
                              json.dumps(obj) + ". Discriminator property name: " + cls.__discriminator_property_name +
                              ", mapping: " + json.dumps(cls.__discriminator_value_class_map))
 
-from touroptimizer_py_client.models.event_node import EventNode
+# Model fix to avoid circular import by DNA
+#from touroptimizer_py_client.models.event_node import EventNode
 from touroptimizer_py_client.models.geo_node import GeoNode
-from touroptimizer_py_client.models.idle_event_node import IdleEventNode
+#from touroptimizer_py_client.models.idle_event_node import IdleEventNode
+# DONE DNA
+
 # TODO: Rewrite to not use raise_errors
 NodeType.model_rebuild(raise_errors=False)
 

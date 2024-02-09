@@ -101,16 +101,19 @@ class ConstraintType(BaseModel):
                              json.dumps(obj) + ". Discriminator property name: " + cls.__discriminator_property_name +
                              ", mapping: " + json.dumps(cls.__discriminator_value_class_map))
 
-from touroptimizer_py_client.models.absolute_node_color_multi_route_constraint import AbsoluteNodeColorMultiRouteConstraint
-from touroptimizer_py_client.models.binding_resource_constraint import BindingResourceConstraint
-from touroptimizer_py_client.models.connected_constraint import ConnectedConstraint
-from touroptimizer_py_client.models.excluding_resource_constraint import ExcludingResourceConstraint
-from touroptimizer_py_client.models.node_color_multi_route_constraint import NodeColorMultiRouteConstraint
-from touroptimizer_py_client.models.resource_location_constraint import ResourceLocationConstraint
-from touroptimizer_py_client.models.type_constraint import TypeConstraint
-from touroptimizer_py_client.models.type_with_expertise_constraint import TypeWithExpertiseConstraint
-from touroptimizer_py_client.models.uk_post_code_constraint import UKPostCodeConstraint
-from touroptimizer_py_client.models.zone_number_constraint import ZoneNumberConstraint
+# Model fix to avoid circular import by DNA
+#from touroptimizer_py_client.models.absolute_node_color_multi_route_constraint import AbsoluteNodeColorMultiRouteConstraint
+#from touroptimizer_py_client.models.binding_resource_constraint import BindingResourceConstraint
+#from touroptimizer_py_client.models.connected_constraint import ConnectedConstraint
+#from touroptimizer_py_client.models.excluding_resource_constraint import ExcludingResourceConstraint
+#from touroptimizer_py_client.models.node_color_multi_route_constraint import NodeColorMultiRouteConstraint
+#from touroptimizer_py_client.models.resource_location_constraint import ResourceLocationConstraint
+#from touroptimizer_py_client.models.type_constraint import TypeConstraint
+#from touroptimizer_py_client.models.type_with_expertise_constraint import TypeWithExpertiseConstraint
+#from touroptimizer_py_client.models.uk_post_code_constraint import UKPostCodeConstraint
+#from touroptimizer_py_client.models.zone_number_constraint import ZoneNumberConstraint
+# DONE DNA
+
 # TODO: Rewrite to not use raise_errors
 ConstraintType.model_rebuild(raise_errors=False)
 
