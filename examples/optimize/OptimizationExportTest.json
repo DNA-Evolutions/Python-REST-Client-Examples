@@ -1,0 +1,566 @@
+{
+    "ident": "TEST_PY_IDENT",
+    "nodes": [
+        {
+            "id": "Node_0",
+            "type": {
+                "typeName": "Geo",
+                "position": {
+                    "latitude": -34.052052,
+                    "longitude": 150.668724,
+                    "locationId": "Node_0"
+                }
+            },
+            "openingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                }
+            ],
+            "visitDuration": "PT30M",
+            "priority": 1,
+            "routeDependentVisitDuration": false,
+            "allowMoveToReduceFlexTime": false,
+            "isOptimizable": true,
+            "isOptional": false,
+            "isUnassigned": false,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isWaitOnEarlyArrival": true,
+            "isOpeningHoursIncludesDuration": true,
+            "isCausingIdleTimeCost": true,
+            "isStayNode": false,
+            "isWorkNode": true
+        },
+        {
+            "id": "Node_1",
+            "type": {
+                "typeName": "Geo",
+                "position": {
+                    "latitude": -34.052518,
+                    "longitude": 150.709943,
+                    "locationId": "Node_1"
+                }
+            },
+            "openingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                }
+            ],
+            "visitDuration": "PT30M",
+            "priority": 1,
+            "routeDependentVisitDuration": false,
+            "allowMoveToReduceFlexTime": false,
+            "isOptimizable": true,
+            "isOptional": false,
+            "isUnassigned": false,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isWaitOnEarlyArrival": true,
+            "isOpeningHoursIncludesDuration": true,
+            "isCausingIdleTimeCost": true,
+            "isStayNode": false,
+            "isWorkNode": true
+        },
+        {
+            "id": "Node_2",
+            "type": {
+                "typeName": "Geo",
+                "position": {
+                    "latitude": -34.051988,
+                    "longitude": 150.71981,
+                    "locationId": "Node_2"
+                }
+            },
+            "openingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                }
+            ],
+            "visitDuration": "PT30M",
+            "priority": 1,
+            "routeDependentVisitDuration": false,
+            "allowMoveToReduceFlexTime": false,
+            "isOptimizable": true,
+            "isOptional": false,
+            "isUnassigned": false,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isWaitOnEarlyArrival": true,
+            "isOpeningHoursIncludesDuration": true,
+            "isCausingIdleTimeCost": true,
+            "isStayNode": false,
+            "isWorkNode": true
+        },
+        {
+            "id": "Node_3",
+            "type": {
+                "typeName": "Geo",
+                "position": {
+                    "latitude": -34.04213,
+                    "longitude": 150.729568,
+                    "locationId": "Node_3"
+                }
+            },
+            "openingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                }
+            ],
+            "visitDuration": "PT30M",
+            "priority": 1,
+            "routeDependentVisitDuration": false,
+            "allowMoveToReduceFlexTime": false,
+            "isOptimizable": true,
+            "isOptional": false,
+            "isUnassigned": false,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isWaitOnEarlyArrival": true,
+            "isOpeningHoursIncludesDuration": true,
+            "isCausingIdleTimeCost": true,
+            "isStayNode": false,
+            "isWorkNode": true
+        },
+        {
+            "id": "Node_4",
+            "type": {
+                "typeName": "Geo",
+                "position": {
+                    "latitude": -34.042063,
+                    "longitude": 150.739632,
+                    "locationId": "Node_4"
+                }
+            },
+            "openingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "isPreffered": false,
+                    "isSoloAccessHours": false
+                }
+            ],
+            "visitDuration": "PT30M",
+            "priority": 1,
+            "routeDependentVisitDuration": false,
+            "allowMoveToReduceFlexTime": false,
+            "isOptimizable": true,
+            "isOptional": false,
+            "isUnassigned": false,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isWaitOnEarlyArrival": true,
+            "isOpeningHoursIncludesDuration": true,
+            "isCausingIdleTimeCost": true,
+            "isStayNode": false,
+            "isWorkNode": true
+        }
+    ],
+    "resources": [
+        {
+            "id": "Resource_0",
+            "type": {
+                "typeName": "Capacity"
+            },
+            "position": {
+                "latitude": -34.052052,
+                "longitude": 150.668724,
+                "locationId": "Resource_0"
+            },
+            "workingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                }
+            ],
+            "maxTime": "PT12H",
+            "maxDistance": "1200.0 km",
+            "postFlexTimeOnlyOnOvertime": false,
+            "connectionTimeEfficiencyFactor": 1.0,
+            "overallVisitDurationEfficiency": 1.0,
+            "isReductionTimeOnlyUsedForDriving": false,
+            "isReductionTimeIncludedInTotalWorkingTime": false
+        },
+        {
+            "id": "Resource_1",
+            "type": {
+                "typeName": "Capacity"
+            },
+            "position": {
+                "latitude": -34.052518,
+                "longitude": 150.709943,
+                "locationId": "Resource_1"
+            },
+            "workingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                }
+            ],
+            "maxTime": "PT12H",
+            "maxDistance": "1200.0 km",
+            "postFlexTimeOnlyOnOvertime": false,
+            "connectionTimeEfficiencyFactor": 1.0,
+            "overallVisitDurationEfficiency": 1.0,
+            "isReductionTimeOnlyUsedForDriving": false,
+            "isReductionTimeIncludedInTotalWorkingTime": false
+        },
+        {
+            "id": "Resource_2",
+            "type": {
+                "typeName": "Capacity"
+            },
+            "position": {
+                "latitude": -34.051988,
+                "longitude": 150.71981,
+                "locationId": "Resource_2"
+            },
+            "workingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                }
+            ],
+            "maxTime": "PT12H",
+            "maxDistance": "1200.0 km",
+            "postFlexTimeOnlyOnOvertime": false,
+            "connectionTimeEfficiencyFactor": 1.0,
+            "overallVisitDurationEfficiency": 1.0,
+            "isReductionTimeOnlyUsedForDriving": false,
+            "isReductionTimeIncludedInTotalWorkingTime": false
+        },
+        {
+            "id": "Resource_3",
+            "type": {
+                "typeName": "Capacity"
+            },
+            "position": {
+                "latitude": -34.052015,
+                "longitude": 150.999808,
+                "locationId": "Resource_3"
+            },
+            "workingHours": [
+                {
+                    "begin": "2030-01-01T08:00:00",
+                    "end": "2030-01-01T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-02T08:00:00",
+                    "end": "2030-01-02T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-03T08:00:00",
+                    "end": "2030-01-03T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-04T08:00:00",
+                    "end": "2030-01-04T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                },
+                {
+                    "begin": "2030-01-05T08:00:00",
+                    "end": "2030-01-05T20:00:00",
+                    "zoneId": "Europe/Berlin",
+                    "localPostFlexTimeOnlyOnOvertime": false,
+                    "isAvailableForStay": true,
+                    "isClosedRoute": true
+                }
+            ],
+            "maxTime": "PT12H",
+            "maxDistance": "1200.0 km",
+            "postFlexTimeOnlyOnOvertime": false,
+            "connectionTimeEfficiencyFactor": 1.0,
+            "overallVisitDurationEfficiency": 1.0,
+            "isReductionTimeOnlyUsedForDriving": false,
+            "isReductionTimeIncludedInTotalWorkingTime": false
+        }
+    ],
+    "nodeRelations": [],
+    "elementConnections": [],
+    "optimizationOptions": {
+        "properties": {
+            "JOpt.Algorithm.PreOptimization.SA.NumIterations": "100000",
+            "JOptExitCondition.JOptGenerationCount": "1000"
+        }
+    },
+    "extension": {
+        "keySetting": {
+            "jsonLicense": "{\"version\": \"1.1\", \"identifier\": \"PUBLIC-\", \"description\": \"Key provided to for evaluation purpose from DNA evolutions GmbH.\", \"contact\": \"www.dna-evolutions.com\", \"modules\": [{\"Module:\": \"Elements\", \"max\": 15}, {\"Module:\": \"Date\", \"creation\": \"2021-05-25\", \"due\": \"2027-05-25\"}], \"key\": \"PUBLIC-bc799ef350fe9841c1354736d8f863cb85bac88cefd19960c1\"}"
+        },
+        "timeOut": "PT2H"
+    }
+}
