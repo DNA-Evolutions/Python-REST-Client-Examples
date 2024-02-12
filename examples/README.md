@@ -13,6 +13,7 @@ Examples dealing with the use of DNA's JOpt containerized TourOptimizer, either 
 **1. health\tour_optimizer_health_example.py:** Basic example on how to call the JOpt TourOptimizer service health status.
 
 **2a. loadFAF\tour_optimizer_load_faf_example.py:** Guides how to load an optimization from a database
+
 **2b. loadFAF\tour_optimizer_load_encrypted_faf_example.py:** Guides how to load an encrypted optimization from a database
 
 **3. optimize\tour_optimizer_example.py:** Basic example on how to call the JOpt TourOptimizer service
