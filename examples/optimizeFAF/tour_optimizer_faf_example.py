@@ -21,7 +21,7 @@ def main():
     do_hash_creator = False
     secret = "" # leave empty for unencrypted run
     
-    run_only_result = True
+    run_only_result = False
 
     # Default positions for nodes and resources
     node_positions = TestPositionsInput.default_sydney_node_positions()
