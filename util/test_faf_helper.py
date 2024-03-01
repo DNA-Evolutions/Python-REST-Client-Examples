@@ -8,7 +8,7 @@ from touroptimizer_py_client.models.optimization_persistence_setting import Opti
 from touroptimizer_py_client.models.optimization_persistence_stratgy_setting import OptimizationPersistenceStratgySetting
 from touroptimizer_py_client.models.stream_persistence_stratgy_setting import StreamPersistenceStratgySetting
 from touroptimizer_py_client.models.mongo_optimization_persistence_setting import MongoOptimizationPersistenceSetting
-from pip._vendor.rich.pretty import pprint
+from pprint import pprint
 
 class TestFAFHelper:
     
