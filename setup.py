@@ -40,7 +40,7 @@ setup(
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "DNA Evolutions - JOpt.TourOptimizer"],
     install_requires=REQUIRES,
-    packages=find_packages(include=['touroptimizer_py_client', 'util', 'util.*', 'examples', 'examples.*', 'test']),
+    packages=find_packages(include=['util', 'util.*', 'examples', 'examples.*']),
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description_content_type='text/markdown',
