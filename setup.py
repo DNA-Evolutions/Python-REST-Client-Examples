@@ -12,15 +12,8 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from setuptools import setup, find_packages  # noqa: H301
 
-# To install the library, run the following
-#
-# python setup.py install
-#
-# prerequisite: setuptools
-# http://pypi.python.org/pypi/setuptools
 NAME = "touroptimizer-py-client"
 VERSION = "1.0.0"
 PYTHON_REQUIRES = ">=3.7"
@@ -40,8 +33,7 @@ setup(
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "DNA Evolutions - JOpt.TourOptimizer"],
     install_requires=REQUIRES,
-    packages=find_packages(include=['util', 'util.*', 'examples', 'examples.*']),
-    packages=find_packages(exclude=["test", "tests"]),
+    packages=find_packages(include=['touroptimizer_py_client', 'util', 'util.*', 'examples', 'examples.*']),
     include_package_data=True,
     long_description_content_type='text/markdown',
     long_description="""\
