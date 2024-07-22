@@ -90,29 +90,64 @@ For setting up a local test enviorment with database support, please refer to th
 You can start using our examples:
 
 * [Clone this repository](#clone-this-repository)
+* [Use our sandbox in your browser (Docker required)](#use-our-sandbox-in-your-browser-docker-required)
 
 
-## Prerequisites
+## Clone this repository
+Clone this repository and import it in your favourite IDE.
+
+### Prerequisites
 
 * Python installed
 * Please check **requirements.txt**
 * Working Docker environment for local TourOptimizer instance
 
 
-## Clone this repository
-Clone this repository and import it in your favourite IDE.
-
-
-## Install necessary files
+### Install necessary files
 You can call (from the main folder):
 
 ```bash
 	python setup.py install
 ```
  
-## Run the examples
+### Run the examples
 
 Run a file from the **examples** subfolders. 
+
+
+## Use our sandbox in your browser (Docker required)
+If you want to get started without the hassle of installing Java, Maven and an IDE, we provide a sandbox. The sandbox is based on  [code-server](https://github.com/cdr/code-server) and can be used inside your browser, and the interface itself is based on Visual Code. The sandbox is available via DockerHub ([here](https://hub.docker.com/r/dnaevolutions/jopt_py_example_server)). You have to host the sandbox in your Docker environment (Please provide at least 2-4Gb of Ram and 2 Cores). You can pull the sandbox from our DockerHub account (The Dockerfile for creating the sandbox is included in this repository). The latest version of our examples is cloned by default on launching the Docker container, and you can start testing JOpt-REST right away.
+
+
+### Starting the sandbox and persist your changes
+You must mount a volume to which the examples of this project are downloaded on the container's startup. After re-launching the container, the latest version of our examples is only cloned if the folder is not already existing, keeping your files safe from being overridden.
+
+Launching a sandbox and mount your current directory ('$PWD') or any other directory you want:
+
+```
+docker run -it -d --name jopt-py-rest-examples -p 127.0.0.1:8033:8080 -v "$PWD/:/home/coder/project" dnaevolutions/jopt_py_example_server:latest
+```
+
+### Using the sandbox
+
+After starting the container, you can open [http://localhost:8043/](http://localhost:8033) with your browser and login with the password:
+
+```
+jopt
+```
+
+### Common problems: ###
+
+- If you see the an error like this:
+
+```
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /healthStatus (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fc7c86ac1d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+```
+
+You are trying to connect to a local JOpt server but have not adjusted the endpoint. Remember, the sandbox is a docker container and you need to connect to it via the endpoint `http://host.docker.internal:8081` instead of ~`http://localhost:8081`~. You can run `tour_optimizer_example_from_docker.py` from the package `examples.optimize` where `Endpoints.LOCAL_SWAGGER_TOUROPTIMIZER_FROM_DOCKER_URL` is used instead of `Endpoints.LOCAL_SWAGGER_TOUROPTIMIZER_URL`.
+
+
+---
 
 
 ## Why use JOpt products from DNA Evolutions?
