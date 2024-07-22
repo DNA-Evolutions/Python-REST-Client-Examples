@@ -1,5 +1,6 @@
 class Endpoints:
     LOCAL_SWAGGER_TOUROPTIMIZER_URL = "http://localhost:8081"
+    LOCAL_SWAGGER_TOUROPTIMIZER_FROM_DOCKER_URL = "http://host.docker.internal:8081"
     AZURE_SWAGGER_TOUROPTIMIZER_URL = "https://joptaas.azure-api.net/touroptimizer/v2/"
     
     STREAM_REL_ENDPOINTS = [
