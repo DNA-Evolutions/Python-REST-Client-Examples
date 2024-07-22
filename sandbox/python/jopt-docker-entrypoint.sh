@@ -38,12 +38,12 @@ else
     echo "Folder ${folder} does not exist. Skipping installation."
 fi
 
-# Ensure .vscode directory exists
-mkdir -p /home/coder/project/.vscode
+# Ensure .vscode directory exists within the project folder
+mkdir -p ${folder}.vscode
 
 # Ensure VS Code uses the virtual environment's interpreter
 echo "{
     \"python.pythonPath\": \"/opt/venv/bin/python\"
-}" > /home/coder/project/.vscode/settings.json
+}" > ${folder}.vscode/settings.json
 
 exec /usr/bin/entrypoint.sh "$@"
