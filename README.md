@@ -107,7 +107,7 @@ Clone this repository and import it in your favourite IDE.
 You can call (from the main folder):
 
 ```bash
-	python setup.py install
+python setup.py install
 ```
  
 ### Run the examples
@@ -130,7 +130,7 @@ docker run -it -d --name jopt-py-rest-examples -p 127.0.0.1:8033:8080 -v "$PWD/:
 
 ### Using the sandbox
 
-After starting the container, you can open [http://localhost:8043/](http://localhost:8033) with your browser and login with the password:
+After starting the container, you can open [http://localhost:8033/](http://localhost:8033) with your browser and login with the password:
 
 ```
 jopt
