@@ -126,7 +126,7 @@ class TourOptimizerRestCaller:
             self._initialize_api_client()
           
         try: 
-            started = self.api_instance.run_started_sginal()
+            started = self.api_instance.run_started_signal()
         
             if started:
                 print("Optimization stated")
@@ -144,7 +144,7 @@ class TourOptimizerRestCaller:
                 loop.close()
 
         except touroptimizer_py_client.ApiException as e:
-            print("Exception when calling OptimizationApi->run_started_sginal: %s\n" % e)   
+            print("Exception when calling OptimizationApi->run_started_signal: %s\n" % e)   
             
                   
     def optimize(self, opti: RestOptimization) -> RestOptimization:

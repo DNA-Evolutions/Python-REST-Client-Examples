@@ -11,10 +11,15 @@ Containerizing an application helps to use it more conveniently across different
 ---
 
 # Compatibility
+
+
+
+
+
 This client can be used with <a href="https://hub.docker.com/r/dnaevolutions/jopt_touroptimizer" target="_blank">JOpt-TourOptimizer Spring Server</a>
 Compatible Versions:
-- 1.2.6-SNAPSHOT (this version was used to create the models of this repository)
-- 1.2.7-SNAPSHOT (<a href="https://github.com/DNA-Evolutions/Java-REST-Client-Examples/blob/master/src/main/resources/swagger/touroptimizer/spec/touroptimizer_spec.json" target="_blank">Specs</a> )
+- 1.3.0-SNAPSHOT (this version was used to create the models of this repository)
+- 1.3.0-SNAPSHOT (<a href="https://github.com/DNA-Evolutions/Java-REST-Client-Examples/blob/master/src/main/resources/swagger/touroptimizer/spec/touroptimizer_spec_cleaned.json" target="_blank">Specs</a> )
 
 ---
 
@@ -74,9 +79,8 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:latest gen
 
 ```
 
-where `${PWD}` needs to be adjusted to find the Open-API-docs under `/local/swagger/touroptimizer/spec/touroptimizer_spec.json` when mounting the volume `${PWD}` into `/local`. Calling the command will generate the Python client that is part of this repository. You can find the `touroptimizer_spec.json` <a href="https://github.com/DNA-Evolutions/Java-REST-Client-Examples/blob/master/src/main/resources/swagger/touroptimizer/spec/touroptimizer_spec.json" target="_blank">here</a>.
+where `${PWD}` needs to be adjusted to find the Open-API-docs under `/local/swagger/touroptimizer/spec/touroptimizer_spec.json` when mounting the volume `${PWD}` into `/local`. Calling the command will generate the Python client that is part of this repository. You can find the `touroptimizer_spec.json` <a href="https://github.com/DNA-Evolutions/Java-REST-Client-Examples/blob/master/src/main/resources/swagger/touroptimizer/spec/touroptimizer_spec_cleaned.json" target="_blank">here</a>.
 
-**Attention:** The generated models seem to have some bugs. The first commit of this repository is fixing those issues.
 
 You can also generate a client in the programming language of your choice utilizing our API-docs. REST facilitates software integration in your desired language (including famous ones like C#, Java, JS, Scala, Python, and many more ). Don't hesitate to reach out to us if you need help setting up your client.
 

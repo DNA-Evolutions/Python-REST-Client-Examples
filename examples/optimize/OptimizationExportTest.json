@@ -55,12 +55,12 @@
             "isOptimizable": true,
             "isOptional": false,
             "isUnassigned": false,
-            "isWaitOnEarlyArrivalFirstNode": false,
-            "isWaitOnEarlyArrival": true,
-            "isOpeningHoursIncludesDuration": true,
             "isCausingIdleTimeCost": true,
-            "isStayNode": false,
-            "isWorkNode": true
+            "isWaitOnEarlyArrival": true,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isOpeningHoursIncludesDuration": true,
+            "isWorkNode": true,
+            "isStayNode": false
         },
         {
             "id": "Node_1",
@@ -116,12 +116,12 @@
             "isOptimizable": true,
             "isOptional": false,
             "isUnassigned": false,
-            "isWaitOnEarlyArrivalFirstNode": false,
-            "isWaitOnEarlyArrival": true,
-            "isOpeningHoursIncludesDuration": true,
             "isCausingIdleTimeCost": true,
-            "isStayNode": false,
-            "isWorkNode": true
+            "isWaitOnEarlyArrival": true,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isOpeningHoursIncludesDuration": true,
+            "isWorkNode": true,
+            "isStayNode": false
         },
         {
             "id": "Node_2",
@@ -177,12 +177,12 @@
             "isOptimizable": true,
             "isOptional": false,
             "isUnassigned": false,
-            "isWaitOnEarlyArrivalFirstNode": false,
-            "isWaitOnEarlyArrival": true,
-            "isOpeningHoursIncludesDuration": true,
             "isCausingIdleTimeCost": true,
-            "isStayNode": false,
-            "isWorkNode": true
+            "isWaitOnEarlyArrival": true,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isOpeningHoursIncludesDuration": true,
+            "isWorkNode": true,
+            "isStayNode": false
         },
         {
             "id": "Node_3",
@@ -238,12 +238,12 @@
             "isOptimizable": true,
             "isOptional": false,
             "isUnassigned": false,
-            "isWaitOnEarlyArrivalFirstNode": false,
-            "isWaitOnEarlyArrival": true,
-            "isOpeningHoursIncludesDuration": true,
             "isCausingIdleTimeCost": true,
-            "isStayNode": false,
-            "isWorkNode": true
+            "isWaitOnEarlyArrival": true,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isOpeningHoursIncludesDuration": true,
+            "isWorkNode": true,
+            "isStayNode": false
         },
         {
             "id": "Node_4",
@@ -299,12 +299,12 @@
             "isOptimizable": true,
             "isOptional": false,
             "isUnassigned": false,
-            "isWaitOnEarlyArrivalFirstNode": false,
-            "isWaitOnEarlyArrival": true,
-            "isOpeningHoursIncludesDuration": true,
             "isCausingIdleTimeCost": true,
-            "isStayNode": false,
-            "isWorkNode": true
+            "isWaitOnEarlyArrival": true,
+            "isWaitOnEarlyArrivalFirstNode": false,
+            "isOpeningHoursIncludesDuration": true,
+            "isWorkNode": true,
+            "isStayNode": false
         }
     ],
     "resources": [
@@ -324,40 +324,40 @@
                     "end": "2030-01-01T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-02T08:00:00",
                     "end": "2030-01-02T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-03T08:00:00",
                     "end": "2030-01-03T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-04T08:00:00",
                     "end": "2030-01-04T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-05T08:00:00",
                     "end": "2030-01-05T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 }
             ],
             "maxTime": "PT12H",
@@ -384,40 +384,40 @@
                     "end": "2030-01-01T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-02T08:00:00",
                     "end": "2030-01-02T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-03T08:00:00",
                     "end": "2030-01-03T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-04T08:00:00",
                     "end": "2030-01-04T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-05T08:00:00",
                     "end": "2030-01-05T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 }
             ],
             "maxTime": "PT12H",
@@ -444,40 +444,40 @@
                     "end": "2030-01-01T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-02T08:00:00",
                     "end": "2030-01-02T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-03T08:00:00",
                     "end": "2030-01-03T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-04T08:00:00",
                     "end": "2030-01-04T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-05T08:00:00",
                     "end": "2030-01-05T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 }
             ],
             "maxTime": "PT12H",
@@ -504,40 +504,40 @@
                     "end": "2030-01-01T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-02T08:00:00",
                     "end": "2030-01-02T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-03T08:00:00",
                     "end": "2030-01-03T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-04T08:00:00",
                     "end": "2030-01-04T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 },
                 {
                     "begin": "2030-01-05T08:00:00",
                     "end": "2030-01-05T20:00:00",
                     "zoneId": "Europe/Berlin",
                     "localPostFlexTimeOnlyOnOvertime": false,
-                    "isAvailableForStay": true,
-                    "isClosedRoute": true
+                    "isClosedRoute": true,
+                    "isAvailableForStay": true
                 }
             ],
             "maxTime": "PT12H",
@@ -559,7 +559,7 @@
     },
     "extension": {
         "keySetting": {
-            "jsonLicense": "{\"version\": \"1.1\", \"identifier\": \"PUBLIC-\", \"description\": \"Key provided to for evaluation purpose from DNA evolutions GmbH.\", \"contact\": \"www.dna-evolutions.com\", \"modules\": [{\"Module:\": \"Elements\", \"max\": 15}, {\"Module:\": \"Date\", \"creation\": \"2021-05-25\", \"due\": \"2027-05-25\"}], \"key\": \"PUBLIC-bc799ef350fe9841c1354736d8f863cb85bac88cefd19960c1\"}"
+            "jsonLicense": "{\"version\": \"1.2\", \"identifier\": \"PUBLIC-\", \"description\": \"Key provided to for evaluation purpose from DNA evolutions GmbH.\", \"contact\": \"www.dna-evolutions.com\", \"modules\": [{\"Module:\": \"Elements\", \"max\": 20}, {\"Module:\": \"Date\", \"creation\": \"2025-02-04\", \"due\": \"2029-01-28\"}], \"key\": \"PUBLIC-e6dc49fcbda599f45638d39794fd4f99b062c2ae96864e37ef\"}"
         },
         "timeOut": "PT2H"
     }

@@ -28,16 +28,17 @@ from typing import List
 
 
 class TestRestOptimizationCreator:
+    
     PUBLIC_JSON_LICENSE = json.dumps({
-        "version": "1.1",
+        "version": "1.2",
         "identifier": "PUBLIC-",
         "description": "Key provided to for evaluation purpose from DNA evolutions GmbH.",
         "contact": "www.dna-evolutions.com",
         "modules": [
-            {"Module:": "Elements", "max": 15},
-            {"Module:": "Date", "creation": "2021-05-25", "due": "2027-05-25"}
+            {"Module:": "Elements", "max": 20},
+            {"Module:": "Date", "creation": "2025-02-04", "due": "2029-01-28"}
         ],
-        "key": "PUBLIC-bc799ef350fe9841c1354736d8f863cb85bac88cefd19960c1"
+        "key": "PUBLIC-e6dc49fcbda599f45638d39794fd4f99b062c2ae96864e37ef"
     })
     
     @staticmethod

@@ -1,5 +1,5 @@
 # Use the code-server base image
-FROM codercom/code-server:4.91.0-debian
+FROM codercom/code-server:4.96.4-debian
 
 # Set the DEBIAN_FRONTEND environment variable to avoid interactive prompts during package installation
 ARG DEBIAN_FRONTEND=noninteractive
