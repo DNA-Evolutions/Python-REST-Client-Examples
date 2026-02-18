@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of NodeRelationType from a JSON string
 node_relation_type_instance = NodeRelationType.from_json(json)
 # print the JSON string representation of the object
-print NodeRelationType.to_json()
+print(NodeRelationType.to_json())
 
 # convert the object into a dict
 node_relation_type_dict = node_relation_type_instance.to_dict()
 # create an instance of NodeRelationType from a dict
-node_relation_type_form_dict = node_relation_type.from_dict(node_relation_type_dict)
+node_relation_type_from_dict = NodeRelationType.from_dict(node_relation_type_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

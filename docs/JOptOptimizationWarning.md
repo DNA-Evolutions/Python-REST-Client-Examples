@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of JOptOptimizationWarning from a JSON string
 j_opt_optimization_warning_instance = JOptOptimizationWarning.from_json(json)
 # print the JSON string representation of the object
-print JOptOptimizationWarning.to_json()
+print(JOptOptimizationWarning.to_json())
 
 # convert the object into a dict
 j_opt_optimization_warning_dict = j_opt_optimization_warning_instance.to_dict()
 # create an instance of JOptOptimizationWarning from a dict
-j_opt_optimization_warning_form_dict = j_opt_optimization_warning.from_dict(j_opt_optimization_warning_dict)
+j_opt_optimization_warning_from_dict = JOptOptimizationWarning.from_dict(j_opt_optimization_warning_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

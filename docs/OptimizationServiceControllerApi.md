@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**progress**](OptimizationServiceControllerApi.md#progress) | **GET** /api/optimize/stream/progress | Stream of progress. During the optimization run you can obtain the optimization progress in percentage and other useful information about the optimization progress by subscribing to this stream
 [**run**](OptimizationServiceControllerApi.md#run) | **POST** /api/optimize/run | Provide an optimization and let JOpt solve it.
 [**run_only_result**](OptimizationServiceControllerApi.md#run_only_result) | **POST** /api/optimize/runOnlyResult | Provide an optimization and let JOpt solve it. You only get back the result
-[**run_started_sginal**](OptimizationServiceControllerApi.md#run_started_sginal) | **GET** /api/optimize/startedSginal | Emmits once an optimization started
+[**run_started_signal**](OptimizationServiceControllerApi.md#run_started_signal) | **GET** /api/optimize/startedSignal | Emits once an optimization started
 [**status**](OptimizationServiceControllerApi.md#status) | **GET** /api/optimize/stream/status | Stream of status messages. During the optimization run you can obtain the optimization status by subscribing to this stream
 [**stop_optimization_run**](OptimizationServiceControllerApi.md#stop_optimization_run) | **POST** /api/optimize/stop | This entrypoint stops the optimization gracefully.
 [**warning**](OptimizationServiceControllerApi.md#warning) | **GET** /api/optimize/stream/warning | Stream of warning messages. During the optimization run you can obtain optimization warnings by subscribing to this stream
@@ -207,9 +207,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Once the optimizer has finished the optimization run, it will return an OptimizationConfig JSON that contains the initial definition and the solution. |  -  |
-**504** | Timeout / Optimization took too long |  -  |
-**500** | Internal Server Error / A problem occured during Optimization |  -  |
 **401** | Unauthorized Access / License not valid / Limited Endpoint |  -  |
+**500** | Internal Server Error / A problem occured during Optimization |  -  |
+**504** | Timeout / Optimization took too long |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -279,18 +279,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Once the optimizer has finished the optimization run, it will return a solution/result JSON. |  -  |
-**504** | Timeout / Optimization took too long |  -  |
-**500** | Internal Server Error / A problem occured during Optimization |  -  |
 **401** | Unauthorized Access / License not valid / Limited Endpoint |  -  |
+**500** | Internal Server Error / A problem occured during Optimization |  -  |
+**504** | Timeout / Optimization took too long |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **run_started_sginal**
-> bool run_started_sginal()
+# **run_started_signal**
+> bool run_started_signal()
 
-Emmits once an optimization started
+Emits once an optimization started
 
-Emmits once an optimization started
+Emits once an optimization started
 
 ### Example
 
@@ -313,12 +313,12 @@ with touroptimizer_py_client.ApiClient(configuration) as api_client:
     api_instance = touroptimizer_py_client.OptimizationServiceControllerApi(api_client)
 
     try:
-        # Emmits once an optimization started
-        api_response = api_instance.run_started_sginal()
-        print("The response of OptimizationServiceControllerApi->run_started_sginal:\n")
+        # Emits once an optimization started
+        api_response = api_instance.run_started_signal()
+        print("The response of OptimizationServiceControllerApi->run_started_signal:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling OptimizationServiceControllerApi->run_started_sginal: %s\n" % e)
+        print("Exception when calling OptimizationServiceControllerApi->run_started_signal: %s\n" % e)
 ```
 
 

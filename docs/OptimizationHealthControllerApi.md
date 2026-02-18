@@ -67,8 +67,8 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**503** | The server is in UNKNOWN, OUT_OF_SERVICE, or DOWN state. |  -  |
 **200** | The endpoint is up and running. |  -  |
+**503** | The server is in UNKNOWN, OUT_OF_SERVICE, or DOWN state. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

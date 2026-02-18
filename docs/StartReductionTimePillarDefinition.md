@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of StartReductionTimePillarDefinition from a JSON string
 start_reduction_time_pillar_definition_instance = StartReductionTimePillarDefinition.from_json(json)
 # print the JSON string representation of the object
-print StartReductionTimePillarDefinition.to_json()
+print(StartReductionTimePillarDefinition.to_json())
 
 # convert the object into a dict
 start_reduction_time_pillar_definition_dict = start_reduction_time_pillar_definition_instance.to_dict()
 # create an instance of StartReductionTimePillarDefinition from a dict
-start_reduction_time_pillar_definition_form_dict = start_reduction_time_pillar_definition.from_dict(start_reduction_time_pillar_definition_dict)
+start_reduction_time_pillar_definition_from_dict = StartReductionTimePillarDefinition.from_dict(start_reduction_time_pillar_definition_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

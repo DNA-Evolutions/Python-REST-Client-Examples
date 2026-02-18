@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of EdgeElementConnection from a JSON string
 edge_element_connection_instance = EdgeElementConnection.from_json(json)
 # print the JSON string representation of the object
-print EdgeElementConnection.to_json()
+print(EdgeElementConnection.to_json())
 
 # convert the object into a dict
 edge_element_connection_dict = edge_element_connection_instance.to_dict()
 # create an instance of EdgeElementConnection from a dict
-edge_element_connection_form_dict = edge_element_connection.from_dict(edge_element_connection_dict)
+edge_element_connection_from_dict = EdgeElementConnection.from_dict(edge_element_connection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

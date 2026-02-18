@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of OpeningHours from a JSON string
 opening_hours_instance = OpeningHours.from_json(json)
 # print the JSON string representation of the object
-print OpeningHours.to_json()
+print(OpeningHours.to_json())
 
 # convert the object into a dict
 opening_hours_dict = opening_hours_instance.to_dict()
 # create an instance of OpeningHours from a dict
-opening_hours_form_dict = opening_hours.from_dict(opening_hours_dict)
+opening_hours_from_dict = OpeningHours.from_dict(opening_hours_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of NodeType from a JSON string
 node_type_instance = NodeType.from_json(json)
 # print the JSON string representation of the object
-print NodeType.to_json()
+print(NodeType.to_json())
 
 # convert the object into a dict
 node_type_dict = node_type_instance.to_dict()
 # create an instance of NodeType from a dict
-node_type_form_dict = node_type.from_dict(node_type_dict)
+node_type_from_dict = NodeType.from_dict(node_type_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of JOptOptimizationStatus from a JSON string
 j_opt_optimization_status_instance = JOptOptimizationStatus.from_json(json)
 # print the JSON string representation of the object
-print JOptOptimizationStatus.to_json()
+print(JOptOptimizationStatus.to_json())
 
 # convert the object into a dict
 j_opt_optimization_status_dict = j_opt_optimization_status_instance.to_dict()
 # create an instance of JOptOptimizationStatus from a dict
-j_opt_optimization_status_form_dict = j_opt_optimization_status.from_dict(j_opt_optimization_status_dict)
+j_opt_optimization_status_from_dict = JOptOptimizationStatus.from_dict(j_opt_optimization_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

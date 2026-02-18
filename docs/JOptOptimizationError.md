@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of JOptOptimizationError from a JSON string
 j_opt_optimization_error_instance = JOptOptimizationError.from_json(json)
 # print the JSON string representation of the object
-print JOptOptimizationError.to_json()
+print(JOptOptimizationError.to_json())
 
 # convert the object into a dict
 j_opt_optimization_error_dict = j_opt_optimization_error_instance.to_dict()
 # create an instance of JOptOptimizationError from a dict
-j_opt_optimization_error_form_dict = j_opt_optimization_error.from_dict(j_opt_optimization_error_dict)
+j_opt_optimization_error_from_dict = JOptOptimizationError.from_dict(j_opt_optimization_error_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

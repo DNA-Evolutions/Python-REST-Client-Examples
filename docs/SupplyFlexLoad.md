@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SupplyFlexLoad from a JSON string
 supply_flex_load_instance = SupplyFlexLoad.from_json(json)
 # print the JSON string representation of the object
-print SupplyFlexLoad.to_json()
+print(SupplyFlexLoad.to_json())
 
 # convert the object into a dict
 supply_flex_load_dict = supply_flex_load_instance.to_dict()
 # create an instance of SupplyFlexLoad from a dict
-supply_flex_load_form_dict = supply_flex_load.from_dict(supply_flex_load_dict)
+supply_flex_load_from_dict = SupplyFlexLoad.from_dict(supply_flex_load_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

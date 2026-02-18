@@ -33,12 +33,12 @@ json = "{}"
 # create an instance of GeoAddress from a JSON string
 geo_address_instance = GeoAddress.from_json(json)
 # print the JSON string representation of the object
-print GeoAddress.to_json()
+print(GeoAddress.to_json())
 
 # convert the object into a dict
 geo_address_dict = geo_address_instance.to_dict()
 # create an instance of GeoAddress from a dict
-geo_address_form_dict = geo_address.from_dict(geo_address_dict)
+geo_address_from_dict = GeoAddress.from_dict(geo_address_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

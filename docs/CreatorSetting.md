@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of CreatorSetting from a JSON string
 creator_setting_instance = CreatorSetting.from_json(json)
 # print the JSON string representation of the object
-print CreatorSetting.to_json()
+print(CreatorSetting.to_json())
 
 # convert the object into a dict
 creator_setting_dict = creator_setting_instance.to_dict()
 # create an instance of CreatorSetting from a dict
-creator_setting_form_dict = creator_setting.from_dict(creator_setting_dict)
+creator_setting_from_dict = CreatorSetting.from_dict(creator_setting_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

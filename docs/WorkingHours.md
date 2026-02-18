@@ -22,10 +22,12 @@ Name | Type | Description | Notes
 **node_color_capacities** | [**List[NodeColorCapacity]**](NodeColorCapacity.md) | The nodeColorCapacities | [optional] 
 **working_hours_constraints** | [**List[Constraint]**](Constraint.md) | The constraints for this working hour. | [optional] 
 **multi_working_hours_constraints** | [**List[Constraint]**](Constraint.md) | The multiWorkingHoursConstraints | [optional] 
+**construction_hooks** | [**List[ConstructionHook]**](ConstructionHook.md) | The hooks for this working hour. | [optional] 
 **qualifications** | [**List[Qualification]**](Qualification.md) | The qualification of the Resource for this working hour. For example, the Resource is allowed to visit a node needing a skill (defined via a constraint) and the Resource is providing this skill. | [optional] 
 **route_start_time_hook** | **str** | The routeStartTimeHook | [optional] 
 **hook_element_connections** | [**List[ReducedNodeEdgeConnectorItem]**](ReducedNodeEdgeConnectorItem.md) | The list of hook connections | [optional] 
-**is_available_for_stay** | **bool** | The boolean isAvailableForStay defines if this working hour is allowed to end at an overnight stay. | [optional] [default to True]
+**is_local_service_hub** | **bool** | A resource is hub mode gets visited by nodes on this particular working horus. | [optional] [default to False]
+**is_available_for_stay** | **bool** | The boolean isAvailableForStay defines if this working hour is allowed to end at an overnight stay. | [optional] [default to False]
 **is_closed_route** | **bool** | The isClosedRoute boolean describes if a Resource has to visit the termination element of the Route. By default, the start element and the termination element of a Route is the Resource itself. In case of a closed route, by default, the Resource returns to its original starting location. | [optional] [default to True]
 
 ## Example
@@ -38,12 +40,12 @@ json = "{}"
 # create an instance of WorkingHours from a JSON string
 working_hours_instance = WorkingHours.from_json(json)
 # print the JSON string representation of the object
-print WorkingHours.to_json()
+print(WorkingHours.to_json())
 
 # convert the object into a dict
 working_hours_dict = working_hours_instance.to_dict()
 # create an instance of WorkingHours from a dict
-working_hours_form_dict = working_hours.from_dict(working_hours_dict)
+working_hours_from_dict = WorkingHours.from_dict(working_hours_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

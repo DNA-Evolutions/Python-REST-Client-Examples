@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of StayOutDefinition from a JSON string
 stay_out_definition_instance = StayOutDefinition.from_json(json)
 # print the JSON string representation of the object
-print StayOutDefinition.to_json()
+print(StayOutDefinition.to_json())
 
 # convert the object into a dict
 stay_out_definition_dict = stay_out_definition_instance.to_dict()
 # create an instance of StayOutDefinition from a dict
-stay_out_definition_form_dict = stay_out_definition.from_dict(stay_out_definition_dict)
+stay_out_definition_from_dict = StayOutDefinition.from_dict(stay_out_definition_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

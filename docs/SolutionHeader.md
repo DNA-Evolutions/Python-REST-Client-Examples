@@ -30,12 +30,12 @@ json = "{}"
 # create an instance of SolutionHeader from a JSON string
 solution_header_instance = SolutionHeader.from_json(json)
 # print the JSON string representation of the object
-print SolutionHeader.to_json()
+print(SolutionHeader.to_json())
 
 # convert the object into a dict
 solution_header_dict = solution_header_instance.to_dict()
 # create an instance of SolutionHeader from a dict
-solution_header_form_dict = solution_header.from_dict(solution_header_dict)
+solution_header_from_dict = SolutionHeader.from_dict(solution_header_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

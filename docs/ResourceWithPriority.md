@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ResourceWithPriority from a JSON string
 resource_with_priority_instance = ResourceWithPriority.from_json(json)
 # print the JSON string representation of the object
-print ResourceWithPriority.to_json()
+print(ResourceWithPriority.to_json())
 
 # convert the object into a dict
 resource_with_priority_dict = resource_with_priority_instance.to_dict()
 # create an instance of ResourceWithPriority from a dict
-resource_with_priority_form_dict = resource_with_priority.from_dict(resource_with_priority_dict)
+resource_with_priority_from_dict = ResourceWithPriority.from_dict(resource_with_priority_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

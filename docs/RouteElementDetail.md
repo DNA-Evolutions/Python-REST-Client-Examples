@@ -1,6 +1,6 @@
 # RouteElementDetail
 
-The elementDetails. The list of details describing the route schedule.
+The RouteElementDetail describes the solution for a certain node element.
 
 ## Properties
 
@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **duration_time** | **str** | The durationTime defines how long a node is serverd by a Visitor. | 
 **transition_distance** | **str** | The transitionDistance gives the distance taken for the connection from the previous element to this element. | 
 **choosen_working_hours_index** | **int** | Each visitor can have a list of workingHours. The choosenWorkingHoursIndex is the index of the Visitors workingHour in which the element is visited. | [optional] 
+**chosen_opening_hours_index** | **int** | Each node can have a list of openingHours. The chosenOpeningHoursIndex is the index of the node openingHour in which the node is visited. | [optional] 
 **early_deviation** | **str** | The earlyDeviation. The early deviation describes how long before the element opens the Visitor arrives. If the value is negative, the Vistor arrives after the element already opens. | [optional] 
 **late_deviation** | **str** | The lateDeviation. The late deviation describes how much lateness the Vistor has. For example, the element to be visited is open from 8-11 and the desired visit duration is 2 hours. The Visitor has to arrive latest by 9 to finish the Job until 11. If the Visitor arrives at 10 the late deviation will be one hour, as the Visitor needs till 12 to finish the Job. The late deviation can be also negative indicating not beeing late. For example if the Visitor reaches the element by 8 and finishes the Job by 10 and the element closes at 11 the late deviation will be -1 hour. | [optional] 
 **schedule_status** | **str** | The scheduleStatus. | [optional] 
@@ -39,12 +40,12 @@ json = "{}"
 # create an instance of RouteElementDetail from a JSON string
 route_element_detail_instance = RouteElementDetail.from_json(json)
 # print the JSON string representation of the object
-print RouteElementDetail.to_json()
+print(RouteElementDetail.to_json())
 
 # convert the object into a dict
 route_element_detail_dict = route_element_detail_instance.to_dict()
 # create an instance of RouteElementDetail from a dict
-route_element_detail_form_dict = route_element_detail.from_dict(route_element_detail_dict)
+route_element_detail_from_dict = RouteElementDetail.from_dict(route_element_detail_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

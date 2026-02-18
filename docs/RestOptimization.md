@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **resources** | [**List[Resource]**](Resource.md) | The list of resoruces | 
 **node_relations** | [**List[NodeRelation]**](NodeRelation.md) | The list of relations | [optional] 
 **element_connections** | [**List[ElementConnection]**](ElementConnection.md) | The list of connections | [optional] 
+**zone_connections** | [**List[ZoneConnection]**](ZoneConnection.md) | The list of zone connections | [optional] 
+**type_dictionaries** | [**TypeDictionaries**](TypeDictionaries.md) |  | [optional] 
 **optimization_options** | [**OptimizationOptions**](OptimizationOptions.md) |  | [optional] 
 **core_build_options** | [**CoreBuildOptions**](CoreBuildOptions.md) |  | [optional] 
 **solution** | [**Solution**](Solution.md) |  | [optional] 
@@ -29,12 +31,12 @@ json = "{}"
 # create an instance of RestOptimization from a JSON string
 rest_optimization_instance = RestOptimization.from_json(json)
 # print the JSON string representation of the object
-print RestOptimization.to_json()
+print(RestOptimization.to_json())
 
 # convert the object into a dict
 rest_optimization_dict = rest_optimization_instance.to_dict()
 # create an instance of RestOptimization from a dict
-rest_optimization_form_dict = rest_optimization.from_dict(rest_optimization_dict)
+rest_optimization_from_dict = RestOptimization.from_dict(rest_optimization_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

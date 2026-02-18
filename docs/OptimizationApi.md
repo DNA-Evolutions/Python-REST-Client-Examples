@@ -74,9 +74,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Once the optimizer has finished the optimization run, it will return an OptimizationConfig JSON that contains the initial definition and the solution. |  -  |
-**504** | Timeout / Optimization took too long |  -  |
-**500** | Internal Server Error / A problem occured during Optimization |  -  |
 **401** | Unauthorized Access / License not valid / Limited Endpoint |  -  |
+**500** | Internal Server Error / A problem occured during Optimization |  -  |
+**504** | Timeout / Optimization took too long |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -146,9 +146,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Once the optimizer has finished the optimization run, it will return a solution/result JSON. |  -  |
-**504** | Timeout / Optimization took too long |  -  |
-**500** | Internal Server Error / A problem occured during Optimization |  -  |
 **401** | Unauthorized Access / License not valid / Limited Endpoint |  -  |
+**500** | Internal Server Error / A problem occured during Optimization |  -  |
+**504** | Timeout / Optimization took too long |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

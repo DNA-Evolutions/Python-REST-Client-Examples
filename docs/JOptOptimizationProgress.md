@@ -26,12 +26,12 @@ json = "{}"
 # create an instance of JOptOptimizationProgress from a JSON string
 j_opt_optimization_progress_instance = JOptOptimizationProgress.from_json(json)
 # print the JSON string representation of the object
-print JOptOptimizationProgress.to_json()
+print(JOptOptimizationProgress.to_json())
 
 # convert the object into a dict
 j_opt_optimization_progress_dict = j_opt_optimization_progress_instance.to_dict()
 # create an instance of JOptOptimizationProgress from a dict
-j_opt_optimization_progress_form_dict = j_opt_optimization_progress.from_dict(j_opt_optimization_progress_dict)
+j_opt_optimization_progress_from_dict = JOptOptimizationProgress.from_dict(j_opt_optimization_progress_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

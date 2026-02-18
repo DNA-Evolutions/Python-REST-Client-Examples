@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of LoadDimension from a JSON string
 load_dimension_instance = LoadDimension.from_json(json)
 # print the JSON string representation of the object
-print LoadDimension.to_json()
+print(LoadDimension.to_json())
 
 # convert the object into a dict
 load_dimension_dict = load_dimension_instance.to_dict()
 # create an instance of LoadDimension from a dict
-load_dimension_form_dict = load_dimension.from_dict(load_dimension_dict)
+load_dimension_from_dict = LoadDimension.from_dict(load_dimension_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

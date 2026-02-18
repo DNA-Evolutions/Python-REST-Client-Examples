@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of TextSolution from a JSON string
 text_solution_instance = TextSolution.from_json(json)
 # print the JSON string representation of the object
-print TextSolution.to_json()
+print(TextSolution.to_json())
 
 # convert the object into a dict
 text_solution_dict = text_solution_instance.to_dict()
 # create an instance of TextSolution from a dict
-text_solution_form_dict = text_solution.from_dict(text_solution_dict)
+text_solution_from_dict = TextSolution.from_dict(text_solution_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ElementConnection from a JSON string
 element_connection_instance = ElementConnection.from_json(json)
 # print the JSON string representation of the object
-print ElementConnection.to_json()
+print(ElementConnection.to_json())
 
 # convert the object into a dict
 element_connection_dict = element_connection_instance.to_dict()
 # create an instance of ElementConnection from a dict
-element_connection_form_dict = element_connection.from_dict(element_connection_dict)
+element_connection_from_dict = ElementConnection.from_dict(element_connection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

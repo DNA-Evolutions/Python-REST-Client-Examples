@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of JSONConfig from a JSON string
 json_config_instance = JSONConfig.from_json(json)
 # print the JSON string representation of the object
-print JSONConfig.to_json()
+print(JSONConfig.to_json())
 
 # convert the object into a dict
 json_config_dict = json_config_instance.to_dict()
 # create an instance of JSONConfig from a dict
-json_config_form_dict = json_config.from_dict(json_config_dict)
+json_config_from_dict = JSONConfig.from_dict(json_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

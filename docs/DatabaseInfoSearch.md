@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of DatabaseInfoSearch from a JSON string
 database_info_search_instance = DatabaseInfoSearch.from_json(json)
 # print the JSON string representation of the object
-print DatabaseInfoSearch.to_json()
+print(DatabaseInfoSearch.to_json())
 
 # convert the object into a dict
 database_info_search_dict = database_info_search_instance.to_dict()
 # create an instance of DatabaseInfoSearch from a dict
-database_info_search_form_dict = database_info_search.from_dict(database_info_search_dict)
+database_info_search_from_dict = DatabaseInfoSearch.from_dict(database_info_search_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

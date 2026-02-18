@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of DatabaseItemSearch from a JSON string
 database_item_search_instance = DatabaseItemSearch.from_json(json)
 # print the JSON string representation of the object
-print DatabaseItemSearch.to_json()
+print(DatabaseItemSearch.to_json())
 
 # convert the object into a dict
 database_item_search_dict = database_item_search_instance.to_dict()
 # create an instance of DatabaseItemSearch from a dict
-database_item_search_form_dict = database_item_search.from_dict(database_item_search_dict)
+database_item_search_from_dict = DatabaseItemSearch.from_dict(database_item_search_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -7,8 +7,8 @@ The Load type that can contain different loads
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **priority** | **int** |  | [optional] 
-**load_value** | **float** |  | [optional] 
 **fuzzy_visit** | **bool** |  | [optional] 
+**load_value** | **float** |  | [optional] 
 **request** | **bool** |  | [optional] 
 **id** | **str** |  | [optional] 
 **type_name** | **str** |  | 
@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of ILoad from a JSON string
 i_load_instance = ILoad.from_json(json)
 # print the JSON string representation of the object
-print ILoad.to_json()
+print(ILoad.to_json())
 
 # convert the object into a dict
 i_load_dict = i_load_instance.to_dict()
 # create an instance of ILoad from a dict
-i_load_form_dict = i_load.from_dict(i_load_dict)
+i_load_from_dict = ILoad.from_dict(i_load_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

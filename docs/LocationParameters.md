@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of LocationParameters from a JSON string
 location_parameters_instance = LocationParameters.from_json(json)
 # print the JSON string representation of the object
-print LocationParameters.to_json()
+print(LocationParameters.to_json())
 
 # convert the object into a dict
 location_parameters_dict = location_parameters_instance.to_dict()
 # create an instance of LocationParameters from a dict
-location_parameters_form_dict = location_parameters.from_dict(location_parameters_dict)
+location_parameters_from_dict = LocationParameters.from_dict(location_parameters_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

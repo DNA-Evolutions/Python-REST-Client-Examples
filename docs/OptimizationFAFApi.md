@@ -81,8 +81,6 @@ No authorization required
 # **run_only_result_faf**
 > bool run_only_result_faf(rest_optimization)
 
-
-
 The entry point to access the JOpt.TourOptimization optimization service in fire and forget mode. Once you have set up an input, you can let JOpt find an optimal solution for your setup.
 
 ### Example
@@ -142,8 +140,8 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Once the optimizer has started, it will return a started signal. |  -  |
-**500** | Internal Server Error / A problem occured during Optimization |  -  |
 **401** | Unauthorized Access / License not valid / Limited Endpoint |  -  |
+**500** | Internal Server Error / A problem occured during Optimization |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

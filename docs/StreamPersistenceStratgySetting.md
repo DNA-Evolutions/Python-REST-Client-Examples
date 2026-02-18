@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of StreamPersistenceStratgySetting from a JSON string
 stream_persistence_stratgy_setting_instance = StreamPersistenceStratgySetting.from_json(json)
 # print the JSON string representation of the object
-print StreamPersistenceStratgySetting.to_json()
+print(StreamPersistenceStratgySetting.to_json())
 
 # convert the object into a dict
 stream_persistence_stratgy_setting_dict = stream_persistence_stratgy_setting_instance.to_dict()
 # create an instance of StreamPersistenceStratgySetting from a dict
-stream_persistence_stratgy_setting_form_dict = stream_persistence_stratgy_setting.from_dict(stream_persistence_stratgy_setting_dict)
+stream_persistence_stratgy_setting_from_dict = StreamPersistenceStratgySetting.from_dict(stream_persistence_stratgy_setting_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

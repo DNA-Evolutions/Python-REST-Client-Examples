@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of CapacityResource from a JSON string
 capacity_resource_instance = CapacityResource.from_json(json)
 # print the JSON string representation of the object
-print CapacityResource.to_json()
+print(CapacityResource.to_json())
 
 # convert the object into a dict
 capacity_resource_dict = capacity_resource_instance.to_dict()
 # create an instance of CapacityResource from a dict
-capacity_resource_form_dict = capacity_resource.from_dict(capacity_resource_dict)
+capacity_resource_from_dict = CapacityResource.from_dict(capacity_resource_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

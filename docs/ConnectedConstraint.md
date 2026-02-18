@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ConnectedConstraint from a JSON string
 connected_constraint_instance = ConnectedConstraint.from_json(json)
 # print the JSON string representation of the object
-print ConnectedConstraint.to_json()
+print(ConnectedConstraint.to_json())
 
 # convert the object into a dict
 connected_constraint_dict = connected_constraint_instance.to_dict()
 # create an instance of ConnectedConstraint from a dict
-connected_constraint_form_dict = connected_constraint.from_dict(connected_constraint_dict)
+connected_constraint_from_dict = ConnectedConstraint.from_dict(connected_constraint_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -73,14 +73,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json, text/event-stream
+ - **Accept**: text/event-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**500** | Internal Server Error / A problem occured during requesting error |  -  |
 **200** | Get error triggered by the creator in fire and forget mode. |  -  |
+**500** | Internal Server Error / A problem occured during requesting error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -423,14 +423,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json, text/event-stream
+ - **Accept**: text/event-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**500** | Internal Server Error / A problem occured during requesting warning |  -  |
 **200** | Get warning triggered by the creator in fire and forget mode. |  -  |
+**500** | Internal Server Error / A problem occured during requesting warning |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -493,14 +493,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json, text/event-stream
+ - **Accept**: text/event-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**500** | Internal Server Error / A problem occured during requesting optimization infos |  -  |
 **200** | Get optimization-infos triggered by the creator in fire and forget mode. |  -  |
+**500** | Internal Server Error / A problem occured during requesting optimization infos |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

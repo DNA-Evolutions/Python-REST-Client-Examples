@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of MixedFlexLoad from a JSON string
 mixed_flex_load_instance = MixedFlexLoad.from_json(json)
 # print the JSON string representation of the object
-print MixedFlexLoad.to_json()
+print(MixedFlexLoad.to_json())
 
 # convert the object into a dict
 mixed_flex_load_dict = mixed_flex_load_instance.to_dict()
 # create an instance of MixedFlexLoad from a dict
-mixed_flex_load_form_dict = mixed_flex_load.from_dict(mixed_flex_load_dict)
+mixed_flex_load_from_dict = MixedFlexLoad.from_dict(mixed_flex_load_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

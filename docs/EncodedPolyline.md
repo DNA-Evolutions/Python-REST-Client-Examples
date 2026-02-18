@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of EncodedPolyline from a JSON string
 encoded_polyline_instance = EncodedPolyline.from_json(json)
 # print the JSON string representation of the object
-print EncodedPolyline.to_json()
+print(EncodedPolyline.to_json())
 
 # convert the object into a dict
 encoded_polyline_dict = encoded_polyline_instance.to_dict()
 # create an instance of EncodedPolyline from a dict
-encoded_polyline_form_dict = encoded_polyline.from_dict(encoded_polyline_dict)
+encoded_polyline_from_dict = EncodedPolyline.from_dict(encoded_polyline_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

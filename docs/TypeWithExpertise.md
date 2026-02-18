@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of TypeWithExpertise from a JSON string
 type_with_expertise_instance = TypeWithExpertise.from_json(json)
 # print the JSON string representation of the object
-print TypeWithExpertise.to_json()
+print(TypeWithExpertise.to_json())
 
 # convert the object into a dict
 type_with_expertise_dict = type_with_expertise_instance.to_dict()
 # create an instance of TypeWithExpertise from a dict
-type_with_expertise_form_dict = type_with_expertise.from_dict(type_with_expertise_dict)
+type_with_expertise_from_dict = TypeWithExpertise.from_dict(type_with_expertise_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

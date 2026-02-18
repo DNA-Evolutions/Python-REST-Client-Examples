@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of TypeConstraint from a JSON string
 type_constraint_instance = TypeConstraint.from_json(json)
 # print the JSON string representation of the object
-print TypeConstraint.to_json()
+print(TypeConstraint.to_json())
 
 # convert the object into a dict
 type_constraint_dict = type_constraint_instance.to_dict()
 # create an instance of TypeConstraint from a dict
-type_constraint_form_dict = type_constraint.from_dict(type_constraint_dict)
+type_constraint_from_dict = TypeConstraint.from_dict(type_constraint_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

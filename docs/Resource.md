@@ -52,8 +52,9 @@ Name | Type | Description | Notes
 **co2emission_factor** | **float** | The co2emissionFactor. | [optional] 
 **resource_depot** | [**IResourceDepot**](IResourceDepot.md) |  | [optional] 
 **overall_visit_duration_efficiency** | **float** | The overallVisitDurationEfficiency. The base duration a Resource spends at a node is devided by this factor. For example, if a node has 30 minutes of visit duration assigned, a Resource with a overallVisitDurationEfficiency of 1.5 only needs 20 minutes. By default this factor is one. | [optional] [default to 1.0]
-**is_reduction_time_included_in_total_working_time** | **bool** | The isReductionTimeIncludedInTotalWorkingTime. Use StartReductionTimeIncludeDefinition instead | [optional] [default to False]
 **is_reduction_time_only_used_for_driving** | **bool** | The isReductionTimeOnlyUsedForDriving. Use startReductionTimeDefinition instead. | [optional] [default to False]
+**is_reduction_time_included_in_total_working_time** | **bool** | The isReductionTimeIncludedInTotalWorkingTime. Use StartReductionTimeIncludeDefinition instead | [optional] [default to False]
+**is_service_hub** | **bool** | A resource is hub mode gets visited by nodes. | [optional] [default to False]
 
 ## Example
 
@@ -65,12 +66,12 @@ json = "{}"
 # create an instance of Resource from a JSON string
 resource_instance = Resource.from_json(json)
 # print the JSON string representation of the object
-print Resource.to_json()
+print(Resource.to_json())
 
 # convert the object into a dict
 resource_dict = resource_instance.to_dict()
 # create an instance of Resource from a dict
-resource_form_dict = resource.from_dict(resource_dict)
+resource_from_dict = Resource.from_dict(resource_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
