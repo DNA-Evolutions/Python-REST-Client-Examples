@@ -173,7 +173,7 @@ The sandbox runs inside a Docker container. Use `http://host.docker.internal:808
 
 JOpt is a flexible routing optimization engine written in Java, designed for highly constrained tour-optimization problems -- time windows, skills, capacities, mandatory constraints, and more.
 
-<a href="https://www.youtube.com/watch?v=U4mDQGnZGZs" target="_blank"><img src="https://dna-evolutions.com/wp-content/uploads/2021/02/joptIntrox169_small.png" width="500"
+<a href="https://www.youtube.com/watch?v=U4mDQGnZGZs" target="_blank"><img src="https://www.dna-evolutions.com/images/docs/home/jopt_intro_prev.gif" width="500"
 title="Introduction Video for DNA's JOpt" alt="Introduction Video for DNA's JOpt"></a>
 
 ---
