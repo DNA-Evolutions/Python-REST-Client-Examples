@@ -1,5 +1,6 @@
 # MultiTimeWindowNodeRelation
 
+An advanced relation type that supports multiple time-window constraints between a master node and related nodes. Optionally requires the same visitor for all elements and can allow temporal overlaps between visits. Supports anchor details for biasing the relation scheduling.
 
 ## Properties
 

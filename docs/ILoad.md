@@ -1,15 +1,15 @@
 # ILoad
 
-The Load type that can contain different loads
+A load attached to a node depot that represents goods to be picked up (supply) or delivered (request). Subtypes include simple loads, unload-all loads, timed loads (with maximum transport duration), and flexible loads (mixed, supply-only, or request-only flex loads that adjust dynamically during optimization).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **priority** | **int** |  | [optional] 
-**fuzzy_visit** | **bool** |  | [optional] 
 **load_value** | **float** |  | [optional] 
 **request** | **bool** |  | [optional] 
+**fuzzy_visit** | **bool** |  | [optional] 
 **id** | **str** |  | [optional] 
 **type_name** | **str** |  | 
 

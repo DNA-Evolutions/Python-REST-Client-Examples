@@ -1,13 +1,13 @@
 # StayOutCycleDefinition
 
-The stayOutCycleDefinition
+Defines the repeating cycle within which stay-out limits are evaluated. For example, a 7-day cycle starting on a specific date allows the optimizer to count stay-outs per week and enforce weekly limits.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cycle_lenght** | **str** | The cycleLenght | 
-**cycle_start** | **date** | The cycleStart | 
+**cycle_length** | **str** | The length of one stay-out evaluation cycle, expressed as an ISO 8601 duration (e.g. &#39;PT7D&#39; for one week). | 
+**cycle_start** | **date** | The start date of the first stay-out evaluation cycle. Subsequent cycles begin at cycleStart + N * cycleLength. | 
 
 ## Example
 

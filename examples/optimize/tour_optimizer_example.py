@@ -1,3 +1,21 @@
+"""
+Basic synchronous optimization example.
+
+Demonstrates the core workflow of the JOpt TourOptimizer REST API:
+1. Create node and resource positions (Sydney area defaults).
+2. Build a RestOptimization input with a public evaluation license.
+3. Submit the optimization via start_run, which returns a run_id.
+4. Fetch the result via get_run_result (blocks until the run completes).
+5. Print the text solution and optionally export to JSON.
+
+Prerequisites:
+- A running TourOptimizer instance on http://localhost:8081
+  (or change is_azure_call to True and provide an Azure API key).
+
+Usage:
+    python examples/optimize/tour_optimizer_example.py
+"""
+
 import json
 from util.test_element_creator import  TestElementsCreator
 from util.test_rest_optimization_creator import  TestRestOptimizationCreator
@@ -7,9 +25,7 @@ from util.tour_optimizer_rest_caller import TourOptimizerRestCaller
 from pprint import pprint
 
 def main():
-    """
-    Example of using the TourOptimizer REST API in Python.
-    """
+    """Run a synchronous optimization against a local or Azure TourOptimizer instance."""
 
     # Modify these variables as needed
     is_azure_call = False  # Set to True if using Azure, make sure a local docker container is running otherwise
@@ -55,7 +71,8 @@ def main():
     result = tour_optimizer_caller.optimize(opti)
     
     # Print result
-    pprint(result.extension.text_solution.text_solution)
+    if result and result.extension:
+        pprint(result.extension.text_solution.text_solution)
     
     # Print as json result
     if pprint_json_result:

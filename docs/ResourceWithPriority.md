@@ -7,7 +7,7 @@ The list of resources that should NOT visit a certain node.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **resource_id** | **str** | The resourceId that will be part of a constraint. For example, Jack is a preffered Resource of a node. If multiple resources are preferred, the Optimizer tries to schedule the Resource with the highest priority. | 
-**priority** | **int** | The priority | 
+**priority** | **int** | The scheduling priority for this resource within the constraint. When multiple resources are eligible, the optimizer prefers the one with the highest priority value. | 
 
 ## Example
 

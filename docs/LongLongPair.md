@@ -1,13 +1,13 @@
 # LongLongPair
 
-The serviceHoursOffsets
+Optional offset pairs that define sub-windows within this opening hour during which the node can actually be serviced. Each pair specifies a start offset and an end offset (in milliseconds) relative to the opening-hour begin. Useful for modeling lunch breaks, shift handovers, or restricted access periods within an otherwise open time window.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**left** | **int** | The left | 
-**right** | **int** | The right | 
+**left** | **int** | The start offset value (in milliseconds). | 
+**right** | **int** | The end offset value (in milliseconds). | 
 
 ## Example
 

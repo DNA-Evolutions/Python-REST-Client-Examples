@@ -1,14 +1,14 @@
 # NodeColor
 
-The nodeColor
+The color category assigned to this node. Used in conjunction with NodeColorCapacity or AbsoluteNodeColorCapacity constraints on the resource's working hours to control route composition (e.g. limit the number of hazardous-goods stops per route). Defaults to the system DEFAULT color.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**color_code** | **int** | The colorCode | 
-**color_id** | **str** | The colorId | 
-**count_value** | **int** | The countValue | [optional] 
+**color_code** | **int** | A numeric color code identifying this color category. Must match the codes used in NodeColorCapacity constraints. | 
+**color_id** | **str** | A human-readable identifier for this color category (e.g. &#39;HAZARDOUS&#39;, &#39;PRIORITY_A&#39;, &#39;COLD_CHAIN&#39;). | 
+**count_value** | **int** | The contribution count of this node towards its color category. Defaults to 1. A higher value means this node &#39;consumes&#39; more of the route&#39;s color capacity budget. | [optional] 
 
 ## Example
 

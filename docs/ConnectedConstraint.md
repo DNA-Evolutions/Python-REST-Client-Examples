@@ -1,5 +1,6 @@
 # ConnectedConstraint
 
+A compound constraint that logically connects two individual constraints via a ConnectionType (AND, OR). For example, a node may require 'skill A AND resource from zone 3', or 'either resource Jack OR resource Jane'.
 
 ## Properties
 
@@ -7,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **constraint_one** | [**Constraint**](Constraint.md) |  | 
 **constraint_two** | [**Constraint**](Constraint.md) |  | 
-**connection_type** | **str** | The connectionType | 
+**connection_type** | **str** | The logical operator connecting constraintOne and constraintTwo. Defines whether both must be satisfied (AND) or at least one (OR). | 
 **type_name** | **str** | The typeName of the object | [default to 'ConnectedConstraint']
 
 ## Example

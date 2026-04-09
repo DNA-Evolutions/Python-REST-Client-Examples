@@ -1,14 +1,15 @@
 # IdleEventNode
 
+A system-generated non-geographical node that represents idle time or a synthetic event inserted by the optimizer during construction or heuristic phases. This node type is never created by the user — it is produced internally to model waiting periods, return-to-start segments, or inter-route padding.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pillar_node** | [**PillarType**](PillarType.md) |  | [optional] 
-**master_id** | **str** | The masterId | [optional] 
-**related_id** | **str** | The relatedId | [optional] 
-**creation_time_stamp** | **int** | The creationTimeStamp | [optional] 
+**master_id** | **str** | The id of the master node that triggered the creation of this idle event (e.g. in relation-based or return-to-start scenarios). | [optional] 
+**related_id** | **str** | The id of the related node associated with this idle event (e.g. the node the resource is waiting for). | [optional] 
+**creation_time_stamp** | **int** | The epoch-millisecond timestamp when this idle event node was created by the optimizer. | [optional] 
 **type_name** | **str** | The typeName of the object | [default to 'IdleEvent']
 
 ## Example

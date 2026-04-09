@@ -1,5 +1,6 @@
 # MagnetoNodeConstraint
 
+A node-to-node soft constraint that creates magnetic attraction or repulsion between nodes. In attraction mode, the optimizer prefers placing the listed nodes on the same route. In repulsion mode, it prefers separating them. Supports ordering preferences (front/back of route).
 
 ## Properties
 

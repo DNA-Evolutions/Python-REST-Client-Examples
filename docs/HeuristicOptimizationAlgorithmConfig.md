@@ -1,6 +1,6 @@
 # HeuristicOptimizationAlgorithmConfig
 
-The heuristicOptimizationAlgorithmConfigs
+An ordered list of heuristic algorithm configurations that are executed sequentially after construction. Each entry defines an algorithm (e.g. Genetic Algorithm, Simulated Annealing) and its parameters (iteration count, repetitions). The optimizer runs each phase in order to progressively improve the solution.
 
 ## Properties
 

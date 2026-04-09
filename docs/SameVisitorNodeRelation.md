@@ -1,5 +1,6 @@
 # SameVisitorNodeRelation
 
+A relation requiring that the master node and related nodes are visited by the same resource. Ensures a single resource handles all coupled nodes.
 
 ## Properties
 

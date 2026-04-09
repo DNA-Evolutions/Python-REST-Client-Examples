@@ -1,6 +1,6 @@
 # ConstraintType
 
-The type
+A node-level constraint that restricts which resources may visit a node, or penalizes undesirable assignments. Subtypes include binding/excluding resource constraints, type-based skill matching (with optional expertise levels and cost models), zone number and UK post code territory constraints, magneto (node-to-node attraction/repulsion) constraints, and multi-route node color constraints.
 
 ## Properties
 

@@ -8,7 +8,7 @@ pipelines:
           - docker
         script:
           - cd ./sandbox/python/
-          - myVersion=1.4 
+          - myVersion=2.0 
           - docker version
           - docker build -t dnaevolutions/jopt_py_example_server:${myVersion} .
           - docker tag dnaevolutions/jopt_py_example_server:${myVersion} dnaevolutions/jopt_py_example_server:latest

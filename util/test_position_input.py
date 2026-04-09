@@ -1,3 +1,11 @@
+"""
+Sample geographic position data for TourOptimizer examples.
+
+Provides predefined sets of node and resource positions in the Sydney area,
+used as default input for the optimization examples. Each position includes
+latitude, longitude, and a location identifier.
+"""
+
 import time
 
 from touroptimizer_py_client.models.geo_node import GeoNode
@@ -19,6 +27,7 @@ from typing import List
 
 
 class TestPositionsInput:
+    """Provides default node and resource positions (Sydney area) for test/example runs."""
 
     @staticmethod
     def default_sydney_node_positions() -> List[Position]:

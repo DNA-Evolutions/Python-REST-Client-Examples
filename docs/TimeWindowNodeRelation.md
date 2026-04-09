@@ -1,5 +1,6 @@
 # TimeWindowNodeRelation
 
+A time-window relation that enforces temporal precedence between a master node and related nodes. The related node must be visited within [minTimeDeviation, maxTimeDeviation] of the master node's visit. The timeComparisonJuncture controls whether start or end times are compared.
 
 ## Properties
 

@@ -1,5 +1,6 @@
 # DifferentVisitorNodeRelation
 
+A relation requiring that the master node and related nodes are visited by different resources. Ensures distinct resource assignments for the coupled nodes.
 
 ## Properties
 

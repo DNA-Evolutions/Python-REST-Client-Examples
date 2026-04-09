@@ -1,6 +1,6 @@
 # PillarType
 
-The PillarType that can contain different Pillars
+A pillar (anchored/captured) node that is locked to a specific resource and cannot be reassigned during optimization. Subtypes include geo-pillar nodes (with latitude/longitude) and event-pillar nodes (non-geographical tasks).
 
 ## Properties
 

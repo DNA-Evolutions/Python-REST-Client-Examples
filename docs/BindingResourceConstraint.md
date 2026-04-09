@@ -1,5 +1,6 @@
 # BindingResourceConstraint
 
+A node constraint that binds specific resources as the only eligible visitors. Only the listed resources may visit this node (hard) or are preferred with penalty for others (soft). Priority determines preference order among bound resources.
 
 ## Properties
 

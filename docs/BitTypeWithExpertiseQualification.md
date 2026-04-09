@@ -1,5 +1,6 @@
 # BitTypeWithExpertiseQualification
 
+A bitset-based skill qualification with expertise levels. Each type maps to a TypeLevelOffering declaring the resource's expertise level. Matched against BitTypeWithExpertiseConstraint on nodes, which can require minimum expertise levels and apply cost models.
 
 ## Properties
 

@@ -1,6 +1,6 @@
 # TypeWithExpertise
 
-A list of user-provided type-names and expertise levels. A Contraint type-name with its required expertise must be fulfill by the type-with-expertise Qualification to result in a violation free solution.
+A skill type paired with an expertise level. Used in TypeWithExpertiseQualification and TypeWithExpertiseConstraint to model graded skills (e.g. 'Electrician Level 3').
 
 ## Properties
 

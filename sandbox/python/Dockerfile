@@ -1,5 +1,5 @@
 # Use the code-server base image
-FROM codercom/code-server:4.109.2-debian
+FROM codercom/code-server:4.96.4-debian
 
 # Set the DEBIAN_FRONTEND environment variable to avoid interactive prompts during package installation
 ARG DEBIAN_FRONTEND=noninteractive
@@ -26,12 +26,14 @@ RUN pip install --upgrade pip
 
 # Install the required Python packages in the virtual environment
 RUN pip install \
-    "python-dateutil>=2.5.3" \
+    "python-dateutil>=2.8.2" \
     "setuptools>=21.0.0" \
-    "urllib3>=1.25.3,<2.1.0" \
+    "urllib3>=2.1.0,<3.0.0" \
     "pydantic>=2" \
     "typing-extensions>=4.7.1" \
-    "aiohttp>=3.9.3"
+    "aiohttp>=3.9.3" \
+    "jupyter>=1.0.0" \
+    "ipykernel>=6.0.0"
 
 USER root
 # Copy entrypoint for pulling example from GitHub on start up
@@ -43,8 +45,12 @@ ENV PASSWORD=jopt
 
 USER coder
 
-# Install Python extension
-RUN code-server --install-extension ms-python.python
+# Install Python and Jupyter extensions
+RUN code-server --install-extension ms-python.python && \
+    code-server --install-extension ms-toolsai.jupyter
+
+# Register the venv as a Jupyter kernel
+RUN /opt/venv/bin/python -m ipykernel install --user --name=jopt-venv --display-name="Python (JOpt)"
 
 # Set working directory
 WORKDIR /home/coder/project

@@ -1,5 +1,6 @@
 # CapacityResource
 
+The standard resource type used in the optimization model. A capacity-based resource that carries working hours, a geographic position, and optional depot/load capacity configuration for pickup-and-delivery scenarios.
 
 ## Properties
 

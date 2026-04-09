@@ -1,6 +1,6 @@
 # OptimizationOptions
 
-The list of optimizationOptions
+Runtime configuration for the optimization engine. Contains a key-value property map that controls solver behavior — including iteration counts, algorithm weights, CPU core allocation, cost function tuning, and convergence criteria. Additionally, an optional optimizationSchemeOptions object can specify the exact construction and heuristic algorithm pipeline to execute. If omitted, the optimizer uses its built-in defaults.
 
 ## Properties
 

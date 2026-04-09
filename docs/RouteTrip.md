@@ -1,6 +1,6 @@
 # RouteTrip
 
-Additional data aobut the route trip. For example, the polylines for map reprsentation purposes.
+A container for the sequence of trip segments that make up a route. Each segment is a ResourceTrip with an encoded polyline representing the path between consecutive stops.
 
 ## Properties
 

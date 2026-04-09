@@ -1,6 +1,6 @@
 # Solution
 
-The solution. Either provided by the library or by the user and used as starting solution for the optimization run
+The optimization solution. In a result snapshot, this contains the computed route assignments, scheduling details per node, violation reports, and summary headers (cost, distance, time). When provided as input (warm start), the optimizer uses this solution as its initial starting point and attempts to improve upon it. This enables incremental re-optimization, manual plan adjustments, and 'continue where we left off' workflows. If omitted in the input, the optimizer constructs a solution from scratch using its construction heuristic.
 
 ## Properties
 

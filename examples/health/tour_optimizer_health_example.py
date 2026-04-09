@@ -1,3 +1,17 @@
+"""
+Health check example.
+
+Calls the GET /api/v1/health endpoint to verify that the TourOptimizer
+service is running and reachable. Prints the returned Status object.
+
+Prerequisites:
+- A running TourOptimizer instance on http://localhost:8081
+  (or change is_azure_call to True and provide an Azure API key).
+
+Usage:
+    python examples/health/tour_optimizer_health_example.py
+"""
+
 import json
 from util.test_element_creator import  TestElementsCreator
 from util.test_rest_optimization_creator import  TestRestOptimizationCreator
@@ -9,9 +23,7 @@ from touroptimizer_py_client.models.status import Status
 
 
 def main():
-    """
-    Example of using the TourOptimizer REST API in Python.
-    """
+    """Check and print the health status of the TourOptimizer service."""
 
     # Modify these variables as needed
     is_azure_call = False  # Set to True if using Azure, make sure a local docker container is running otherwise

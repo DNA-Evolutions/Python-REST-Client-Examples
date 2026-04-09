@@ -1,3 +1,11 @@
+"""
+Factory for creating RestOptimization test inputs.
+
+Assembles a complete RestOptimization object from nodes, resources, and optional
+connections/relations. Includes a built-in public evaluation license key so that
+examples can run without any additional configuration.
+"""
+
 import time
 import json
 
@@ -28,7 +36,9 @@ from typing import List
 
 
 class TestRestOptimizationCreator:
-    
+    """Builds RestOptimization objects ready to submit to the TourOptimizer API."""
+
+    # Public evaluation license key from DNA Evolutions (max 20 elements).
     PUBLIC_JSON_LICENSE = json.dumps({
         "version": "1.2",
         "identifier": "PUBLIC-",
@@ -42,11 +52,24 @@ class TestRestOptimizationCreator:
     })
     
     @staticmethod
-    def default_touroptimizer_position_test_input(node_positions: List[Position], 
-                                         ress_positions: List[Position], 
-                                         node_relations=[], 
-                                         element_connections=[], 
+    def default_touroptimizer_position_test_input(node_positions: List[Position],
+                                         ress_positions: List[Position],
+                                         node_relations=[],
+                                         element_connections=[],
                                          json_license=None) -> RestOptimization:
+        """
+        Creates a RestOptimization from raw Position lists.
+
+        Convenience method that first converts positions to Node/Resource objects
+        via TestElementsCreator, then delegates to default_touroptimizer_test_input.
+
+        :param node_positions: List of geographic positions for nodes.
+        :param ress_positions: List of geographic positions for resources.
+        :param node_relations: Optional node relations (default: empty).
+        :param element_connections: Optional pre-computed connections (default: empty, triggers haversine).
+        :param json_license: Optional JSON license string (default: public evaluation key).
+        :return: A fully configured RestOptimization ready for submission.
+        """
         
         
         ress = TestElementsCreator.conv_poss_to_ress(ress_positions)
@@ -56,9 +79,19 @@ class TestRestOptimizationCreator:
         
 
     @staticmethod
-    def default_touroptimizer_test_input(nodes: List[Node], ress: List[Resource], 
-                                         node_relations=[], element_connections=[], 
+    def default_touroptimizer_test_input(nodes: List[Node], ress: List[Resource],
+                                         node_relations=[], element_connections=[],
                                          json_license=None) -> RestOptimization:
+        """
+        Creates a RestOptimization from pre-built Node and Resource lists.
+
+        :param nodes: List of Node objects to optimize.
+        :param ress: List of Resource objects (vehicles/drivers).
+        :param node_relations: Optional node relations (default: empty).
+        :param element_connections: Optional pre-computed connections (default: empty, triggers haversine).
+        :param json_license: Optional JSON license string (default: public evaluation key).
+        :return: A fully configured RestOptimization ready for submission.
+        """
         if json_license is None:
             json_license = TestRestOptimizationCreator.PUBLIC_JSON_LICENSE
 

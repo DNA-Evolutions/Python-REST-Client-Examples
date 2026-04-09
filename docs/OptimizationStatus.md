@@ -6,9 +6,9 @@ The status of the optimization
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status_description** | **str** | The description of status of the optimization | 
-**error** | **str** | An  error code/desciption | 
-**status** | **str** | The status of the optimization | 
+**status_description** | **str** | A human-readable description of the optimization outcome (e.g. &#39;SUCCESS_WITH_SOLUTION&#39;, &#39;Optimization execution failed due to timeout&#39;). Provides more context than the status tag alone. | 
+**error** | **str** | An error code or message describing the failure cause. Set to &#39;NO_ERROR&#39; on successful runs. On failure, contains the exception message or a structured error identifier for programmatic handling. | 
+**status** | **str** | The machine-readable status tag indicating the optimization outcome. UNKNOWN: status not yet determined. ERROR: the run failed. SUCCESS_WITH_SOLUTION: completed with a valid solution. SUCCESS_WITHOUT_SOLUTION: completed but no feasible assignment was found. | 
 
 ## Example
 

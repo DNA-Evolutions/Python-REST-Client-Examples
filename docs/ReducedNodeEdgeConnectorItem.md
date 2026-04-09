@@ -1,6 +1,6 @@
 # ReducedNodeEdgeConnectorItem
 
-The list of hook connections
+Pre-computed connections used exclusively during the construction hook phase. These connections override the default element connections for hook-related routing decisions, allowing special distance/time calculations during construction (e.g. depot-to-first-stop distances that differ from normal driving).
 
 ## Properties
 

@@ -5,9 +5,9 @@
 """
     DNA Evolutions - JOpt.TourOptimizer
 
-    This is DNA's JOpt.TourOptimizer service. A RESTful Spring Boot application using springdoc-openapi and OpenAPI 3. JOpt.TourOptimizer is a service that delivers route optimization and automatic scheduling features to be easily integrated into any third-party application. JOpt.TourOptimizer encapsulates all necessary optimization functionality and provides a comprehensive REST API that offers a domain-specific optimization interface for the transportation industry. The service is stateless and does not come with graphical user interfaces, map depiction or any databases. These extensions and adjustments are supposed to be introduced by the consumer of the service while integrating it into his/her own application. The service will allow for many suitable adjustments and user-specific settings to adjust the behaviour and optimization goals (e.g. minimizing distance, maximizing resource utilization, etc.) through a comprehensive set of functions. This will enable you to gain control of the complete optimization processes.This service is based on JOpt (7.5.3-j17)
+    # JOpt.TourOptimizer REST API  ![DNA Evolutions Logo](https://www.dna-evolutions.com/images/dna_logo.png)  JOpt.TourOptimizer is DNA Evolutions' route optimization and scheduling engine for transportation, field service, and resource planning scenarios.  This API is a **reactive Spring WebFlux REST service** with an **OpenAPI 3** contract, designed for integration into third-party systems and for generating typed client SDKs directly from the schema.  ---  ## Endpoint groups  ### Job endpoints (`job`)  The primary integration model for all deployments with a connected database.  Submit an optimization job with `POST /api/v1/jobs` and receive an HTTP 202 response containing a unique `jobId`. Use that jobId to poll for status, progress, warnings, errors, and the final result at any time — no open connection required.  | Endpoint | Description | Availability | |---|---|---| | `POST /api/v1/jobs` | Submit an async optimization job | All deployments | | `GET /api/v1/jobs/{jobId}/status` | Poll job status | All deployments | | `GET /api/v1/jobs/{jobId}/result` | Retrieve full optimization result | All deployments | | `GET /api/v1/jobs/{jobId}/solution` | Retrieve solution payload only | All deployments | | `GET /api/v1/jobs/{jobId}/progress` | Retrieve progress snapshots | All deployments | | `GET /api/v1/jobs/{jobId}/warnings` | Retrieve warning messages | All deployments | | `GET /api/v1/jobs/{jobId}/errors` | Retrieve error messages | All deployments | | `GET /api/v1/jobs/{jobId}/export` | Download result as ZIP archive | All deployments | | `POST /api/v1/jobs/{jobId}/stop` | Send graceful stop signal to a running job | All deployments | | `DELETE /api/v1/jobs/{jobId}` | Delete all persisted data for a job | All deployments | | `POST /api/v1/jobs/search` | Search jobs by metadata criteria | On-premise (free-search enabled) | | `POST /api/v1/jobs/import` | Import a pre-computed result directly | On-premise (import enabled) |  All job endpoints require the `X-Tenant-Id` header, injected by the API gateway. The `jobId` returned at submission is the only token needed for all subsequent reads.  ### Synchronous run endpoints (`optimization`)  Available on on-premise installations with synchronous mode enabled. The client holds the HTTP connection open and receives the result directly in the response body.  | Endpoint | Description | |---|---| | `POST /api/v1/runs` | Start a run, return runId immediately (HTTP 202) | | `GET /api/v1/runs/{runId}/result` | Block until run completes, return full result | | `GET /api/v1/runs/{runId}/solution` | Block until run completes, return solution only | | `DELETE /api/v1/runs/{runId}` | Stop the run gracefully | | `GET /api/v1/runs/{runId}/started` | One-shot signal when the run has started |  ### Event stream endpoints (`stream`)  Server-Sent Event streams for monitoring a running synchronous optimization in near real time. Subscribe to one or more streams while a `POST /api/v1/runs` call is in progress.  | Endpoint | Event type | |---|---| | `GET /api/v1/runs/{runId}/stream/progress` | Progress percentage and timing | | `GET /api/v1/runs/{runId}/stream/status` | Lifecycle status transitions | | `GET /api/v1/runs/{runId}/stream/warnings` | Non-fatal solver warnings | | `GET /api/v1/runs/{runId}/stream/errors` | Solver error events |  ### Health endpoint (`health`)  | Endpoint | Description | |---|---| | `GET /api/v1/health` | Service liveness and readiness |  ---  ## Deployment modes and feature flags  Endpoints that require specific conditions are activated via Spring `@Conditional` annotations and application properties. Endpoints not active in a given deployment are absent from the service entirely and do not appear in the runtime spec.  | Condition | Property / annotation | Effect | |---|---|---| | Database connected | `DatabaseEnabledCondition` | Activates all `job` endpoints | | Sync mode | `SynchControllersEnabledCondition` | Activates `optimization` and `stream` endpoints | | Free search | `DatabaseFreeSearchEnabledCondition` | Activates `POST /api/v1/jobs/search` | | Import | `DatabaseJobImportEnabledCondition` | Activates `POST /api/v1/jobs/import` |  ---  ## Tenant isolation  Every job endpoint is scoped by `X-Tenant-Id`, injected by the API gateway. Persisted documents are tagged with both `jobId` and `tenantId`. A request with a valid `jobId` but a mismatched `tenantId` returns no data. The `jobId` is a UUID v4 (122 bits of randomness) and is not a security credential — security is enforced by the verified `tenantId` from the gateway header.  ---  ## Encryption at rest  Results can be stored encrypted in two modes:  - **CLIENT mode**: key derived from a caller-provided passphrase via PBKDF2.   Pass the same secret in `X-Encryption-Secret` when reading back. - **KMS mode**: server-generated data encryption key (DEK) wrapped by an   external key management service (Azure Key Vault, AWS KMS). Decryption is   transparent to the caller.  The `encrypted` and `sec` fields in `DatabaseInfoSearchResult` indicate which mode was used for each stored result.  ---  ## Client generation  The OpenAPI schema can be used to generate typed clients for any language. The `operationId` values follow `{verb}{Resource}` lowerCamelCase convention (`createJob`, `getJobResult`, `listJobs`, etc.) for predictable generated method names.  ---  This service is based on **JOpt Core (unknown)**. 
 
-    The version of the OpenAPI document: 1.3.3-SNAPSHOT
+    The version of the OpenAPI document: 1.3.5-SNAPSHOT
     Contact: info@dna-evolutions.com
     Generated by OpenAPI Generator (https://openapi-generator.tech)
 
@@ -19,17 +19,9 @@ __version__ = "1.0.0"
 
 # Define package exports
 __all__ = [
-    "OptimizationFAFServiceControllerApi",
-    "OptimizationHealthControllerApi",
-    "OptimizationServiceControllerApi",
-    "ReadDatabaseDownloadEncryptedServiceControllerApi",
-    "ReadDatabaseDownloadServiceControllerApi",
-    "ReadDatabaseEncryptedServiceControllerApi",
-    "ReadDatabaseServiceControllerApi",
-    "WriteDatabaseServiceControllerApi",
-    "HealthStatusApi",
+    "HealthApi",
+    "JobApi",
     "OptimizationApi",
-    "OptimizationFAFApi",
     "StreamApi",
     "ApiResponse",
     "ApiClient",
@@ -59,10 +51,8 @@ __all__ = [
     "ConstructionOptimizationAlgorithmConfig",
     "CoreBuildOptions",
     "CreatorSetting",
-    "DatabaseEncryptedItemSearch",
     "DatabaseInfoSearch",
     "DatabaseInfoSearchResult",
-    "DatabaseItemSearch",
     "DateDef",
     "Day",
     "DayMonth",
@@ -92,6 +82,7 @@ __all__ = [
     "JOptOptimizationStatus",
     "JOptOptimizationWarning",
     "JSONConfig",
+    "JobAcceptedResponse",
     "LoadDimension",
     "LocationParameters",
     "LongLongPair",
@@ -112,7 +103,7 @@ __all__ = [
     "OptimizationKeySetting",
     "OptimizationOptions",
     "OptimizationPersistenceSetting",
-    "OptimizationPersistenceStratgySetting",
+    "OptimizationPersistenceStrategySetting",
     "OptimizationSchemeOptions",
     "OptimizationStatus",
     "PillarType",
@@ -121,6 +112,10 @@ __all__ = [
     "Position",
     "Qualification",
     "QualificationType",
+    "RangeDay",
+    "RangeDayMonth",
+    "RangeDayMonthYear",
+    "RangeWeekDay",
     "ReducedNodeEdgeConnectorItem",
     "RequestFlexLoad",
     "Resource",
@@ -133,6 +128,7 @@ __all__ = [
     "RouteElementDetail",
     "RouteHeader",
     "RouteTrip",
+    "RunAcceptedResponse",
     "SameVisitorNodeRelation",
     "SecurityHelperItemMetadata",
     "SimpleLoad",
@@ -147,7 +143,7 @@ __all__ = [
     "Status",
     "StayOutCycleDefinition",
     "StayOutDefinition",
-    "StreamPersistenceStratgySetting",
+    "StreamPersistenceStrategySetting",
     "StringIntegerPair",
     "SupplyFlexLoad",
     "TextSolution",
@@ -177,17 +173,9 @@ __all__ = [
 ]
 
 # import apis into sdk package
-from touroptimizer_py_client.api.optimization_faf_service_controller_api import OptimizationFAFServiceControllerApi as OptimizationFAFServiceControllerApi
-from touroptimizer_py_client.api.optimization_health_controller_api import OptimizationHealthControllerApi as OptimizationHealthControllerApi
-from touroptimizer_py_client.api.optimization_service_controller_api import OptimizationServiceControllerApi as OptimizationServiceControllerApi
-from touroptimizer_py_client.api.read_database_download_encrypted_service_controller_api import ReadDatabaseDownloadEncryptedServiceControllerApi as ReadDatabaseDownloadEncryptedServiceControllerApi
-from touroptimizer_py_client.api.read_database_download_service_controller_api import ReadDatabaseDownloadServiceControllerApi as ReadDatabaseDownloadServiceControllerApi
-from touroptimizer_py_client.api.read_database_encrypted_service_controller_api import ReadDatabaseEncryptedServiceControllerApi as ReadDatabaseEncryptedServiceControllerApi
-from touroptimizer_py_client.api.read_database_service_controller_api import ReadDatabaseServiceControllerApi as ReadDatabaseServiceControllerApi
-from touroptimizer_py_client.api.write_database_service_controller_api import WriteDatabaseServiceControllerApi as WriteDatabaseServiceControllerApi
-from touroptimizer_py_client.api.health_status_api import HealthStatusApi as HealthStatusApi
+from touroptimizer_py_client.api.health_api import HealthApi as HealthApi
+from touroptimizer_py_client.api.job_api import JobApi as JobApi
 from touroptimizer_py_client.api.optimization_api import OptimizationApi as OptimizationApi
-from touroptimizer_py_client.api.optimization_faf_api import OptimizationFAFApi as OptimizationFAFApi
 from touroptimizer_py_client.api.stream_api import StreamApi as StreamApi
 
 # import ApiClient
@@ -221,10 +209,8 @@ from touroptimizer_py_client.models.construction_hook import ConstructionHook as
 from touroptimizer_py_client.models.construction_optimization_algorithm_config import ConstructionOptimizationAlgorithmConfig as ConstructionOptimizationAlgorithmConfig
 from touroptimizer_py_client.models.core_build_options import CoreBuildOptions as CoreBuildOptions
 from touroptimizer_py_client.models.creator_setting import CreatorSetting as CreatorSetting
-from touroptimizer_py_client.models.database_encrypted_item_search import DatabaseEncryptedItemSearch as DatabaseEncryptedItemSearch
 from touroptimizer_py_client.models.database_info_search import DatabaseInfoSearch as DatabaseInfoSearch
 from touroptimizer_py_client.models.database_info_search_result import DatabaseInfoSearchResult as DatabaseInfoSearchResult
-from touroptimizer_py_client.models.database_item_search import DatabaseItemSearch as DatabaseItemSearch
 from touroptimizer_py_client.models.date_def import DateDef as DateDef
 from touroptimizer_py_client.models.day import Day as Day
 from touroptimizer_py_client.models.day_month import DayMonth as DayMonth
@@ -254,6 +240,7 @@ from touroptimizer_py_client.models.j_opt_optimization_progress import JOptOptim
 from touroptimizer_py_client.models.j_opt_optimization_status import JOptOptimizationStatus as JOptOptimizationStatus
 from touroptimizer_py_client.models.j_opt_optimization_warning import JOptOptimizationWarning as JOptOptimizationWarning
 from touroptimizer_py_client.models.json_config import JSONConfig as JSONConfig
+from touroptimizer_py_client.models.job_accepted_response import JobAcceptedResponse as JobAcceptedResponse
 from touroptimizer_py_client.models.load_dimension import LoadDimension as LoadDimension
 from touroptimizer_py_client.models.location_parameters import LocationParameters as LocationParameters
 from touroptimizer_py_client.models.long_long_pair import LongLongPair as LongLongPair
@@ -274,7 +261,7 @@ from touroptimizer_py_client.models.opening_hours import OpeningHours as Opening
 from touroptimizer_py_client.models.optimization_key_setting import OptimizationKeySetting as OptimizationKeySetting
 from touroptimizer_py_client.models.optimization_options import OptimizationOptions as OptimizationOptions
 from touroptimizer_py_client.models.optimization_persistence_setting import OptimizationPersistenceSetting as OptimizationPersistenceSetting
-from touroptimizer_py_client.models.optimization_persistence_stratgy_setting import OptimizationPersistenceStratgySetting as OptimizationPersistenceStratgySetting
+from touroptimizer_py_client.models.optimization_persistence_strategy_setting import OptimizationPersistenceStrategySetting as OptimizationPersistenceStrategySetting
 from touroptimizer_py_client.models.optimization_scheme_options import OptimizationSchemeOptions as OptimizationSchemeOptions
 from touroptimizer_py_client.models.optimization_status import OptimizationStatus as OptimizationStatus
 from touroptimizer_py_client.models.pillar_type import PillarType as PillarType
@@ -283,6 +270,10 @@ from touroptimizer_py_client.models.plugin_settings import PluginSettings as Plu
 from touroptimizer_py_client.models.position import Position as Position
 from touroptimizer_py_client.models.qualification import Qualification as Qualification
 from touroptimizer_py_client.models.qualification_type import QualificationType as QualificationType
+from touroptimizer_py_client.models.range_day import RangeDay as RangeDay
+from touroptimizer_py_client.models.range_day_month import RangeDayMonth as RangeDayMonth
+from touroptimizer_py_client.models.range_day_month_year import RangeDayMonthYear as RangeDayMonthYear
+from touroptimizer_py_client.models.range_week_day import RangeWeekDay as RangeWeekDay
 from touroptimizer_py_client.models.reduced_node_edge_connector_item import ReducedNodeEdgeConnectorItem as ReducedNodeEdgeConnectorItem
 from touroptimizer_py_client.models.request_flex_load import RequestFlexLoad as RequestFlexLoad
 from touroptimizer_py_client.models.resource import Resource as Resource
@@ -295,6 +286,7 @@ from touroptimizer_py_client.models.route import Route as Route
 from touroptimizer_py_client.models.route_element_detail import RouteElementDetail as RouteElementDetail
 from touroptimizer_py_client.models.route_header import RouteHeader as RouteHeader
 from touroptimizer_py_client.models.route_trip import RouteTrip as RouteTrip
+from touroptimizer_py_client.models.run_accepted_response import RunAcceptedResponse as RunAcceptedResponse
 from touroptimizer_py_client.models.same_visitor_node_relation import SameVisitorNodeRelation as SameVisitorNodeRelation
 from touroptimizer_py_client.models.security_helper_item_metadata import SecurityHelperItemMetadata as SecurityHelperItemMetadata
 from touroptimizer_py_client.models.simple_load import SimpleLoad as SimpleLoad
@@ -309,7 +301,7 @@ from touroptimizer_py_client.models.start_reduction_time_pillar_definition impor
 from touroptimizer_py_client.models.status import Status as Status
 from touroptimizer_py_client.models.stay_out_cycle_definition import StayOutCycleDefinition as StayOutCycleDefinition
 from touroptimizer_py_client.models.stay_out_definition import StayOutDefinition as StayOutDefinition
-from touroptimizer_py_client.models.stream_persistence_stratgy_setting import StreamPersistenceStratgySetting as StreamPersistenceStratgySetting
+from touroptimizer_py_client.models.stream_persistence_strategy_setting import StreamPersistenceStrategySetting as StreamPersistenceStrategySetting
 from touroptimizer_py_client.models.string_integer_pair import StringIntegerPair as StringIntegerPair
 from touroptimizer_py_client.models.supply_flex_load import SupplyFlexLoad as SupplyFlexLoad
 from touroptimizer_py_client.models.text_solution import TextSolution as TextSolution

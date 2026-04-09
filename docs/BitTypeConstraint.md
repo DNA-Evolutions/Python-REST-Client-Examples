@@ -1,11 +1,12 @@
 # BitTypeConstraint
 
+A high-performance bitset-based skill constraint on a node. Type names are integer identifiers matched via bitwise operations against BitTypeQualification on resources. Functionally equivalent to TypeConstraint but significantly faster for large type sets.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type_names** | **List[str]** | A list of user-provided type-integer numbers. A Contraint type name must match to a Qualification type name to result in a violation free solution. | 
+**type_names** | **List[str]** | A list of user-provided type-integer numbers. A Constraint type name must match to a Qualification type name to result in a violation free solution. | 
 **type_name** | **str** | The typeName of the object | [default to 'BitType']
 
 ## Example

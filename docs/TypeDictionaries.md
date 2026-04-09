@@ -1,6 +1,6 @@
 # TypeDictionaries
 
-The optional typeDictionaries
+Optional lookup dictionaries that map integer-based type identifiers to human-readable type names. Used in conjunction with BitType qualifications and constraints to translate compact bitset representations into meaningful skill or category labels for reporting and debugging purposes.
 
 ## Properties
 

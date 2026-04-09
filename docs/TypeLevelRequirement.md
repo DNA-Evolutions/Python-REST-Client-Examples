@@ -1,6 +1,6 @@
 # TypeLevelRequirement
 
-The mapping of a certain type. or multiple types
+Specifies the expertise level a node requires for a given skill type. The isMin flag controls whether the level is a minimum threshold (resource must meet or exceed) or an exact match requirement.
 
 ## Properties
 

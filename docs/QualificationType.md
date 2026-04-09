@@ -1,6 +1,6 @@
 # QualificationType
 
-The type of the Qualification
+A resource-side qualification that declares what skills, territories, or capabilities a resource offers. Matched against node-level constraints during optimization. Subtypes include type-based qualifications (with optional expertise levels), zone number and UK post code qualifications, and high-performance bitset-based type qualifications (with optional expertise).
 
 ## Properties
 

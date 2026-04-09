@@ -1,12 +1,13 @@
 # NodeColorMultiRouteConstraint
 
+A multi-route constraint that enforces per-color capacity limits across multiple working hours of a resource, using fractional (ratio-based) limits.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mirror_item** | [**IntegerMultiConstraintHelperItem**](IntegerMultiConstraintHelperItem.md) |  | 
-**node_color_capacities** | [**List[NodeColorCapacity]**](NodeColorCapacity.md) | The nodeColorCapacities | 
+**node_color_capacities** | [**List[NodeColorCapacity]**](NodeColorCapacity.md) | The per-color capacity limits (ratio-based) enforced by this multi-route constraint. | 
 **type_name** | **str** | The typeName of the object | [default to 'NodeColorMultiRouteConstraint']
 
 ## Example

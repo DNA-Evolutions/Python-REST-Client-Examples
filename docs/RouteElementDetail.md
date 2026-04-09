@@ -1,6 +1,6 @@
 # RouteElementDetail
 
-The RouteElementDetail describes the solution for a certain node element.
+The full scheduling record for a single node within a route. Extends the minimal timing data with idle time, transit time and distance to the next element, early/late arrival flags, per-node violations, schedule status, white-space (slack) information, and pickup-and-delivery load exchange details. One RouteElementDetail is produced per visited node in each route of the solution.
 
 ## Properties
 

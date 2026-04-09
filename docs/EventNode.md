@@ -1,5 +1,6 @@
 # EventNode
 
+A non-geographic node type representing a time-based task without a physical location (e.g. a phone call, virtual meeting, or administrative task). The optimizer schedules it based on time constraints only, with zero travel time and distance.
 
 ## Properties
 

@@ -1,6 +1,6 @@
 # CoreBuildOptions
 
-The coreBuildOptions provided by the library
+Read-only metadata populated by the JOpt core library after an optimization run. Contains build properties such as the core library version, build timestamp, and Java runtime version. Useful for diagnostics, reproducibility audits, and support-ready bug reports. Do not set this field in the input — it is output-only.
 
 ## Properties
 

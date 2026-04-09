@@ -1,12 +1,13 @@
 # ResourceLocationConstraint
 
+A constraint that limits a node to be visited only by resources within a maximum distance or travel time radius. At least one of maxRadiusDistance or maxRadiusTime must be provided. NOTE: This constraint type is currently under review and may not function as expected in all scenarios.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**max_radius_distance** | **str** | The maxRadiusDistance | [optional] 
-**max_radius_time** | **str** | The maxRadiusTime | [optional] 
+**max_radius_distance** | **str** | The maximum Euclidean or road-network distance a resource may be located from this node in order to be eligible to visit it. If omitted, only maxRadiusTime is enforced. | [optional] 
+**max_radius_time** | **str** | The maximum travel time a resource may need to reach this node in order to be eligible to visit it. If omitted, only maxRadiusDistance is enforced. | [optional] 
 **type_name** | **str** | The typeName of the object | [default to 'ResourceLocationConstraint']
 
 ## Example

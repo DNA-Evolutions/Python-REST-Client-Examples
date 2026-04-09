@@ -1,12 +1,12 @@
 # IntegerMultiConstraintHelperItem
 
-The mirrorItem
+The mirroring configuration that maps this constraint across working-hour boundaries.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pairs** | [**List[StringIntegerPair]**](StringIntegerPair.md) | The pairs | 
+**pairs** | [**List[StringIntegerPair]**](StringIntegerPair.md) | A list of key-value pairs mapping element identifiers to integer values. Used internally to mirror multi-route constraint configurations across working hours. | 
 
 ## Example
 

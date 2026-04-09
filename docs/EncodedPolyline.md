@@ -1,6 +1,6 @@
 # EncodedPolyline
 
-The encoded polyline describing a connection.
+A Google-style encoded polyline string representing a geographic path between two elements. Includes a configurable precision value (default 1E5) for coordinate encoding/decoding.
 
 ## Properties
 

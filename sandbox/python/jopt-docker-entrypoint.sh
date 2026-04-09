@@ -41,9 +41,15 @@ fi
 # Ensure .vscode directory exists within the project folder
 mkdir -p ${folder}.vscode
 
-# Ensure VS Code uses the virtual environment's interpreter
+# Ensure VS Code uses the virtual environment's interpreter and Jupyter kernel
 echo "{
-    \"python.pythonPath\": \"/opt/venv/bin/python\"
+    \"python.defaultInterpreterPath\": \"/opt/venv/bin/python3\",
+    \"python.terminal.activateEnvironment\": true,
+    \"jupyter.kernels.filter\": [],
+    \"notebook.kernelPicker.type\": \"mru\"
 }" > ${folder}.vscode/settings.json
+
+# Re-register Jupyter kernel with the project in PYTHONPATH so notebook imports work
+/opt/venv/bin/python -m ipykernel install --user --name=jopt-venv --display-name="Python (JOpt)" --env PYTHONPATH "${folder}"
 
 exec /usr/bin/entrypoint.sh "$@"

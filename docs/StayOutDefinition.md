@@ -1,14 +1,14 @@
 # StayOutDefinition
 
-The stayOutDefinition
+Defines overnight-stay policies for this resource, including the maximum total number of stay-outs permitted, the maximum consecutive stay-outs in a row, and the minimum recovery period between stay-out sequences. Used in multi-day planning scenarios where resources may stay overnight near their last stop.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**max_total_stays_out** | **int** | The maxTotalStaysOut | 
-**max_stays_out_in_row** | **int** | The maxStaysOutInRow | 
-**min_recovery** | **str** | The minRecovery | 
+**max_total_stays_out** | **int** | The maximum total number of overnight stays the resource may have across all working-hour cycles. | 
+**max_stays_out_in_row** | **int** | The maximum number of consecutive overnight stays in a row before the resource must return home or observe a recovery period. | 
+**min_recovery** | **str** | The minimum recovery duration the resource must spend at its home location before another stay-out sequence is permitted. Expressed as an ISO 8601 duration (e.g. &#39;PT24H&#39; for one full day). | 
 
 ## Example
 

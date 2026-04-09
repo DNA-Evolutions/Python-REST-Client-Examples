@@ -6,6 +6,7 @@ DatabaseInfoSearch model for a databse search
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**job_id** | **str** | The unique id. Can not be empty. | [optional] 
 **creator** | **str** | A related creator. | [optional] 
 **ident** | **str** | The ident of the optimization to serach for. Leave blank if not required | [optional] 
 **limit** | **int** | The max number of results. Results are sorted by creation. Newest first by default | [optional] 

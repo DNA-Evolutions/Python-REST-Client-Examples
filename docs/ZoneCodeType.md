@@ -1,6 +1,6 @@
 # ZoneCodeType
 
-The myCode
+A geographic zone identifier attached to nodes and resources for territory-based routing. Subtypes include numeric zone codes (for general territory partitioning) and UK post codes (for UK-specific postal district matching).
 
 ## Properties
 

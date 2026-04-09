@@ -1,11 +1,12 @@
 # ZoneNumber
 
+A numeric zone code assigned to nodes and resources for territory-based routing. Zone numbers define geographic partitions and are used with ZoneConnections to penalize or restrict zone crossings.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**zone_number** | **int** | The zoneNumber | 
+**zone_number** | **int** | The numeric zone identifier assigned to this element. Zone numbers are used to define geographic territories for resources and to penalize or restrict zone crossings between nodes via ZoneConnections. | 
 **type_name** | **str** | The typeName of the object | [default to 'ZoneNumber']
 
 ## Example

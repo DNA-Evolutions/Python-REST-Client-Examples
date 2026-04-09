@@ -1,6 +1,6 @@
 # Violation
 
-The routeViolations. Violations that occur on route level. For example, overtime, overdistance etc.
+A single constraint violation detected during optimization. Describes the violation value (e.g. minutes of lateness), a human-readable description, the offending element (node or route), and a category/attribute/subAttribute taxonomy for programmatic filtering (e.g. CONSTRAINTVIOLATION > TIMECONSTRAINT > LATE).
 
 ## Properties
 

@@ -1,11 +1,12 @@
 # TypeQualification
 
+A string-based skill qualification. Declares a list of type names that the resource can fulfill. Matched against TypeConstraint on nodes — a match means the resource has the required skill.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type_names** | **List[str]** | A list of user-provided type-names. A Contraint type name must match to a Qualification type name to result in a violation free solution. | 
+**type_names** | **List[str]** | A list of user-provided type-names. A Constraint type name must match to a Qualification type name to result in a violation free solution. | 
 **type_name** | **str** | The typeName of the object | [default to 'Type']
 
 ## Example

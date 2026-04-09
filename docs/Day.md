@@ -1,12 +1,12 @@
 # Day
 
+Matches a specific day of the month (1–31).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_from** | [**Day**](Day.md) |  | [optional] 
-**to** | [**Day**](Day.md) |  | [optional] 
+**day** | **int** | Day of the month. | [optional] 
 
 ## Example
 

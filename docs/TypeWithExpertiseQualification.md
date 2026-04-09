@@ -1,11 +1,12 @@
 # TypeWithExpertiseQualification
 
+A string-based skill qualification with expertise levels. Declares a list of type-name/expertise pairs that the resource offers. Matched against TypeWithExpertiseConstraint on nodes to verify both skill presence and required expertise thresholds.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**types_with_expertise** | [**List[TypeWithExpertise]**](TypeWithExpertise.md) | A list of user-provided type-names and expertise levels. A Contraint type-name with its required expertise must be fulfill by the type-with-expertise Qualification to result in a violation free solution. | 
+**types_with_expertise** | [**List[TypeWithExpertise]**](TypeWithExpertise.md) | A list of user-provided type-names and expertise levels. A Constraint type-name with its required expertise must be fulfill by the type-with-expertise Qualification to result in a violation free solution. | 
 **type_name** | **str** | The typeName of the object | [default to 'TypeWithExpertise']
 
 ## Example

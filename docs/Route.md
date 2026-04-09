@@ -1,6 +1,6 @@
 # Route
 
-The routes of the solution.
+A single route within the optimization solution. Assigns a resource to a sequence of nodes with full scheduling details. Contains the route header (KPIs), start/end elements and positions, lists of optimizable, non-optimizable, optional, and pillar element ids, per-element scheduling details, and route-level flags.
 
 ## Properties
 
@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 **pillar_latest_effective_arrival_offset_map** | **Dict[str, int]** | The pillarLatestEffectiveArrivalOffsetMap. A map of additional time offsets for pillar elements. Each pillar has a latest possible arrival. As a route can consist of multiple pillars, the latest arrival at a certain pillar is also a function of  subsequent pillars. This latest arrival may shifted to a later time spot to allow shifitig a pillar around a normal node, even the normal node would fit before the pillar. | [optional] 
 **flags** | **List[str]** | The flags. A list of flags indicating statii like which source finalized a route. | [optional] 
 **additional_route_start_offset** | **int** | The additionalRouteStartOffset | [optional] 
-**is_finalized** | **bool** | The isFinalized. Describes if a route was undergoing finalization. | [optional] 
-**is_inactive** | **bool** | The isInactive boolean describes if a route is deactivated. | [optional] 
 **is_locked_down** | **bool** | The isLockedDown. Describes if a route was undergoing lockdown. | [optional] 
+**is_inactive** | **bool** | The isInactive boolean describes if a route is deactivated. | [optional] 
+**is_finalized** | **bool** | The isFinalized. Describes if a route was undergoing finalization. | [optional] 
 
 ## Example
 

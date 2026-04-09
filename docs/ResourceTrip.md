@@ -1,6 +1,6 @@
 # ResourceTrip
 
-Trips representing the route.
+A single trip segment between two elements on a route. Contains an encoded polyline for map rendering, the source and destination element ids, and optional raw JSON with additional trip metadata from the routing provider.
 
 ## Properties
 

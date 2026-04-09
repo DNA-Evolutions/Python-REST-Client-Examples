@@ -1,15 +1,15 @@
 # NodeRelation
 
-The list of relations
+The list of inter-node relations that impose ordering or co-assignment constraints between nodes. Supported relation types include SAME_ROUTE (nodes must be on the same route), SAME_VISITOR (nodes must be served by the same resource), DIFFERENT_ROUTE (nodes must not share a route), and relative time-window relations that enforce temporal precedence (e.g. node A must be visited before node B within a defined time gap).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**master_node_id** | **str** | The masterNodeId | 
-**related_node_ids** | **List[str]** | The relatedNodeIds | 
+**master_node_id** | **str** | The id of the master node in this relation. The master node serves as the anchor point — constraints are evaluated relative to this node&#39;s scheduling (e.g. &#39;master must be visited before related&#39;). | 
+**related_node_ids** | **List[str]** | The list of related node ids that are coupled to the master node via this relation. All listed nodes must satisfy the relation type (e.g. all must be on the same route as the master). | 
 **type** | [**NodeRelationType**](NodeRelationType.md) |  | 
-**relation_mode** | **str** | The relationMode | [optional] 
+**relation_mode** | **str** | The enforcement mode of this relation. STRONG (default) means the optimizer always respects it. WEAK allows the optimizer to violate the relation at a cost if no feasible solution can satisfy it. | [optional] 
 
 ## Example
 

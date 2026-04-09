@@ -1,13 +1,13 @@
 # NodeColorCapacity
 
-The nodeColorCapacities
+Per-color capacity limits for routes produced from this working hour. Controls the composition of the route by limiting how many nodes of a given color category may appear (e.g. at most 40% hazardous-goods stops). Overrides any resource-level color capacity when set at the working-hour level.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **node_color** | [**NodeColor**](NodeColor.md) |  | 
-**max_usage** | **float** | The maxUsage of the NodeColorCapacity | 
+**max_usage** | **float** | The maximum usage ratio (0.0–1.0) of this node color within a single route. For example, 0.5 means at most 50% of the nodes on a route may carry this color. | 
 
 ## Example
 

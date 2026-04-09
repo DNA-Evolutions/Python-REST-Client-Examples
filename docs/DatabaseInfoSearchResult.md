@@ -1,17 +1,25 @@
 # DatabaseInfoSearchResult
 
-DatabaseInfoSearchResult model for a serach result
+Metadata summary for a persisted optimization job. Fields absent in encrypted results (creator, ident, createdTimeStamp, status) are omitted from the response. The sec field is present only for encrypted results.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**creator** | **str** | An id related to the creator that is filled out autmatically | [optional] 
-**ident** | **str** | The ident of the optimization | [optional] 
-**created_time_stamp** | **int** | The timestamp the snapshot was created | [optional] 
-**type** | **str** | The orignal type of the search result | [optional] 
-**content_type** | **str** | The content type of the search result | [optional] 
-**id** | **str** | The unique id | [optional] 
+**id** | **str** | MongoDB document identifier. | [optional] 
+**length** | **int** | Size of the stored document in bytes. | [optional] 
+**upload_date** | **datetime** | Timestamp when the result document was written to GridFS. | [optional] 
+**content_type** | **str** | MIME type of the stored content. | [optional] 
+**job_id** | **str** | Unique job identifier. Matches the jobId from the JobAcceptedResponse and can be used directly with the job read endpoints. | [optional] 
+**tenant_id** | **str** | Tenant identifier under which this job was persisted. | [optional] 
+**type** | **str** | Internal type label of the persisted document. | [optional] 
+**compression** | **str** | Compression algorithm applied before storage. | [optional] 
+**encrypted** | **bool** | Whether this result is encrypted at rest. | [optional] 
+**expire_at** | **datetime** | Scheduled expiry time. The database will automatically remove this document after this timestamp. | [optional] 
+**creator** | **str** | Creator identifier associated with this job. Absent for client-encrypted results where cleartext metadata is not stored. | [optional] 
+**ident** | **str** | User-defined label assigned to the optimization run. Absent for client-encrypted results. | [optional] 
+**created_time_stamp** | **int** | Epoch-millisecond timestamp when the optimization was created internally. Absent for client-encrypted results. | [optional] 
+**status** | [**OptimizationStatus**](OptimizationStatus.md) |  | [optional] 
 **sec** | [**SecurityHelperItemMetadata**](SecurityHelperItemMetadata.md) |  | [optional] 
 
 ## Example

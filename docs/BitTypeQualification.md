@@ -1,11 +1,12 @@
 # BitTypeQualification
 
+A high-performance bitset-based skill qualification. Declares type names as integer identifiers that are matched via bitwise operations against BitTypeConstraint on nodes. Significantly faster than string-based matching for large-scale problems with many skill types.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type_names** | **List[str]** | A list of user-provided type-names. A Contraint type name must match to a Qualification type number (integer) to result in a violation free solution. | 
+**type_names** | **List[str]** | A list of user-provided type-names. A Constraint type name must match to a Qualification type number (integer) to result in a violation free solution. | 
 **type_name** | **str** | The typeName of the object | [default to 'BitType']
 
 ## Example

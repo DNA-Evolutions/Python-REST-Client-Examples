@@ -67,3 +67,13 @@ target/
 
 # Eclipse
 .settings/
+
+# IDE
+.vscode/
+.idea/
+
+# Sandbox marker
+.installed
+
+# Example output files
+OptimizationExportTest.json

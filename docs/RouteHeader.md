@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **distance** | **str** | The distance. The summed transit distance of the route. | 
 **termi_distance** | **str** | The termiDistance. The distance taken from the last element to the termination element of the route. | 
 **route_violations** | [**List[Violation]**](Violation.md) | The routeViolations. Violations that occur on route level. For example, overtime, overdistance etc. | 
-**is_alternate_destination** | **bool** | The isAlternateDestination boolean. Descibes of the Resource has an alternate destination. The Resource has to end it&#39;s Route at the alternate destination there but  will start from the original route start again the next working hour. | 
 **is_closed** | **bool** | The isClosed boolean describes if a Resource has to visit the termination element of the Route. By default, the start element and the termination element of a Route is the Resource itself. In case of a closed route, by default, the Resource returns to its original starting location. | 
+**is_alternate_destination** | **bool** | The isAlternateDestination boolean. Descibes of the Resource has an alternate destination. The Resource has to end it&#39;s Route at the alternate destination there but  will start from the original route start again the next working hour. | 
 
 ## Example
 

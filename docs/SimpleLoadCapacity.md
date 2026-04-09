@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **load_capacity_id** | **str** |  | [optional] 
-**max_capacity_value** | **int** |  | [optional] 
+**max_capacity_value** | **int** | The maximum individual load capacity of this depot entry. | [optional] 
 **type_name** | **str** | The typeName of the object | [default to 'SimpleLoadCapacity']
 
 ## Example

@@ -1,5 +1,6 @@
 # GeoNode
 
+A geographic node type with a physical position (latitude/longitude). Represents a customer location, delivery point, or field-service site that a resource must physically travel to.
 
 ## Properties
 

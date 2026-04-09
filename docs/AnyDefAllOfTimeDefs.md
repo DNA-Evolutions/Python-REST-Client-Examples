@@ -6,7 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type_name** | **str** |  | 
-**time_defs** | [**List[AnyDefAllOfTimeDefs]**](AnyDefAllOfTimeDefs.md) |  | [optional] 
+**time_defs** | [**List[AnyDefAllOfTimeDefs]**](AnyDefAllOfTimeDefs.md) | List of date predicates evaluated with OR logic. The containing AnyDef matches if at least one entry matches. | [optional] 
+**day** | **int** | ISO-8601 day of the week (1 &#x3D; Monday, 7 &#x3D; Sunday). | [optional] 
+**month** | **int** | Month of the year (1–12). | [optional] 
+**year** | **int** | Year. | [optional] 
 **var_from** | [**WeekDay**](WeekDay.md) |  | [optional] 
 **to** | [**WeekDay**](WeekDay.md) |  | [optional] 
 

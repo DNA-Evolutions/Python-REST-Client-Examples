@@ -1,11 +1,12 @@
 # AnyDef
 
+Composite date predicate that matches when ANY of the contained timeDefs match (logical OR). Each entry in timeDefs can be any concrete DateDef subtype. typeName must be \"Any\".
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time_defs** | [**List[AnyDefAllOfTimeDefs]**](AnyDefAllOfTimeDefs.md) |  | [optional] 
+**time_defs** | [**List[AnyDefAllOfTimeDefs]**](AnyDefAllOfTimeDefs.md) | List of date predicates evaluated with OR logic. The containing AnyDef matches if at least one entry matches. | [optional] 
 
 ## Example
 

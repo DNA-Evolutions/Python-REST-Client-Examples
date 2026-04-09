@@ -7,6 +7,8 @@ JOptOptimizationWarning model for the documentation
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **creator** | **str** | An id related to the creator that is filled out autmatically | [optional] 
+**job_id** | **str** | The jobId id. Will be filled out by the optimizer, if necessary | 
+**tenant_id** | **str** | The tenant id of the creator started this job. | 
 **ident** | **str** | The ident of the currently running optimization | 
 **message** | **str** | The info message | 
 **code** | **int** | The info message code | 

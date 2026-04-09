@@ -1,11 +1,12 @@
 # ZoneNumberConstraint
 
+A node constraint requiring the visiting resource to hold a ZoneNumberQualification covering this node's zone number. Unmatched assignments produce violations.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**zone_codes** | [**List[ZoneCodeType]**](ZoneCodeType.md) | The zoneCodes | 
+**zone_codes** | [**List[ZoneCodeType]**](ZoneCodeType.md) | The list of numeric zone codes that a resource must be qualified for to visit this node. Used in conjunction with ZoneNumberQualification on the resource side. | 
 **type_name** | **str** | The typeName of the object | [default to 'ZoneNumberConstraint']
 
 ## Example

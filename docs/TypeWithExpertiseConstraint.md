@@ -1,5 +1,6 @@
 # TypeWithExpertiseConstraint
 
+A string-based skill constraint with expertise levels on a node. Requires resources whose TypeWithExpertiseQualification matches both the type name and meets the minimum expertise level. Supports cost models for penalizing over- or under-qualified assignments.
 
 ## Properties
 

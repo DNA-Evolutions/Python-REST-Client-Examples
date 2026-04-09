@@ -3,9 +3,9 @@
 """
     DNA Evolutions - JOpt.TourOptimizer
 
-    This is DNA's JOpt.TourOptimizer service. A RESTful Spring Boot application using springdoc-openapi and OpenAPI 3. JOpt.TourOptimizer is a service that delivers route optimization and automatic scheduling features to be easily integrated into any third-party application. JOpt.TourOptimizer encapsulates all necessary optimization functionality and provides a comprehensive REST API that offers a domain-specific optimization interface for the transportation industry. The service is stateless and does not come with graphical user interfaces, map depiction or any databases. These extensions and adjustments are supposed to be introduced by the consumer of the service while integrating it into his/her own application. The service will allow for many suitable adjustments and user-specific settings to adjust the behaviour and optimization goals (e.g. minimizing distance, maximizing resource utilization, etc.) through a comprehensive set of functions. This will enable you to gain control of the complete optimization processes.This service is based on JOpt (7.5.3-j17)
+    # JOpt.TourOptimizer REST API  ![DNA Evolutions Logo](https://www.dna-evolutions.com/images/dna_logo.png)  JOpt.TourOptimizer is DNA Evolutions' route optimization and scheduling engine for transportation, field service, and resource planning scenarios.  This API is a **reactive Spring WebFlux REST service** with an **OpenAPI 3** contract, designed for integration into third-party systems and for generating typed client SDKs directly from the schema.  ---  ## Endpoint groups  ### Job endpoints (`job`)  The primary integration model for all deployments with a connected database.  Submit an optimization job with `POST /api/v1/jobs` and receive an HTTP 202 response containing a unique `jobId`. Use that jobId to poll for status, progress, warnings, errors, and the final result at any time — no open connection required.  | Endpoint | Description | Availability | |---|---|---| | `POST /api/v1/jobs` | Submit an async optimization job | All deployments | | `GET /api/v1/jobs/{jobId}/status` | Poll job status | All deployments | | `GET /api/v1/jobs/{jobId}/result` | Retrieve full optimization result | All deployments | | `GET /api/v1/jobs/{jobId}/solution` | Retrieve solution payload only | All deployments | | `GET /api/v1/jobs/{jobId}/progress` | Retrieve progress snapshots | All deployments | | `GET /api/v1/jobs/{jobId}/warnings` | Retrieve warning messages | All deployments | | `GET /api/v1/jobs/{jobId}/errors` | Retrieve error messages | All deployments | | `GET /api/v1/jobs/{jobId}/export` | Download result as ZIP archive | All deployments | | `POST /api/v1/jobs/{jobId}/stop` | Send graceful stop signal to a running job | All deployments | | `DELETE /api/v1/jobs/{jobId}` | Delete all persisted data for a job | All deployments | | `POST /api/v1/jobs/search` | Search jobs by metadata criteria | On-premise (free-search enabled) | | `POST /api/v1/jobs/import` | Import a pre-computed result directly | On-premise (import enabled) |  All job endpoints require the `X-Tenant-Id` header, injected by the API gateway. The `jobId` returned at submission is the only token needed for all subsequent reads.  ### Synchronous run endpoints (`optimization`)  Available on on-premise installations with synchronous mode enabled. The client holds the HTTP connection open and receives the result directly in the response body.  | Endpoint | Description | |---|---| | `POST /api/v1/runs` | Start a run, return runId immediately (HTTP 202) | | `GET /api/v1/runs/{runId}/result` | Block until run completes, return full result | | `GET /api/v1/runs/{runId}/solution` | Block until run completes, return solution only | | `DELETE /api/v1/runs/{runId}` | Stop the run gracefully | | `GET /api/v1/runs/{runId}/started` | One-shot signal when the run has started |  ### Event stream endpoints (`stream`)  Server-Sent Event streams for monitoring a running synchronous optimization in near real time. Subscribe to one or more streams while a `POST /api/v1/runs` call is in progress.  | Endpoint | Event type | |---|---| | `GET /api/v1/runs/{runId}/stream/progress` | Progress percentage and timing | | `GET /api/v1/runs/{runId}/stream/status` | Lifecycle status transitions | | `GET /api/v1/runs/{runId}/stream/warnings` | Non-fatal solver warnings | | `GET /api/v1/runs/{runId}/stream/errors` | Solver error events |  ### Health endpoint (`health`)  | Endpoint | Description | |---|---| | `GET /api/v1/health` | Service liveness and readiness |  ---  ## Deployment modes and feature flags  Endpoints that require specific conditions are activated via Spring `@Conditional` annotations and application properties. Endpoints not active in a given deployment are absent from the service entirely and do not appear in the runtime spec.  | Condition | Property / annotation | Effect | |---|---|---| | Database connected | `DatabaseEnabledCondition` | Activates all `job` endpoints | | Sync mode | `SynchControllersEnabledCondition` | Activates `optimization` and `stream` endpoints | | Free search | `DatabaseFreeSearchEnabledCondition` | Activates `POST /api/v1/jobs/search` | | Import | `DatabaseJobImportEnabledCondition` | Activates `POST /api/v1/jobs/import` |  ---  ## Tenant isolation  Every job endpoint is scoped by `X-Tenant-Id`, injected by the API gateway. Persisted documents are tagged with both `jobId` and `tenantId`. A request with a valid `jobId` but a mismatched `tenantId` returns no data. The `jobId` is a UUID v4 (122 bits of randomness) and is not a security credential — security is enforced by the verified `tenantId` from the gateway header.  ---  ## Encryption at rest  Results can be stored encrypted in two modes:  - **CLIENT mode**: key derived from a caller-provided passphrase via PBKDF2.   Pass the same secret in `X-Encryption-Secret` when reading back. - **KMS mode**: server-generated data encryption key (DEK) wrapped by an   external key management service (Azure Key Vault, AWS KMS). Decryption is   transparent to the caller.  The `encrypted` and `sec` fields in `DatabaseInfoSearchResult` indicate which mode was used for each stored result.  ---  ## Client generation  The OpenAPI schema can be used to generate typed clients for any language. The `operationId` values follow `{verb}{Resource}` lowerCamelCase convention (`createJob`, `getJobResult`, `listJobs`, etc.) for predictable generated method names.  ---  This service is based on **JOpt Core (unknown)**. 
 
-    The version of the OpenAPI document: 1.3.3-SNAPSHOT
+    The version of the OpenAPI document: 1.3.5-SNAPSHOT
     Contact: info@dna-evolutions.com
     Generated by OpenAPI Generator (https://openapi-generator.tech)
 
@@ -33,7 +33,7 @@ from typing_extensions import Self
 
 class Node(BaseModel):
     """
-    The list of nodes
+    A work item, customer location, or event to be scheduled and assigned to a resource. Each node defines a type (GeoNode, EventNode, or pillar variants), opening-hour windows, a required visit duration, and optional constraints, pickup-and-delivery loads, priority, node color, and relations to other nodes.
     """ # noqa: E501
     id: StrictStr = Field(description="The unique id of the node. It is not possible, to create mutliple elements (also Resources) with the same id.")
     extra_info: Optional[StrictStr] = Field(default=None, description="A custom extra info string that is attached to the Node.", alias="extraInfo")
@@ -45,32 +45,34 @@ class Node(BaseModel):
     constraints: Optional[List[Constraint]] = Field(default=None, description="The constraints of this node")
     offered_node: Optional[OfferedNode] = Field(default=None, alias="offeredNode")
     load_dimension: Optional[LoadDimension] = Field(default=None, alias="loadDimension")
-    load: Optional[List[Union[StrictFloat, StrictInt]]] = Field(default=None, description="The load")
+    load: Optional[List[Union[StrictFloat, StrictInt]]] = Field(default=None, description="The multi-dimensional load vector for this node in pickup-and-delivery scenarios. Each element corresponds to a capacity dimension on the resource (e.g. weight, volume, pallet count). Positive values typically represent demand (delivery), while the interpretation depends on the loadDimension configuration.")
     qualifications: Optional[List[Qualification]] = Field(default=None, description="The qualifications of the node.")
-    lockdown_time: Optional[StrictInt] = Field(default=None, description="The lockdownTime", alias="lockdownTime")
+    lockdown_time: Optional[StrictInt] = Field(default=None, description="An optional lockdown time (in milliseconds) during which this node cannot be reassigned or moved by the optimizer after initial placement. Useful for protecting confirmed appointments from being rescheduled during re-optimization runs.", alias="lockdownTime")
     fix_cost: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The fixCost defines an abstract cost that arrises when this node is visited.", alias="fixCost")
     priority: Optional[StrictInt] = Field(default=None, description="The priority of the node. A higher priority leads to a higher cost if a node shows violations. As the Optimizer tries to reduce cost, a higher priority results in lower chance  of seeing violations on this node. However, if all nodes of an Optimization have a priority, the effect vanishes.")
     priority_first: Optional[StrictInt] = Field(default=None, description="The priorityFirst defines if we want a node to be the first node in a route-solution.", alias="priorityFirst")
     priority_last: Optional[StrictInt] = Field(default=None, description="The priorityLast defines if we want a node to be the last node in a route-solution.", alias="priorityLast")
     node_color: Optional[NodeColor] = Field(default=None, alias="nodeColor")
-    min_auto_filter_protected_executions: Optional[StrictInt] = Field(default=None, description="The minAutoFilterProtectedExecutions", alias="minAutoFilterProtectedExecutions")
+    min_auto_filter_protected_executions: Optional[StrictInt] = Field(default=None, description="The minimum number of optimization executions during which this node is protected from being removed by the AutoFilter. After this many executions, the AutoFilter may exclude this node if it consistently causes infeasibility. Set to 0 (default) to allow immediate filtering.", alias="minAutoFilterProtectedExecutions")
     node_depot: Optional[INodeDepot] = Field(default=None, alias="nodeDepot")
-    route_dependent_visit_duration: Optional[StrictBool] = Field(default=False, description="The routeDependentVisitDuration", alias="routeDependentVisitDuration")
-    allow_move_to_reduce_flex_time: Optional[StrictBool] = Field(default=False, description="The allowMoveToReduceFlexTime", alias="allowMoveToReduceFlexTime")
-    min_visit_duration: Optional[StrictStr] = Field(default=None, description="The minVisitDuration", alias="minVisitDuration")
+    route_dependent_visit_duration: Optional[StrictBool] = Field(default=False, description="If true, the actual visit duration at this node may be adjusted based on the resource's visitDurationEfficiency factor. A more efficient resource completes the task faster (down to minVisitDuration). If false, the visitDuration is fixed regardless of which resource visits.", alias="routeDependentVisitDuration")
+    allow_move_to_reduce_flex_time: Optional[StrictBool] = Field(default=False, description="If true, the optimizer is allowed to reposition this node within the route sequence specifically to reduce the resource's flex-time usage. Useful when minimizing flex-time consumption is a priority (e.g. contractual constraints on early/late start deviations).", alias="allowMoveToReduceFlexTime")
+    min_visit_duration: Optional[StrictStr] = Field(default=None, description="The minimum visit duration floor when routeDependentVisitDuration is enabled. Even if the resource's efficiency factor would reduce the visit time further, it cannot go below this threshold. Ensures a realistic minimum service time regardless of resource skill level.", alias="minVisitDuration")
     joint_visit_duration: Optional[StrictStr] = Field(default=None, description="The jointVisitDuration. If nodes are situated closely to each other (defined via property 'JOpt.JointVisitDuration.maxRadiusMeter') a joint visit duration can be defined. For example, 3 nodes have a visit duration of 20 minutes each. The  joint visit duration for ALL nodes is set to be 10 minutes. Further, they are close enough to each other, that the joint visit duration logic can be triggered. The optimizer finds a solution in which all three nodes are visted in direct succession. The first node (of the three) needs to be visted for the original visit duration of 20 minutes. The seconds and third nodes only needs to be visited for 10 minutes.", alias="jointVisitDuration")
-    return_start_duration: Optional[StrictStr] = Field(default=None, description="The returnStartDuration", alias="returnStartDuration")
+    return_start_duration: Optional[StrictStr] = Field(default=None, description="The duration the resource must spend at this node before returning to the route start location (return-to-start behavior). Used in scenarios where a resource must revisit its depot mid-route (e.g. to reload supplies) and the node acts as a return-to-start trigger point.", alias="returnStartDuration")
     is_optimizable: Optional[StrictBool] = Field(default=True, description="The boolean isOptimizable. Defines if a node is optimizable. This property will be auto-defined by the optimizer..", alias="isOptimizable")
     is_optional: Optional[StrictBool] = Field(default=False, description="The boolean isOptional. If a node is optional, the Optimizer can decide on its own, if the node is visited or not. Usually, this settings only makes sense in PND problems.", alias="isOptional")
     is_unassigned: Optional[StrictBool] = Field(default=False, description="The boolean isUnassigned. Defines if a node was unassigned by the Optimizer.", alias="isUnassigned")
-    is_unlocated_hub_connection_time: Optional[StrictBool] = Field(default=False, description="False: If a resource in hub mode deals with this node, the earlist openingHours start of the node describes the earlist time the resource can start working on the node. TRUE:  If a resource in hub mode deals with this node, the connection time is added to the earlist openinghour start of the node, effectively acting as offset. This can be used for example, for shipping scnearios where a package takes 3 days.", alias="isUnlocatedHubConnectionTime")
-    is_wait_on_early_arrival_first_node: Optional[StrictBool] = Field(default=False, description="The boolean isWaitOnEarlyArrivalFirstNode. In case a Resources reaches the FIRST node of a route too early (before the start of the node's OpeningHours),\"              + \" the Resource can either start working direclty (true) or wait for the FIRST node to open (false, default). This setting only takes action if isWaitOnEarlyArrival is set to true.", alias="isWaitOnEarlyArrivalFirstNode")
+    is_ignore_on_zero_duration: Optional[StrictBool] = Field(default=False, description="If true, this node is excluded from routing whenever its visit duration is zero. A node with zero visit duration contributes no service time to a route, so visiting it provides no operational value. Enabling this flag allows the optimizer to skip such nodes automatically, reducing route length and travel cost. Defaults to false.", alias="isIgnoreOnZeroDuration")
     is_causing_idle_time_cost: Optional[StrictBool] = Field(default=True, description="The boolean isCausingIdleTimeCost. By default, waiting at a node to open is creating idle time cost. As the Optimizer tries to reduce cost, it will also try to reschedule nodes if idle time cost is generated. In some problem setups (especially problems of the kind: Low node count, high WorkingHours availability) it may be desired to keep the position of the nodes, even though idle time is created.", alias="isCausingIdleTimeCost")
-    is_opening_hours_includes_duration: Optional[StrictBool] = Field(default=True, description="The boolean isOpeningHoursIncludesDuration. By default a node's openingHour defines the time-window  in which a task has to be fulfilled, meaning a Visitor has to arrive, work, and leave within that time-window. If isOpeningHoursIncludesDuration is set to false, the time-window only counts as arrival-window for the Resource.", alias="isOpeningHoursIncludesDuration")
+    is_wait_on_early_arrival_first_node: Optional[StrictBool] = Field(default=False, description="The boolean isWaitOnEarlyArrivalFirstNode. In case a Resources reaches the FIRST node of a route too early (before the start of the node's OpeningHours),\"              + \" the Resource can either start working direclty (true) or wait for the FIRST node to open (false, default). This setting only takes action if isWaitOnEarlyArrival is set to true.", alias="isWaitOnEarlyArrivalFirstNode")
     is_wait_on_early_arrival: Optional[StrictBool] = Field(default=True, description="The boolean isWaitOnEarlyArrival. In case a Resources reaches a node too early (before the start of the node's OpeningHours), the Resource can either start working direclty (false) or wait for the node to open (true, default).", alias="isWaitOnEarlyArrival")
+    is_unlocated_hub_connection_time: Optional[StrictBool] = Field(default=False, description="False: If a resource in hub mode deals with this node, the earlist openingHours start of the node describes the earlist time the resource can start working on the node. TRUE:  If a resource in hub mode deals with this node, the connection time is added to the earlist openinghour start of the node, effectively acting as offset. This can be used for example, for shipping scnearios where a package takes 3 days.", alias="isUnlocatedHubConnectionTime")
+    is_opening_hours_includes_duration: Optional[StrictBool] = Field(default=True, description="The boolean isOpeningHoursIncludesDuration. By default a node's openingHour defines the time-window  in which a task has to be fulfilled, meaning a Visitor has to arrive, work, and leave within that time-window. If isOpeningHoursIncludesDuration is set to false, the time-window only counts as arrival-window for the Resource.", alias="isOpeningHoursIncludesDuration")
+    is_work_node: Optional[StrictBool] = Field(default=True, description="DEPRECATED. Defines whether this node represents actual productive work. When false, the node is treated as a non-productive stop (e.g. a waypoint or break location). This field is deprecated and may be removed in a future version.", alias="isWorkNode")
     is_stay_node: Optional[StrictBool] = Field(default=False, description="The boolean isStayNode defines if a node is capable to be a stay node. A stay node overrides the route termination element of a route, and the route start element of the next route and is  used in the context of 'overnight-stays'.", alias="isStayNode")
-    is_work_node: Optional[StrictBool] = Field(default=True, description="The isWorkNode", alias="isWorkNode")
-    __properties: ClassVar[List[str]] = ["id", "extraInfo", "locationId", "constraintAliasId", "type", "openingHours", "visitDuration", "constraints", "offeredNode", "loadDimension", "load", "qualifications", "lockdownTime", "fixCost", "priority", "priorityFirst", "priorityLast", "nodeColor", "minAutoFilterProtectedExecutions", "nodeDepot", "routeDependentVisitDuration", "allowMoveToReduceFlexTime", "minVisitDuration", "jointVisitDuration", "returnStartDuration", "isOptimizable", "isOptional", "isUnassigned", "isUnlocatedHubConnectionTime", "isWaitOnEarlyArrivalFirstNode", "isCausingIdleTimeCost", "isOpeningHoursIncludesDuration", "isWaitOnEarlyArrival", "isStayNode", "isWorkNode"]
+    is_ignore_on_zero_load: Optional[StrictBool] = Field(default=False, description="If true, this node is excluded from routing whenever its effective load exchange is zero at the time of evaluation. For supply nodes this means the node is skipped once its available supply has been fully consumed. For request nodes (including coupled split-nodes) this means the node is suppressed when the optimizer has assigned zero demand to it - for example, when a coupled partner already carries the full group total. Setting this flag reduces unnecessary route stops and lowers travel cost without affecting the coupling invariant, since a zero-load node contributes nothing to the delivery. Defaults to false.", alias="isIgnoreOnZeroLoad")
+    __properties: ClassVar[List[str]] = ["id", "extraInfo", "locationId", "constraintAliasId", "type", "openingHours", "visitDuration", "constraints", "offeredNode", "loadDimension", "load", "qualifications", "lockdownTime", "fixCost", "priority", "priorityFirst", "priorityLast", "nodeColor", "minAutoFilterProtectedExecutions", "nodeDepot", "routeDependentVisitDuration", "allowMoveToReduceFlexTime", "minVisitDuration", "jointVisitDuration", "returnStartDuration", "isOptimizable", "isOptional", "isUnassigned", "isIgnoreOnZeroDuration", "isCausingIdleTimeCost", "isWaitOnEarlyArrivalFirstNode", "isWaitOnEarlyArrival", "isUnlocatedHubConnectionTime", "isOpeningHoursIncludesDuration", "isWorkNode", "isStayNode", "isIgnoreOnZeroLoad"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -172,40 +174,50 @@ class Node(BaseModel):
         if self.is_unassigned is None and "is_unassigned" in self.model_fields_set:
             _dict['isUnassigned'] = None
 
-        # set to None if is_unlocated_hub_connection_time (nullable) is None
+        # set to None if is_ignore_on_zero_duration (nullable) is None
         # and model_fields_set contains the field
-        if self.is_unlocated_hub_connection_time is None and "is_unlocated_hub_connection_time" in self.model_fields_set:
-            _dict['isUnlocatedHubConnectionTime'] = None
-
-        # set to None if is_wait_on_early_arrival_first_node (nullable) is None
-        # and model_fields_set contains the field
-        if self.is_wait_on_early_arrival_first_node is None and "is_wait_on_early_arrival_first_node" in self.model_fields_set:
-            _dict['isWaitOnEarlyArrivalFirstNode'] = None
+        if self.is_ignore_on_zero_duration is None and "is_ignore_on_zero_duration" in self.model_fields_set:
+            _dict['isIgnoreOnZeroDuration'] = None
 
         # set to None if is_causing_idle_time_cost (nullable) is None
         # and model_fields_set contains the field
         if self.is_causing_idle_time_cost is None and "is_causing_idle_time_cost" in self.model_fields_set:
             _dict['isCausingIdleTimeCost'] = None
 
-        # set to None if is_opening_hours_includes_duration (nullable) is None
+        # set to None if is_wait_on_early_arrival_first_node (nullable) is None
         # and model_fields_set contains the field
-        if self.is_opening_hours_includes_duration is None and "is_opening_hours_includes_duration" in self.model_fields_set:
-            _dict['isOpeningHoursIncludesDuration'] = None
+        if self.is_wait_on_early_arrival_first_node is None and "is_wait_on_early_arrival_first_node" in self.model_fields_set:
+            _dict['isWaitOnEarlyArrivalFirstNode'] = None
 
         # set to None if is_wait_on_early_arrival (nullable) is None
         # and model_fields_set contains the field
         if self.is_wait_on_early_arrival is None and "is_wait_on_early_arrival" in self.model_fields_set:
             _dict['isWaitOnEarlyArrival'] = None
 
-        # set to None if is_stay_node (nullable) is None
+        # set to None if is_unlocated_hub_connection_time (nullable) is None
         # and model_fields_set contains the field
-        if self.is_stay_node is None and "is_stay_node" in self.model_fields_set:
-            _dict['isStayNode'] = None
+        if self.is_unlocated_hub_connection_time is None and "is_unlocated_hub_connection_time" in self.model_fields_set:
+            _dict['isUnlocatedHubConnectionTime'] = None
+
+        # set to None if is_opening_hours_includes_duration (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_opening_hours_includes_duration is None and "is_opening_hours_includes_duration" in self.model_fields_set:
+            _dict['isOpeningHoursIncludesDuration'] = None
 
         # set to None if is_work_node (nullable) is None
         # and model_fields_set contains the field
         if self.is_work_node is None and "is_work_node" in self.model_fields_set:
             _dict['isWorkNode'] = None
+
+        # set to None if is_stay_node (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_stay_node is None and "is_stay_node" in self.model_fields_set:
+            _dict['isStayNode'] = None
+
+        # set to None if is_ignore_on_zero_load (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_ignore_on_zero_load is None and "is_ignore_on_zero_load" in self.model_fields_set:
+            _dict['isIgnoreOnZeroLoad'] = None
 
         return _dict
 
@@ -247,13 +259,15 @@ class Node(BaseModel):
             "isOptimizable": obj.get("isOptimizable") if obj.get("isOptimizable") is not None else True,
             "isOptional": obj.get("isOptional") if obj.get("isOptional") is not None else False,
             "isUnassigned": obj.get("isUnassigned") if obj.get("isUnassigned") is not None else False,
-            "isUnlocatedHubConnectionTime": obj.get("isUnlocatedHubConnectionTime") if obj.get("isUnlocatedHubConnectionTime") is not None else False,
-            "isWaitOnEarlyArrivalFirstNode": obj.get("isWaitOnEarlyArrivalFirstNode") if obj.get("isWaitOnEarlyArrivalFirstNode") is not None else False,
+            "isIgnoreOnZeroDuration": obj.get("isIgnoreOnZeroDuration") if obj.get("isIgnoreOnZeroDuration") is not None else False,
             "isCausingIdleTimeCost": obj.get("isCausingIdleTimeCost") if obj.get("isCausingIdleTimeCost") is not None else True,
-            "isOpeningHoursIncludesDuration": obj.get("isOpeningHoursIncludesDuration") if obj.get("isOpeningHoursIncludesDuration") is not None else True,
+            "isWaitOnEarlyArrivalFirstNode": obj.get("isWaitOnEarlyArrivalFirstNode") if obj.get("isWaitOnEarlyArrivalFirstNode") is not None else False,
             "isWaitOnEarlyArrival": obj.get("isWaitOnEarlyArrival") if obj.get("isWaitOnEarlyArrival") is not None else True,
+            "isUnlocatedHubConnectionTime": obj.get("isUnlocatedHubConnectionTime") if obj.get("isUnlocatedHubConnectionTime") is not None else False,
+            "isOpeningHoursIncludesDuration": obj.get("isOpeningHoursIncludesDuration") if obj.get("isOpeningHoursIncludesDuration") is not None else True,
+            "isWorkNode": obj.get("isWorkNode") if obj.get("isWorkNode") is not None else True,
             "isStayNode": obj.get("isStayNode") if obj.get("isStayNode") is not None else False,
-            "isWorkNode": obj.get("isWorkNode") if obj.get("isWorkNode") is not None else True
+            "isIgnoreOnZeroLoad": obj.get("isIgnoreOnZeroLoad") if obj.get("isIgnoreOnZeroLoad") is not None else False
         })
         return _obj
 

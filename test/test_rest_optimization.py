@@ -3,9 +3,9 @@
 """
     DNA Evolutions - JOpt.TourOptimizer
 
-    This is DNA's JOpt.TourOptimizer service. A RESTful Spring Boot application using springdoc-openapi and OpenAPI 3. JOpt.TourOptimizer is a service that delivers route optimization and automatic scheduling features to be easily integrated into any third-party application. JOpt.TourOptimizer encapsulates all necessary optimization functionality and provides a comprehensive REST API that offers a domain-specific optimization interface for the transportation industry. The service is stateless and does not come with graphical user interfaces, map depiction or any databases. These extensions and adjustments are supposed to be introduced by the consumer of the service while integrating it into his/her own application. The service will allow for many suitable adjustments and user-specific settings to adjust the behaviour and optimization goals (e.g. minimizing distance, maximizing resource utilization, etc.) through a comprehensive set of functions. This will enable you to gain control of the complete optimization processes.This service is based on JOpt (7.5.3-j17)
+    # JOpt.TourOptimizer REST API  ![DNA Evolutions Logo](https://www.dna-evolutions.com/images/dna_logo.png)  JOpt.TourOptimizer is DNA Evolutions' route optimization and scheduling engine for transportation, field service, and resource planning scenarios.  This API is a **reactive Spring WebFlux REST service** with an **OpenAPI 3** contract, designed for integration into third-party systems and for generating typed client SDKs directly from the schema.  ---  ## Endpoint groups  ### Job endpoints (`job`)  The primary integration model for all deployments with a connected database.  Submit an optimization job with `POST /api/v1/jobs` and receive an HTTP 202 response containing a unique `jobId`. Use that jobId to poll for status, progress, warnings, errors, and the final result at any time — no open connection required.  | Endpoint | Description | Availability | |---|---|---| | `POST /api/v1/jobs` | Submit an async optimization job | All deployments | | `GET /api/v1/jobs/{jobId}/status` | Poll job status | All deployments | | `GET /api/v1/jobs/{jobId}/result` | Retrieve full optimization result | All deployments | | `GET /api/v1/jobs/{jobId}/solution` | Retrieve solution payload only | All deployments | | `GET /api/v1/jobs/{jobId}/progress` | Retrieve progress snapshots | All deployments | | `GET /api/v1/jobs/{jobId}/warnings` | Retrieve warning messages | All deployments | | `GET /api/v1/jobs/{jobId}/errors` | Retrieve error messages | All deployments | | `GET /api/v1/jobs/{jobId}/export` | Download result as ZIP archive | All deployments | | `POST /api/v1/jobs/{jobId}/stop` | Send graceful stop signal to a running job | All deployments | | `DELETE /api/v1/jobs/{jobId}` | Delete all persisted data for a job | All deployments | | `POST /api/v1/jobs/search` | Search jobs by metadata criteria | On-premise (free-search enabled) | | `POST /api/v1/jobs/import` | Import a pre-computed result directly | On-premise (import enabled) |  All job endpoints require the `X-Tenant-Id` header, injected by the API gateway. The `jobId` returned at submission is the only token needed for all subsequent reads.  ### Synchronous run endpoints (`optimization`)  Available on on-premise installations with synchronous mode enabled. The client holds the HTTP connection open and receives the result directly in the response body.  | Endpoint | Description | |---|---| | `POST /api/v1/runs` | Start a run, return runId immediately (HTTP 202) | | `GET /api/v1/runs/{runId}/result` | Block until run completes, return full result | | `GET /api/v1/runs/{runId}/solution` | Block until run completes, return solution only | | `DELETE /api/v1/runs/{runId}` | Stop the run gracefully | | `GET /api/v1/runs/{runId}/started` | One-shot signal when the run has started |  ### Event stream endpoints (`stream`)  Server-Sent Event streams for monitoring a running synchronous optimization in near real time. Subscribe to one or more streams while a `POST /api/v1/runs` call is in progress.  | Endpoint | Event type | |---|---| | `GET /api/v1/runs/{runId}/stream/progress` | Progress percentage and timing | | `GET /api/v1/runs/{runId}/stream/status` | Lifecycle status transitions | | `GET /api/v1/runs/{runId}/stream/warnings` | Non-fatal solver warnings | | `GET /api/v1/runs/{runId}/stream/errors` | Solver error events |  ### Health endpoint (`health`)  | Endpoint | Description | |---|---| | `GET /api/v1/health` | Service liveness and readiness |  ---  ## Deployment modes and feature flags  Endpoints that require specific conditions are activated via Spring `@Conditional` annotations and application properties. Endpoints not active in a given deployment are absent from the service entirely and do not appear in the runtime spec.  | Condition | Property / annotation | Effect | |---|---|---| | Database connected | `DatabaseEnabledCondition` | Activates all `job` endpoints | | Sync mode | `SynchControllersEnabledCondition` | Activates `optimization` and `stream` endpoints | | Free search | `DatabaseFreeSearchEnabledCondition` | Activates `POST /api/v1/jobs/search` | | Import | `DatabaseJobImportEnabledCondition` | Activates `POST /api/v1/jobs/import` |  ---  ## Tenant isolation  Every job endpoint is scoped by `X-Tenant-Id`, injected by the API gateway. Persisted documents are tagged with both `jobId` and `tenantId`. A request with a valid `jobId` but a mismatched `tenantId` returns no data. The `jobId` is a UUID v4 (122 bits of randomness) and is not a security credential — security is enforced by the verified `tenantId` from the gateway header.  ---  ## Encryption at rest  Results can be stored encrypted in two modes:  - **CLIENT mode**: key derived from a caller-provided passphrase via PBKDF2.   Pass the same secret in `X-Encryption-Secret` when reading back. - **KMS mode**: server-generated data encryption key (DEK) wrapped by an   external key management service (Azure Key Vault, AWS KMS). Decryption is   transparent to the caller.  The `encrypted` and `sec` fields in `DatabaseInfoSearchResult` indicate which mode was used for each stored result.  ---  ## Client generation  The OpenAPI schema can be used to generate typed clients for any language. The `operationId` values follow `{verb}{Resource}` lowerCamelCase convention (`createJob`, `getJobResult`, `listJobs`, etc.) for predictable generated method names.  ---  This service is based on **JOpt Core (unknown)**. 
 
-    The version of the OpenAPI document: 1.3.3-SNAPSHOT
+    The version of the OpenAPI document: 1.3.5-SNAPSHOT
     Contact: info@dna-evolutions.com
     Generated by OpenAPI Generator (https://openapi-generator.tech)
 
@@ -68,6 +68,7 @@ class TestRestOptimization(unittest.TestCase):
                         visit_duration = 'PT60M', 
                         constraints = [
                             touroptimizer_py_client.models.constraint.Constraint(
+                                initial_class_name = '', 
                                 type = touroptimizer_py_client.models.constraint_type.ConstraintType(
                                     type_name = '', ), 
                                 is_hard = True, )
@@ -100,15 +101,13 @@ class TestRestOptimization(unittest.TestCase):
                             items = [
                                 touroptimizer_py_client.models.i_load.ILoad(
                                     priority = 56, 
-                                    fuzzy_visit = True, 
                                     load_value = 1.337, 
                                     request = True, 
+                                    fuzzy_visit = True, 
                                     id = '', 
                                     type_name = '', )
                                 ], 
-                            has_flex_load = True, 
                             depot_id = '', 
-                            has_timed_loads = True, 
                             type_name = '', ), 
                         route_dependent_visit_duration = True, 
                         allow_move_to_reduce_flex_time = True, 
@@ -118,17 +117,19 @@ class TestRestOptimization(unittest.TestCase):
                         is_optimizable = True, 
                         is_optional = True, 
                         is_unassigned = True, 
-                        is_unlocated_hub_connection_time = True, 
-                        is_wait_on_early_arrival_first_node = True, 
+                        is_ignore_on_zero_duration = True, 
                         is_causing_idle_time_cost = True, 
-                        is_opening_hours_includes_duration = True, 
+                        is_wait_on_early_arrival_first_node = True, 
                         is_wait_on_early_arrival = True, 
+                        is_unlocated_hub_connection_time = True, 
+                        is_opening_hours_includes_duration = True, 
+                        is_work_node = True, 
                         is_stay_node = True, 
-                        is_work_node = True, )
+                        is_ignore_on_zero_load = True, )
                     ],
                 resources = [
                     touroptimizer_py_client.models.resource.Resource(
-                        id = 'MyResouce', 
+                        id = 'MyResource', 
                         extra_info = 'My custom extra info', 
                         location_id = 'MySecondResource', 
                         constraint_alias_id = 'Jane', 
@@ -168,7 +169,7 @@ class TestRestOptimization(unittest.TestCase):
                                 max_time = 'PT480M', 
                                 max_distance = '800.0 km', 
                                 stay_out_cycle_definition = touroptimizer_py_client.models.stay_out_cycle_definition.StayOutCycleDefinition(
-                                    cycle_lenght = 'PT7D', 
+                                    cycle_length = 'PT7D', 
                                     cycle_start = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), ), 
                                 start_reduction_time_definition = touroptimizer_py_client.models.start_reduction_time_definition.StartReductionTimeDefinition(
                                     max_route_start_reduction_time = 'PT30M', 
@@ -192,12 +193,14 @@ class TestRestOptimization(unittest.TestCase):
                                     ], 
                                 working_hours_constraints = [
                                     touroptimizer_py_client.models.constraint.Constraint(
+                                        initial_class_name = '', 
                                         type = touroptimizer_py_client.models.constraint_type.ConstraintType(
                                             type_name = '', ), 
                                         is_hard = True, )
                                     ], 
                                 multi_working_hours_constraints = [
                                     touroptimizer_py_client.models.constraint.Constraint(
+                                        initial_class_name = '', 
                                         type = touroptimizer_py_client.models.constraint_type.ConstraintType(
                                             type_name = '', ), 
                                         is_hard = True, )
@@ -221,8 +224,8 @@ class TestRestOptimization(unittest.TestCase):
                                         to_element_id = 'MyToElementId', )
                                     ], 
                                 is_local_service_hub = True, 
-                                is_available_for_stay = True, 
-                                is_closed_route = True, )
+                                is_closed_route = True, 
+                                is_available_for_stay = True, )
                             ], 
                         max_time = 'PT8H', 
                         max_distance = '100.0 km', 
@@ -235,7 +238,7 @@ class TestRestOptimization(unittest.TestCase):
                             max_stays_out_in_row = 56, 
                             min_recovery = 'PT1D', ), 
                         stay_out_cycle_definition = touroptimizer_py_client.models.stay_out_cycle_definition.StayOutCycleDefinition(
-                            cycle_lenght = 'PT7D', 
+                            cycle_length = 'PT7D', 
                             cycle_start = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), ), 
                         stay_out_policy_time = 'PT1H', 
                         stay_out_policy_distance = '100.0 km', 
@@ -304,8 +307,8 @@ class TestRestOptimization(unittest.TestCase):
                                 }, 
                             type_name = '', ), 
                         overall_visit_duration_efficiency = 1.5, 
-                        is_reduction_time_only_used_for_driving = True, 
                         is_reduction_time_included_in_total_working_time = True, 
+                        is_reduction_time_only_used_for_driving = True, 
                         is_service_hub = True, )
                     ],
                 node_relations = [
@@ -480,20 +483,16 @@ class TestRestOptimization(unittest.TestCase):
                                         items = [
                                             touroptimizer_py_client.models.i_load.ILoad(
                                                 priority = 56, 
-                                                fuzzy_visit = True, 
                                                 load_value = 1.337, 
                                                 request = True, 
+                                                fuzzy_visit = True, 
                                                 id = '', 
                                                 type_name = '', )
                                             ], 
-                                        has_flex_load = True, 
                                         depot_id = '', 
-                                        has_timed_loads = True, 
                                         type_name = '', ), 
                                     after_visit_node_depot = touroptimizer_py_client.models.i_node_depot.INodeDepot(
-                                        has_flex_load = True, 
                                         depot_id = '', 
-                                        has_timed_loads = True, 
                                         type_name = '', ), 
                                     node_violations = [
                                         touroptimizer_py_client.models.violation.Violation(
@@ -514,9 +513,9 @@ class TestRestOptimization(unittest.TestCase):
                                 'FINALIZED_PILLARFORCEARRANGER'
                                 ], 
                             additional_route_start_offset = 56, 
-                            is_finalized = False, 
+                            is_locked_down = False, 
                             is_inactive = False, 
-                            is_locked_down = False, )
+                            is_finalized = False, )
                         ], ),
                 extension = touroptimizer_py_client.models.json_config.JSONConfig(
                     creator_setting = touroptimizer_py_client.models.creator_setting.CreatorSetting(
@@ -531,16 +530,17 @@ class TestRestOptimization(unittest.TestCase):
                             require_unique_ident_creator_combination = True, 
                             secret = '', 
                             expiry = 'PT48H', 
-                            optimization_persistence_stratgy_setting = touroptimizer_py_client.models.optimization_persistence_stratgy_setting.OptimizationPersistenceStratgySetting(
-                                save_only_result = False, 
+                            optimization_persistence_strategy_setting = touroptimizer_py_client.models.optimization_persistence_strategy_setting.OptimizationPersistenceStrategySetting(
                                 save_connections = False, ), 
-                            stream_persistence_stratgy_setting = touroptimizer_py_client.models.stream_persistence_stratgy_setting.StreamPersistenceStratgySetting(
+                            stream_persistence_strategy_setting = touroptimizer_py_client.models.stream_persistence_strategy_setting.StreamPersistenceStrategySetting(
                                 save_progress = True, 
                                 cycle_progress = True, 
                                 save_status = True, 
                                 cycle_status = True, 
                                 save_warning = True, 
-                                save_error = True, ), ), ), 
+                                save_error = True, ), 
+                            completion_webhook_url = '', 
+                            completion_webhook_secret = '', ), ), 
                     plugin_settings = touroptimizer_py_client.models.plugin_settings.PluginSettings(
                         plugins = [
                             touroptimizer_py_client.models.plugin_setting.PluginSetting(
@@ -576,6 +576,7 @@ class TestRestOptimization(unittest.TestCase):
                         visit_duration = 'PT60M', 
                         constraints = [
                             touroptimizer_py_client.models.constraint.Constraint(
+                                initial_class_name = '', 
                                 type = touroptimizer_py_client.models.constraint_type.ConstraintType(
                                     type_name = '', ), 
                                 is_hard = True, )
@@ -608,15 +609,13 @@ class TestRestOptimization(unittest.TestCase):
                             items = [
                                 touroptimizer_py_client.models.i_load.ILoad(
                                     priority = 56, 
-                                    fuzzy_visit = True, 
                                     load_value = 1.337, 
                                     request = True, 
+                                    fuzzy_visit = True, 
                                     id = '', 
                                     type_name = '', )
                                 ], 
-                            has_flex_load = True, 
                             depot_id = '', 
-                            has_timed_loads = True, 
                             type_name = '', ), 
                         route_dependent_visit_duration = True, 
                         allow_move_to_reduce_flex_time = True, 
@@ -626,17 +625,19 @@ class TestRestOptimization(unittest.TestCase):
                         is_optimizable = True, 
                         is_optional = True, 
                         is_unassigned = True, 
-                        is_unlocated_hub_connection_time = True, 
-                        is_wait_on_early_arrival_first_node = True, 
+                        is_ignore_on_zero_duration = True, 
                         is_causing_idle_time_cost = True, 
-                        is_opening_hours_includes_duration = True, 
+                        is_wait_on_early_arrival_first_node = True, 
                         is_wait_on_early_arrival = True, 
+                        is_unlocated_hub_connection_time = True, 
+                        is_opening_hours_includes_duration = True, 
+                        is_work_node = True, 
                         is_stay_node = True, 
-                        is_work_node = True, )
+                        is_ignore_on_zero_load = True, )
                     ],
                 resources = [
                     touroptimizer_py_client.models.resource.Resource(
-                        id = 'MyResouce', 
+                        id = 'MyResource', 
                         extra_info = 'My custom extra info', 
                         location_id = 'MySecondResource', 
                         constraint_alias_id = 'Jane', 
@@ -676,7 +677,7 @@ class TestRestOptimization(unittest.TestCase):
                                 max_time = 'PT480M', 
                                 max_distance = '800.0 km', 
                                 stay_out_cycle_definition = touroptimizer_py_client.models.stay_out_cycle_definition.StayOutCycleDefinition(
-                                    cycle_lenght = 'PT7D', 
+                                    cycle_length = 'PT7D', 
                                     cycle_start = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), ), 
                                 start_reduction_time_definition = touroptimizer_py_client.models.start_reduction_time_definition.StartReductionTimeDefinition(
                                     max_route_start_reduction_time = 'PT30M', 
@@ -700,12 +701,14 @@ class TestRestOptimization(unittest.TestCase):
                                     ], 
                                 working_hours_constraints = [
                                     touroptimizer_py_client.models.constraint.Constraint(
+                                        initial_class_name = '', 
                                         type = touroptimizer_py_client.models.constraint_type.ConstraintType(
                                             type_name = '', ), 
                                         is_hard = True, )
                                     ], 
                                 multi_working_hours_constraints = [
                                     touroptimizer_py_client.models.constraint.Constraint(
+                                        initial_class_name = '', 
                                         type = touroptimizer_py_client.models.constraint_type.ConstraintType(
                                             type_name = '', ), 
                                         is_hard = True, )
@@ -729,8 +732,8 @@ class TestRestOptimization(unittest.TestCase):
                                         to_element_id = 'MyToElementId', )
                                     ], 
                                 is_local_service_hub = True, 
-                                is_available_for_stay = True, 
-                                is_closed_route = True, )
+                                is_closed_route = True, 
+                                is_available_for_stay = True, )
                             ], 
                         max_time = 'PT8H', 
                         max_distance = '100.0 km', 
@@ -743,7 +746,7 @@ class TestRestOptimization(unittest.TestCase):
                             max_stays_out_in_row = 56, 
                             min_recovery = 'PT1D', ), 
                         stay_out_cycle_definition = touroptimizer_py_client.models.stay_out_cycle_definition.StayOutCycleDefinition(
-                            cycle_lenght = 'PT7D', 
+                            cycle_length = 'PT7D', 
                             cycle_start = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), ), 
                         stay_out_policy_time = 'PT1H', 
                         stay_out_policy_distance = '100.0 km', 
@@ -812,8 +815,8 @@ class TestRestOptimization(unittest.TestCase):
                                 }, 
                             type_name = '', ), 
                         overall_visit_duration_efficiency = 1.5, 
-                        is_reduction_time_only_used_for_driving = True, 
                         is_reduction_time_included_in_total_working_time = True, 
+                        is_reduction_time_only_used_for_driving = True, 
                         is_service_hub = True, )
                     ],
         )

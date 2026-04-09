@@ -1,12 +1,12 @@
 # WeekDay
 
+Matches a specific day of the week (1 = Monday … 7 = Sunday, ISO-8601).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_from** | [**WeekDay**](WeekDay.md) |  | [optional] 
-**to** | [**WeekDay**](WeekDay.md) |  | [optional] 
+**day** | **int** | ISO-8601 day of the week (1 &#x3D; Monday, 7 &#x3D; Sunday). | [optional] 
 
 ## Example
 

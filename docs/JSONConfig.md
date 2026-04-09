@@ -1,6 +1,6 @@
 # JSONConfig
 
-The extension of the configuration. For example, to provide a license.
+A generic extension object that carries environment-specific configuration outside the core optimization model. In the REST/Docker variant (where EXT = JSONConfig), this typically includes: the license key setting (keySetting), persistence settings for Fire-and-Forget mode (persistenceSetting with MongoDB configuration, encryption secrets, stream persistence strategies, and TTL expiry), a creator setting for tenant identification, and a timeout duration. The extension is stripped of sensitive fields (e.g. keySetting) before the result is persisted to the database.
 
 ## Properties
 

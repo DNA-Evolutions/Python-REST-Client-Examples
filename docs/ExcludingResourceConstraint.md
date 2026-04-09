@@ -1,5 +1,6 @@
 # ExcludingResourceConstraint
 
+A node constraint that excludes specific resources from visiting this node. The listed resources will not be assigned to this node (hard) or will incur penalty cost if assigned (soft).
 
 ## Properties
 

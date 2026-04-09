@@ -1,3 +1,18 @@
+"""
+Synchronous optimization example for running inside a Docker sandbox.
+
+Same workflow as tour_optimizer_example.py, but uses the Docker-to-host URL
+(http://host.docker.internal:8081) so that a containerized sandbox can reach
+a TourOptimizer instance running on the host machine.
+
+Prerequisites:
+- A running TourOptimizer instance on the host at port 8081.
+- This script is executed inside the code-server Docker sandbox.
+
+Usage:
+    python examples/optimize/tour_optimizer_example_from_docker.py
+"""
+
 import json
 from util.test_element_creator import  TestElementsCreator
 from util.test_rest_optimization_creator import  TestRestOptimizationCreator
@@ -7,9 +22,7 @@ from util.tour_optimizer_rest_caller import TourOptimizerRestCaller
 from pprint import pprint
 
 def main():
-    """
-    Example of using the TourOptimizer REST API in Python.
-    """
+    """Run a synchronous optimization from inside a Docker container against the host."""
 
     # Modify these variables as needed
     is_azure_call = False  # Set to True if using Azure, make sure a local docker container is running otherwise
@@ -61,7 +74,8 @@ def main():
     result = tour_optimizer_caller.optimize(opti)
     
     # Print result
-    pprint(result.extension.text_solution.text_solution)
+    if result and result.extension:
+        pprint(result.extension.text_solution.text_solution)
     
     # Print as json result
     if pprint_json_result:

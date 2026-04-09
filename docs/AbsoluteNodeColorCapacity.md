@@ -1,14 +1,14 @@
 # AbsoluteNodeColorCapacity
 
-The absoluteNodeColorCapacities
+The per-color capacity limits (absolute count-based) enforced by this multi-route constraint.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **node_color** | [**NodeColor**](NodeColor.md) |  | 
-**min_usage** | **int** | The minUsage  of the AbsoluteNodeColorCapacity | 
-**max_usage** | **int** | The maxUsage  of the AbsoluteNodeColorCapacity | 
+**min_usage** | **int** | The minimum number of nodes of this color that must appear on a route for the constraint to be satisfied. | 
+**max_usage** | **int** | The maximum number of nodes of this color permitted on a single route. | 
 
 ## Example
 

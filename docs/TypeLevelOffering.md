@@ -1,6 +1,6 @@
 # TypeLevelOffering
 
-The mapping of a certain type. or multiple types
+Specifies the expertise level a resource offers for a given skill type. Matched against TypeLevelRequirement on the node side to determine constraint satisfaction and cost penalties.
 
 ## Properties
 

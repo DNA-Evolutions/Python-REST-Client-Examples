@@ -1,11 +1,12 @@
 # UKPostCodeConstraint
 
+A node constraint requiring the visiting resource to hold a UKPostCodeQualification covering this node's UK postcode territory. Unmatched assignments produce violations.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**zone_codes** | [**List[ZoneCodeType]**](ZoneCodeType.md) | The zoneCodes | 
+**zone_codes** | [**List[ZoneCodeType]**](ZoneCodeType.md) | The list of UK postcode zone codes that a resource must be qualified for to visit this node. | 
 **type_name** | **str** | The typeName of the object | [default to 'UKPostCodeConstraint']
 
 ## Example

@@ -7,9 +7,7 @@ The NodeDepot type
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | [**List[ILoad]**](ILoad.md) |  | [optional] 
-**has_flex_load** | **bool** |  | [optional] 
 **depot_id** | **str** |  | [optional] 
-**has_timed_loads** | **bool** |  | [optional] 
 **type_name** | **str** |  | 
 
 ## Example

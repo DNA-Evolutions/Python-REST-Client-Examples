@@ -1,12 +1,13 @@
 # UKPostCodeQualification
 
+A resource qualification declaring which UK postcode territories the resource is authorized to operate in. Matched against UKPostCodeConstraint on nodes to ensure postal-district compliance.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **my_code** | [**ZoneCodeType**](ZoneCodeType.md) |  | 
-**my_extra_codes** | [**List[ZoneCodeType]**](ZoneCodeType.md) | The myExtraCodes | [optional] 
+**my_extra_codes** | [**List[ZoneCodeType]**](ZoneCodeType.md) | Additional UK postcodes this resource is also qualified to serve, beyond the primary code. | [optional] 
 **type_name** | **str** | The typeName of the object | [default to 'UKPostCodeQualification']
 
 ## Example

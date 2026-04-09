@@ -1,5 +1,6 @@
 # BitTypeWithExpertiseConstraint
 
+A bitset-based skill constraint with expertise levels on nodes. Each required type maps to a TypeLevelRequirement specifying the minimum expertise level. Supports cost models that penalize over- or under-qualified assignments. Matched against BitTypeWithExpertiseQualification on resources.
 
 ## Properties
 

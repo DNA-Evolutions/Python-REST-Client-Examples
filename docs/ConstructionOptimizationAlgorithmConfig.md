@@ -1,6 +1,6 @@
 # ConstructionOptimizationAlgorithmConfig
 
-The constructionOptimizationAlgorithmConfig
+The configuration for the construction algorithm phase. Defines which construction heuristic to use (e.g. nearest-neighbor, cheapest-insertion) and its parameters. This phase builds the initial solution before the heuristic improvement phases begin.
 
 ## Properties
 

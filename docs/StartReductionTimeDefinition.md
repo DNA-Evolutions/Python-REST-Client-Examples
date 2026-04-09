@@ -1,6 +1,6 @@
 # StartReductionTimeDefinition
 
-The settings/defintion for the reduction time at the start of the route for non-pillar nodes. A reduction times allows the Resource to start working/driving before the actual official workingHours start. For example, a customer node opens at 8 in the morning and the resource needs 25 minutes to drive to the node. The official workingHour of the Resource start at 8 as well. By giving a maximal reduction time of, for example, one hour and only allow the reduction time to be used for driving, the Resource will start 25 minutes to earlier to reach the node by 8.
+The settings/definition for the reduction time at the start of the route for non-pillar nodes. A reduction time allows the Resource to start working/driving before the actual official workingHours start. For example, a customer node opens at 8 in the morning and the resource needs 25 minutes to drive to the node. The official workingHour of the Resource start at 8 as well. By giving a maximal reduction time of, for example, one hour and only allow the reduction time to be used for driving, the Resource will start 25 minutes to earlier to reach the node by 8.
 
 ## Properties
 

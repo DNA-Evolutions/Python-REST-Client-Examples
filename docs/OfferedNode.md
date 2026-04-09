@@ -1,6 +1,6 @@
 # OfferedNode
 
-Defines if the node should be treated as offered node.
+Marks a node as 'offered' — a high-priority node that the optimizer should try harder to schedule without violations. The individualMultiplier increases the cost penalty for violations on this node, making the optimizer prioritize it over regular nodes.
 
 ## Properties
 

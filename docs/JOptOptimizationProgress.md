@@ -7,6 +7,8 @@ JOptOptimizationProgress model for the documentation
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The obejct id. Will be filled out by the optimizer, if necessary | [optional] 
+**job_id** | **str** | The jobId id. Will be filled out by the optimizer, if necessary | 
+**tenant_id** | **str** | The tenant id of the creator started this job. | 
 **creator** | **str** | An id related to the creator that is filled out autmatically | [optional] 
 **ident** | **str** | The ident of the currently running optimization | 
 **caller_id** | **str** | The id of the currently running optimization algorithm | 

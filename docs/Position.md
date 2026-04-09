@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **latitude** | **float** | The latitude of the position | 
 **longitude** | **float** | The longitude of the position | 
-**location_id** | **str** | The locationId | [optional] 
+**location_id** | **str** | An optional location identifier that links this position to a shared location. Elements with the same locationId share the same geographic coordinates and connection data, reducing input size. | [optional] 
 **geo_address** | [**GeoAddress**](GeoAddress.md) |  | [optional] 
 **location_parameters** | [**LocationParameters**](LocationParameters.md) |  | [optional] 
 

@@ -1,6 +1,6 @@
 # ResourceType
 
-The type of the Resource.
+The polymorphic resource definition used in the optimization input. Currently supports capacity-based resources that carry working hours, location, and optional depot/load capacity configuration.
 
 ## Properties
 

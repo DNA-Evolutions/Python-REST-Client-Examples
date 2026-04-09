@@ -1,6 +1,6 @@
 # DateDef
 
-The timeDefinitions describe at which times, what connection should be used.
+Polymorphic date predicate. Use the typeName property to select the concrete subtype. Point types (Day, DayMonth, DayMonthYear, WeekDay) match a single date. Range types (Range.Day, Range.DayMonth, Range.DayMonthYear, Range.WeekDay) match any date within a from–to interval. AnyDef combines multiple predicates with OR logic.
 
 ## Properties
 

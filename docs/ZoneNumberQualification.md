@@ -1,12 +1,13 @@
 # ZoneNumberQualification
 
+A resource qualification declaring which numeric zone territories the resource is authorized to operate in. Matched against ZoneNumberConstraint on nodes to enforce territory assignments.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **my_code** | [**ZoneCodeType**](ZoneCodeType.md) |  | [optional] 
-**my_extra_codes** | [**List[ZoneCodeType]**](ZoneCodeType.md) | The myExtraCodes | [optional] 
+**my_extra_codes** | [**List[ZoneCodeType]**](ZoneCodeType.md) | Additional zone codes this resource is also qualified to serve, beyond the primary code. | [optional] 
 **type_name** | **str** | The typeName of the object | [default to 'ZoneNumberQualification']
 
 ## Example

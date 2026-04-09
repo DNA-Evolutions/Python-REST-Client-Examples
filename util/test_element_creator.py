@@ -1,3 +1,11 @@
+"""
+Factory methods for creating test Node and Resource objects.
+
+Converts geographic positions into fully configured Node and Resource instances
+with default opening hours, working hours, and capacity settings. Used by the
+examples to build a RestOptimization input without manual boilerplate.
+"""
+
 import time
 
 from touroptimizer_py_client.models.geo_node import GeoNode
@@ -21,9 +29,11 @@ from typing import List
 from util.test_position_input import TestPositionsInput
 
 class TestElementsCreator:
-    
+    """Creates Node and Resource objects from Position lists with sensible defaults."""
+
     @staticmethod
-    def conv_poss_to_ress(poss) -> List[Resource]:
+    def conv_poss_to_ress(poss: List[Position]) -> List[Resource]:
+        """Converts a list of Positions into Resource objects with default working hours."""
         resources = []
         for i, pos in enumerate(poss):
             resource_id = pos.location_id  # or any other logic to create a unique ID
@@ -32,7 +42,8 @@ class TestElementsCreator:
         return resources
     
     @staticmethod
-    def conv_poss_to_nodes(poss) -> List[Node]:
+    def conv_poss_to_nodes(poss: List[Position]) -> List[Node]:
+        """Converts a list of Positions into GeoNode objects with default opening hours."""
         nodes = []
         for i, pos in enumerate(poss):
             node_id = pos.location_id  # or any other logic to create a unique ID

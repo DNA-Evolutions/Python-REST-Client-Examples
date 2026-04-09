@@ -1,6 +1,6 @@
 # IResourceDepot
 
-The ResourceDepot type
+A resource-level depot that defines the initial goods/capacity a resource carries at route start. Holds a collection of load capacities and manages load exchange when visiting node depots during pickup-and-delivery scenarios.
 
 ## Properties
 

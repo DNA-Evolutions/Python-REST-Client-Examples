@@ -1,11 +1,12 @@
 # TypeConstraint
 
+A string-based skill constraint on a node. The node requires resources whose TypeQualification includes at least one matching type name. Unmatched assignments produce violations.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type_names** | **List[str]** | A list of user-provided type-names. A Contraint type name must match to a Qualification type name to result in a violation free solution. | 
+**type_names** | **List[str]** | A list of user-provided type-names. A Constraint type name must match to a Qualification type name to result in a violation free solution. | 
 **type_name** | **str** | The typeName of the object | [default to 'Type']
 
 ## Example

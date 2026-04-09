@@ -1,12 +1,14 @@
 # DayMonthYear
 
+Matches a specific date (year, month, day).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_from** | [**DayMonthYear**](DayMonthYear.md) |  | [optional] 
-**to** | [**DayMonthYear**](DayMonthYear.md) |  | [optional] 
+**year** | **int** | Year. | [optional] 
+**month** | **int** | Month of the year (1–12). | [optional] 
+**day** | **int** | Day of the month (1–31). | [optional] 
 
 ## Example
 

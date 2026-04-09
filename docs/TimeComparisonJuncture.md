@@ -6,8 +6,8 @@ The timeComparisonJuncture of the relation.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**is_related_node_working_start** | **bool** | Defines if the related nodes start is used as comparison point (true). If false, the end of the related node will be used. | 
 **is_master_node_working_start** | **bool** | Defines if the master nodes start is used as comparison point (true). If false, the end of the master node will be used. | 
+**is_related_node_working_start** | **bool** | Defines if the related nodes start is used as comparison point (true). If false, the end of the related node will be used. | 
 
 ## Example
 

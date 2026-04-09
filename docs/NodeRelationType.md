@@ -1,6 +1,6 @@
 # NodeRelationType
 
-The type
+A relation that couples two or more nodes across time or resource assignment. Subtypes include time window relations (enforcing relative visit ordering with optional time gaps), same-visitor relations (requiring the same resource visits both nodes), different-visitor relations (requiring distinct resources), and multi-time-window relations.
 
 ## Properties
 

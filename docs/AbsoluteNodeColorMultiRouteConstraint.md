@@ -1,12 +1,13 @@
 # AbsoluteNodeColorMultiRouteConstraint
 
+A multi-route constraint that enforces per-color capacity limits across multiple working hours of a resource, using absolute (count-based) limits.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mirror_item** | [**IntegerMultiConstraintHelperItem**](IntegerMultiConstraintHelperItem.md) |  | 
-**absolute_node_color_capacities** | [**List[AbsoluteNodeColorCapacity]**](AbsoluteNodeColorCapacity.md) | The absoluteNodeColorCapacities | 
+**absolute_node_color_capacities** | [**List[AbsoluteNodeColorCapacity]**](AbsoluteNodeColorCapacity.md) | The per-color capacity limits (absolute count-based) enforced by this multi-route constraint. | 
 **type_name** | **str** | The typeName of the object | [default to 'AbsoluteNodeColorMultiRouteConstraint']
 
 ## Example

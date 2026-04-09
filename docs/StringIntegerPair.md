@@ -1,13 +1,13 @@
 # StringIntegerPair
 
-The pairs
+A list of key-value pairs mapping element identifiers to integer values. Used internally to mirror multi-route constraint configurations across working hours.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**left** | **str** | The left | 
-**right** | **int** | The right | 
+**left** | **str** | A string key, typically a node or element identifier. | 
+**right** | **int** | An integer value associated with the key (e.g. a count, index, or capacity value). | 
 
 ## Example
 

@@ -1,5 +1,6 @@
 # EdgeElementConnection
 
+An edge-based connection between two elements specifying travel distance, optional travel time, and optional time-dependent traffic profiles via connectionByTime. The standard connection type used to supply precomputed routing data to the optimizer.
 
 ## Properties
 

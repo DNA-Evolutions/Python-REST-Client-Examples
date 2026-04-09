@@ -1,6 +1,6 @@
 # ElementConnectionType
 
-The type of the connection. Usually a connection of type 'Edge' is used.
+A precomputed connection (distance and driving time) between two elements (nodes or resources). Used to supply custom or externally calculated travel data instead of relying on the optimizer's internal distance calculation. Currently supports edge-based connections.
 
 ## Properties
 

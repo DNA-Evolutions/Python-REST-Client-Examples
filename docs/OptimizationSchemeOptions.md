@@ -1,13 +1,13 @@
 # OptimizationSchemeOptions
 
-The OptimizationSchemeOptions describes the desired algos to run.
+Defines the algorithm pipeline for an optimization run. Specifies exactly which construction heuristic builds the initial solution and which heuristic improvement phases (e.g. Genetic Algorithm, Simulated Annealing) are executed in sequence afterward. Each phase carries its own parameter set (iteration count, repetitions). If omitted from OptimizationOptions, the optimizer uses its built-in default pipeline.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **construction_optimization_algorithm_config** | [**ConstructionOptimizationAlgorithmConfig**](ConstructionOptimizationAlgorithmConfig.md) |  | 
-**heuristic_optimization_algorithm_configs** | [**List[HeuristicOptimizationAlgorithmConfig]**](HeuristicOptimizationAlgorithmConfig.md) | The heuristicOptimizationAlgorithmConfigs | 
+**heuristic_optimization_algorithm_configs** | [**List[HeuristicOptimizationAlgorithmConfig]**](HeuristicOptimizationAlgorithmConfig.md) | An ordered list of heuristic algorithm configurations that are executed sequentially after construction. Each entry defines an algorithm (e.g. Genetic Algorithm, Simulated Annealing) and its parameters (iteration count, repetitions). The optimizer runs each phase in order to progressively improve the solution. | 
 
 ## Example
 

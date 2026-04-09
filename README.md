@@ -1,173 +1,191 @@
-# Python-REST-Client-Examples by DNA-Evolutions
+# Python REST Client Examples for JOpt TourOptimizer
 
-
-
-<a href="https://dna-evolutions.com/" target="_blank"><img src="https://docs.dna-evolutions.com/indexres/dna-temp-logo.png" width="110"
+<a href="https://www.dna-evolutions.com/" target="_blank"><img src="https://www.dna-evolutions.com/images/dna_logo.png" width="200"
 title="DNA-Evolutions" alt="DNA-Evolutions"></a>
 
-
-Containerizing an application helps to use it more conveniently across different platforms and, most importantly, as a microservice. Further, scaling an application becomes more straightforward as various standardized orchestration tools can be utilized. A Microservice can be launched either (locally) or, for example, as a highly-scalable web-micro-service in a Kubernetes cluster.
-
----
-
-# Compatibility
-
-
-
-
-
-This client can be used with <a href="https://hub.docker.com/r/dnaevolutions/jopt_touroptimizer" target="_blank">JOpt-TourOptimizer Spring Server</a>
-Compatible Versions:
-- 1.3.0-SNAPSHOT (this version was used to create the models of this repository)
-- 1.3.0-SNAPSHOT (<a href="https://github.com/DNA-Evolutions/Java-REST-Client-Examples/blob/master/src/main/resources/swagger/touroptimizer/spec/touroptimizer_spec_cleaned.json" target="_blank">Specs</a> )
+Python examples for the [JOpt TourOptimizer](https://hub.docker.com/r/dnaevolutions/jopt_touroptimizer) REST API. Run route optimizations, monitor progress via SSE streams, and persist results to a database -- all from Python.
 
 ---
 
-# Further Documentation, Contact and Links
+## Compatibility
 
-- Further documentation 	- <a href="https://docs.dna-evolutions.com" target="_blank">docs.dna-evolutions.com</a>
-- Special features 	- <a href="https://docs.dna-evolutions.com/overview_docs/special_features/Special_Features.html" target="_blank">Overview of special features</a>
-- Our official repository 	- <a href="https://public.repo.dna-evolutions.com" target="_blank">public.repo.dna-evolutions.com</a>
-- Our official JavaDocs 		- <a href="https://public.javadoc.dna-evolutions.com" target="_blank">public.javadoc.dna-evolutions.com</a>
-- Our YouTube channel - <a href="https://www.youtube.com/channel/UCzfZjJLp5Rrk7U2UKsOf8Fw" target="_blank">DNA Tutorials</a>
-- Documentation - <a href="https://docs.dna-evolutions.com/rest/touroptimizer/rest_touroptimizer.html" target="_blank">DNA's RESTful Spring-TourOptimizer in Docker </a>
-- Our DockerHub channel - <a href="https://hub.docker.com/u/dnaevolutions" target="_blank">DNA DockerHub</a>
-- Our LinkedIn channel - <a href="https://www.linkedin.com/company/dna-evolutions/" target="_blank">DNA LinkedIn</a>
+Requires **JOpt TourOptimizer >= 1.3.5** ([Docker Hub](https://hub.docker.com/r/dnaevolutions/jopt_touroptimizer)).
 
-
-If you need any help, don't hesitate to get in contact with us via our company website <a href="https://www.dna-evolutions.com" target="_blank">www.dna-evolutions.com</a> or write an email to <a href="mailto:info@dna-evolutions.com">info@dna-evolutions.com</a>.
-
+The API models in this repository were generated from the [OpenAPI spec](https://github.com/DNA-Evolutions/Java-REST-Client-Examples/blob/master/src/main/resources/swagger/touroptimizer/spec/touroptimizer_spec.json).
 
 ---
 
+## Quick start
 
-# Short Introduction
-This repository is part of our JOpt-REST-Suite. It provides examples of how to set up a REST client in Python to access the following DNA Evolution's web services:
+### Option A: Clone and run locally
 
-- JOpt-TourOptimizer based on JOpt-Core (available as a local Container and via Azure)
+**Prerequisites**
 
-The service can be called via an API-Key using our Microsoft Azure-Kubernetes Infrastructure. If you are interested in hosting our JOpt-REST-GeoCoder and JOpt-REST-GeoRouter products in your environment, please get in contact with us.
+- Python >= 3.9
+- A running TourOptimizer instance (see [Quickstart Guide](https://dna-evolutions.com/docs/getting-started/quickstart/jopt_sandboxes_quickstart))
 
-All our RESTful Services utilize <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html" target="_blank">Spring WebFlux</a> and <a href="https://swagger.io/" target="_blank">Swagger</a>. Internally the Java version of TourOptimizer is used. Indeed all specifications for the different services are derived from the core library, leading to guaranteed compatibility between all three services.
-
-<a href="https://dna-evolutions.com/" target="_blank"><img src="https://docs.dna-evolutions.com/indexres/dna-evolutions-product-infographic-jopt-cloud-integration-highres.svg" width="600"
-title="DNA-Evolutions Integration" alt="DNA-Evolutions Integration"></a>
-
-### JOpt-TourOptimizer
-Optimize a problem consisting of Nodes, Resources, and optionally externally provided connections. In contrast to our other services, we allow you to host your JOpt-TourOptimizer locally. Please refer to <a href="https://github.com/DNA-Evolutions/Docker-REST-TourOptimizer#how-to-start-jopttouroptimizer-docker" target="_blank">"How to start JOpt TourOptimizer in docker"</a> for more help.
-
----
-
-# Outline of this repository
-
-Examples</a>
-1. <a href="https://github.com/DNA-Evolutions/Python-REST-Client-Examples/tree/master/examples" target="_blank">TourOptimizer Python Examples</a>
-
-Each of the sections has its README.
-
----
-
-
-# The architecture of the generated REST-Client-API
-
-The Python-REST-Client class files used by the examples of this repository were generated utilizing the <a href="https://openapi-generator.tech/docs/generators/python/" target="_blank">openapi-python Generator</a>  by <a href="https://github.com/OpenAPITools" target="_blank">OpenAPI Tools</a>.
-
-For creating the models, we used the containerized version of Open-API-Generator by calling:
-
-```xml
-docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:latest generate  -i '/local/swagger/touroptimizer/spec/touroptimizer_spec.json' -g python  -o /local/generated/jopt-touroptimizer-py-client  --package-name=touroptimizer_py_client --additional-properties="useOneOfDiscriminatorLookup=true"
-
-```
-
-where `${PWD}` needs to be adjusted to find the Open-API-docs under `/local/swagger/touroptimizer/spec/touroptimizer_spec.json` when mounting the volume `${PWD}` into `/local`. Calling the command will generate the Python client that is part of this repository. You can find the `touroptimizer_spec.json` <a href="https://github.com/DNA-Evolutions/Java-REST-Client-Examples/blob/master/src/main/resources/swagger/touroptimizer/spec/touroptimizer_spec_cleaned.json" target="_blank">here</a>.
-
-
-You can also generate a client in the programming language of your choice utilizing our API-docs. REST facilitates software integration in your desired language (including famous ones like C#, Java, JS, Scala, Python, and many more ). Don't hesitate to reach out to us if you need help setting up your client.
-
-
-For setting up a local test enviorment with database support, please refer to the separate **Hands-on Tutorial: Setting Up a Local Fire and Forget TourOptimizer-Database Test Environment** [tutorial](https://github.com/DNA-Evolutions/Docker-REST-TourOptimizer/blob/main/TourOptimizerWithDatabase.md).
-
----
-
-# Getting started
-
-You can start using our examples:
-
-* [Clone this repository](#clone-this-repository)
-* [Use our sandbox in your browser (Docker required)](#use-our-sandbox-in-your-browser-docker-required)
-
-
-## Clone this repository
-Clone this repository and import it in your favourite IDE.
-
-### Prerequisites
-
-* Python installed
-* Please check **requirements.txt**
-* Working Docker environment for local TourOptimizer instance
-
-
-### Install necessary files
-You can call (from the main folder):
+**Setup**
 
 ```bash
-python setup.py install
-```
- 
-### Run the examples
+git clone https://github.com/DNA-Evolutions/Python-REST-Client-Examples.git
+cd Python-REST-Client-Examples
 
-Run a file from the **examples** subfolders. 
+# Create and activate a virtual environment (recommended)
+python -m venv .venv
+source .venv/bin/activate   # Linux/macOS
+# .venv\Scripts\activate    # Windows
 
-
-## Use our sandbox in your browser (Docker required)
-If you want to get started without the hassle of installing Python and an IDE, we provide a sandbox. The sandbox is based on  [code-server](https://github.com/cdr/code-server) and can be used inside your browser, and the interface itself is based on Visual Code. The sandbox is available via DockerHub ([here](https://hub.docker.com/r/dnaevolutions/jopt_py_example_server)). You have to host the sandbox in your Docker environment (Please provide at least 2-4Gb of Ram and 2 Cores). You can pull the sandbox from our DockerHub account (The Dockerfile for creating the sandbox is included in this repository). The latest version of our examples is cloned by default on launching the Docker container, and you can start testing JOpt-PYthon-REST right away.
-
-
-### Starting the sandbox and persist your changes
-You must mount a volume to which the examples of this project are downloaded on the container's startup. After re-launching the container, the latest version of our examples is only cloned if the folder is not already existing, keeping your files safe from being overridden.
-
-Launching a sandbox and mount your current directory ('$PWD') or any other directory you want:
-
-```
-docker run -it -d --name jopt-py-rest-examples -p 127.0.0.1:8033:8080 -v "$PWD/:/home/coder/project" dnaevolutions/jopt_py_example_server:latest
+# Install the package in editable mode with all dependencies
+pip install -e .
 ```
 
-### Using the sandbox
+**Run an example**
 
-After starting the container, you can open [http://localhost:8033/](http://localhost:8033) with your browser and login with the password:
-
-```
-jopt
+```bash
+python examples/optimize/tour_optimizer_example.py
 ```
 
-### Common problems: ###
+### Jupyter Notebooks (recommended for getting started)
 
-- If you see the an error like this:
+The fastest way to learn JOpt in Python is through the interactive notebooks.
+They walk you through each step with explanations, runnable code, and inline results.
 
+```bash
+pip install jupyter
+jupyter notebook examples/notebooks/
 ```
-urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /healthStatus (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fc7c86ac1d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+| Notebook | Description |
+|----------|-------------|
+| [`tour_optimizer_example.ipynb`](examples/notebooks/tour_optimizer_example.ipynb) | **Start here.** Synchronous optimization: health check, build input, submit a run, inspect routes, export to JSON. |
+| [`tour_optimizer_job_example.ipynb`](examples/notebooks/tour_optimizer_job_example.ipynb) | Job-based (fire-and-forget) optimization: submit to database, poll progress, retrieve results, search jobs, configure webhooks. |
+
+> Inside the Docker sandbox, the notebooks are ready to use -- just open them in the file explorer and select the **"Python (JOpt)"** kernel.
+
+### Option B: Use the browser-based sandbox (Docker)
+
+No local Python installation needed. The sandbox provides a VS Code environment in your browser with all dependencies pre-installed.
+
+```bash
+docker run -it -d \
+  --name jopt-py-rest-examples \
+  -p 127.0.0.1:8033:8080 \
+  -v "$PWD:/home/coder/project" \
+  dnaevolutions/jopt_py_example_server:latest
 ```
 
-You are trying to connect to a local JOpt server but have not adjusted the endpoint. Remember, the sandbox is a docker container and you need to connect to it via the endpoint `http://host.docker.internal:8081` instead of ~`http://localhost:8081`~. You can run `tour_optimizer_example_from_docker.py` from the package `examples.optimize` where `Endpoints.LOCAL_SWAGGER_TOUROPTIMIZER_FROM_DOCKER_URL` is used instead of `Endpoints.LOCAL_SWAGGER_TOUROPTIMIZER_URL`.
+Open [http://localhost:8033](http://localhost:8033) and log in with password **`jopt`**.
 
+> The Dockerfile for building the sandbox is included under [`sandbox/python/`](sandbox/python/).
 
 ---
 
+## Project structure
 
-## Why use JOpt products from DNA Evolutions?
-JOpt is a flexible routing optimization engine written in Java, allowing to solve tour-optimization problems that are highly restricted. For example, regarding time windows, skills, and even mandatory constraints can be applied.
+```
+.
+├── examples/
+│   ├── notebooks/         # Jupyter notebooks (start here!)
+│   ├── optimize/          # Synchronous optimization (start_run -> get_run_result)
+│   ├── health/            # Health check (GET /api/v1/health)
+│   ├── optimizeFAF/       # Job-based / fire-and-forget (create_job)
+│   ├── searchFAF/         # List persisted jobs (list_jobs)
+│   └── loadFAF/           # Load job result from database (get_job_result)
+├── util/                  # Helper classes (REST caller, test data factories)
+├── touroptimizer_py_client/  # Generated API client (do not edit manually)
+├── requirements.txt
+└── setup.py
+```
 
-Click to open our video:
+### Examples overview
+
+**Jupyter Notebooks** (interactive, best for learning):
+
+| Notebook | Description |
+|----------|-------------|
+| `notebooks/tour_optimizer_example.ipynb` | Synchronous optimization end-to-end. |
+| `notebooks/tour_optimizer_job_example.ipynb` | Job-based optimization with database persistence and webhooks. |
+
+**Python scripts** (standalone, ready to run):
+
+| Script | Description |
+|--------|-------------|
+| `optimize/tour_optimizer_example.py` | Submit an optimization, subscribe to SSE streams, and fetch the result. |
+| `optimize/tour_optimizer_example_from_docker.py` | Same as above, using the Docker-to-host URL. |
+| `health/tour_optimizer_health_example.py` | Check if the TourOptimizer service is reachable. |
+| `optimizeFAF/tour_optimizer_faf_example.py` | Submit an async job with database persistence. |
+| `searchFAF/tour_optimizer_search_faf_example.py` | Search for previously persisted jobs by creator. |
+| `loadFAF/tour_optimizer_load_faf_example.py` | Load an unencrypted job result by job ID. |
+| `loadFAF/tour_optimizer_load_encrypted_faf_example.py` | Load an encrypted job result with a decryption secret. |
+
+---
+
+## API architecture
+
+The generated client in `touroptimizer_py_client/` provides four API classes:
+
+| API class | Purpose |
+|-----------|---------|
+| `OptimizationApi` | Synchronous runs: `start_run` returns a `run_id`, then `get_run_result(run_id)` blocks until completion. |
+| `StreamApi` | Subscribe to real-time SSE streams (progress, status, warnings, errors) for a given `run_id`. |
+| `JobApi` | Asynchronous jobs with database persistence: `create_job`, `list_jobs`, `get_job_result`, etc. |
+| `HealthApi` | Health check endpoint. |
+
+The client was generated using the [OpenAPI Python Generator](https://openapi-generator.tech/docs/generators/python/):
+
+```bash
+docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:latest generate \
+  -i /local/swagger/touroptimizer/spec/touroptimizer_spec.json \
+  -g python \
+  -o /local/generated/jopt-touroptimizer-py-client \
+  --package-name=touroptimizer_py_client \
+  --additional-properties="useOneOfDiscriminatorLookup=true"
+```
+
+You can also generate a client in other languages (C#, Java, TypeScript, Go, etc.) from the same OpenAPI spec.
+
+---
+
+## Troubleshooting
+
+### Connection refused from the sandbox
+
+```
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8081):
+  Max retries exceeded ... [Errno 111] Connection refused
+```
+
+The sandbox runs inside a Docker container. Use `http://host.docker.internal:8081` instead of `http://localhost:8081`, or run `tour_optimizer_example_from_docker.py` which uses the correct endpoint automatically.
+
+---
+
+## Documentation
+
+- [Quickstart Guide](https://dna-evolutions.com/docs/getting-started/quickstart/jopt_sandboxes_quickstart) -- Get up and running with TourOptimizer
+- [REST Server Documentation](https://dna-evolutions.com/docs/learn-and-explore/rest/rest-server-touroptimizer) -- API details, database setup, and configuration
+- [Docker Hub](https://hub.docker.com/r/dnaevolutions/jopt_touroptimizer) -- TourOptimizer Docker images
+- [YouTube](https://www.youtube.com/channel/UCzfZjJLp5Rrk7U2UKsOf8Fw) -- Video tutorials
+- [LinkedIn](https://www.linkedin.com/company/dna-evolutions/) -- Updates and news
+
+---
+
+## About JOpt
+
+JOpt is a flexible routing optimization engine written in Java, designed for highly constrained tour-optimization problems -- time windows, skills, capacities, mandatory constraints, and more.
 
 <a href="https://www.youtube.com/watch?v=U4mDQGnZGZs" target="_blank"><img src="https://dna-evolutions.com/wp-content/uploads/2021/02/joptIntrox169_small.png" width="500"
 title="Introduction Video for DNA's JOpt" alt="Introduction Video for DNA's JOpt"></a>
 
 ---
 
-## Agreement
-For reading our license agreement and for further information about license plans, please visit <a href="https://www.dna-evolutions.com" target="_blank">www.dna-evolutions.com</a>.
+## License
 
---- 
+For our license agreement and information about license plans, please visit [www.dna-evolutions.com](https://www.dna-evolutions.com).
 
-## Authors
-A product by [dna-evolutions ](https://www.dna-evolutions.com)&copy;
+---
+
+## Contact
+
+[www.dna-evolutions.com](https://www.dna-evolutions.com) | [info@dna-evolutions.com](mailto:info@dna-evolutions.com)
+
+A product by [DNA Evolutions](https://www.dna-evolutions.com) &copy;
